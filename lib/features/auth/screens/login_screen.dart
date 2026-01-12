@@ -179,20 +179,21 @@ class _LoginScreenState extends State<LoginScreen>
           message: l10n.loginSuccessMessage ?? "تم تسجيل الدخول بنجاح",
           isSuccess: true,
           onContinue: () {
-            // حفظ الـ Navigator قبل إغلاق الـ dialog
-            final navigator = Navigator.of(context);
+            // التحقق أولاً من أن الـ widget لا يزال mounted قبل الوصول للـ context
+            if (!mounted) return;
 
-            // إغلاق الـ Dialog
-            navigator.pop();
+            // الآن آمن الوصول للـ context والـ Navigator
+            Navigator.of(context).pop();
 
-            // --- التوجيه لصفحة اختيار الموديول بعد إغلاق الـ dialog ---
-            // استخدام Future.microtask للتأكد من إتمام إغلاق الـ dialog أولاً
-            Future.microtask(() {
-              navigator.pushReplacement(
-                MaterialPageRoute(
-                  builder: (context) => const ModuleSelectionScreen(),
-                ),
-              );
+            // --- استخدام addPostFrameCallback للتأكد من اكتمال إغلاق الـ dialog ---
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              if (mounted) {
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                    builder: (k) => const ModuleSelectionScreen(),
+                  ),
+                );
+              }
             });
             // ----------------------------------------------------
           },

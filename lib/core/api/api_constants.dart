@@ -119,4 +119,9 @@ class ApiConstants {
   // ---== Endpoints طلباتي (تثبيت راتب POST - جديد) ==---
   static const String createSalaryConfirmationRequestEndpoint =
       '/SsFixedSalVO1';
+
+  // ----------------------------------------NEw---------------------------------------------------
+
+  static const String projectsEndpoint = 'EXProjectsVRO1';
+  static const String projectsDetailsEndpoint = 'EXProjectsTaskVRO1?q=';
 }

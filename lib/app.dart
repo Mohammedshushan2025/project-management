@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shehabapp/core/models/vacation_request_model.dart';
+import 'package:shehabapp/core/providers/daily_tasks_provider.dart';
 import 'package:shehabapp/core/providers/hr_provider.dart';
 import 'package:shehabapp/features/attendance/providers/attendance_provider.dart';
 import 'package:shehabapp/features/attendance/screens/attendance_daily_log_screen.dart';
@@ -8,6 +9,7 @@ import 'package:shehabapp/features/attendance/screens/attendance_months_list_scr
 import 'package:shehabapp/features/attendance/screens/checked_attendance_months_list_screen.dart';
 import 'package:shehabapp/features/auth/screens/auth_wrapper.dart';
 import 'package:shehabapp/features/auth/screens/project_categories.dart';
+import 'package:shehabapp/features/daily_tasks/daily_tasks_screen.dart';
 import 'package:shehabapp/features/loans/screens/loan_request_details_screen.dart';
 import 'package:shehabapp/features/loans/screens/loan_requests_list_screen.dart';
 import 'package:shehabapp/features/permissions/screens/my_requests/my_permission_requests_list_screen.dart';
@@ -78,6 +80,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => AuthProvider()),
         ChangeNotifierProvider(create: (_) => HomeProvider()),
+        ChangeNotifierProvider(create: (_) => DailyTasksProvider()),
         ChangeNotifierProvider(create: (_) => UserProvider()),
         ChangeNotifierProvider(create: (_) => PurchaseProvider()),
         ChangeNotifierProvider(
@@ -173,6 +176,8 @@ class MyApp extends StatelessWidget {
                   const PurchaseOrdersListScreen(),
               PurchaseOrderDetailsScreen.routeName: (context) =>
                   const PurchaseOrderDetailsScreen(), // <--- أضف هذا السطر
+              // Daily Tasks Screen
+              DailyTasksScreen.routeName: (context) => const DailyTasksScreen(),
               // --== مسارات جديدة ==--
               VacationRequestsListScreen.routeName: (context) =>
                   const VacationRequestsListScreen(),

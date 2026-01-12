@@ -1150,4 +1150,61 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get selectCategory => 'Select a category to continue';
+
+  @override
+  String get filterBy => 'Filter By';
+
+  @override
+  String get projectFilter => 'Project';
+
+  @override
+  String get selectProject => 'Select Project';
+
+  @override
+  String get contractNumber => 'Contract Number';
+
+  @override
+  String get enterContractNumber => 'Enter contract number';
+
+  @override
+  String get secNumber => 'SEC Number';
+
+  @override
+  String get enterSecNumber => 'Enter SEC number';
+
+  @override
+  String get statusFilter => 'Status';
+
+  @override
+  String get notDoneOnly => 'Not Done Only';
+
+  @override
+  String get doneOnly => 'Done Only';
+
+  @override
+  String get allStatus => 'All';
+
+  @override
+  String get search => 'Search';
+
+  @override
+  String get stage => 'Stage';
+
+  @override
+  String get operation => 'Operation';
+
+  @override
+  String get explanation => 'Explanation';
+
+  @override
+  String get done => 'Done';
+
+  @override
+  String get noTasksFound => 'No tasks found';
+
+  @override
+  String get loadingTasks => 'Loading tasks...';
+
+  @override
+  String get dailyTasksTitle => 'Daily Tasks';
 }

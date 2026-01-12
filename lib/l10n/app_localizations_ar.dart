@@ -1150,4 +1150,61 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get selectCategory => 'اختر الفئة للمتابعة';
+
+  @override
+  String get filterBy => 'تصفية حسب';
+
+  @override
+  String get projectFilter => 'المشروع';
+
+  @override
+  String get selectProject => 'اختر المشروع';
+
+  @override
+  String get contractNumber => 'رقم العقد';
+
+  @override
+  String get enterContractNumber => 'أدخل رقم العقد';
+
+  @override
+  String get secNumber => 'رقم SEC';
+
+  @override
+  String get enterSecNumber => 'أدخل رقم SEC';
+
+  @override
+  String get statusFilter => 'الحالة';
+
+  @override
+  String get notDoneOnly => 'لم يتم فقط';
+
+  @override
+  String get doneOnly => 'تم فقط';
+
+  @override
+  String get allStatus => 'الكل';
+
+  @override
+  String get search => 'بحث';
+
+  @override
+  String get stage => 'المرحلة';
+
+  @override
+  String get operation => 'العملية';
+
+  @override
+  String get explanation => 'الشرح';
+
+  @override
+  String get done => 'تم';
+
+  @override
+  String get noTasksFound => 'لا توجد مهام';
+
+  @override
+  String get loadingTasks => 'جار تحميل المهام...';
+
+  @override
+  String get dailyTasksTitle => 'المهام اليومية';
 }

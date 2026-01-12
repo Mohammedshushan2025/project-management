@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shehabapp/features/daily_tasks/daily_tasks_screen.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../../core/providers/locale_provider.dart';
 import '../../../core/providers/auth_provider.dart';
@@ -160,7 +161,10 @@ class _ProjectCategoriesState extends State<ProjectCategories>
                                     ],
                                     delay: 0,
                                     onTap: () {
-                                      // TODO: Navigate to Daily Tasks screen
+                                      Navigator.pushNamed(
+                                        context,
+                                        DailyTasksScreen.routeName,
+                                      );
                                     },
                                     showNotifications: true,
                                     notificationCount:

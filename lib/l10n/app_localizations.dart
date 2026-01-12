@@ -2368,6 +2368,120 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Select a category to continue'**
   String get selectCategory;
+
+  /// No description provided for @filterBy.
+  ///
+  /// In en, this message translates to:
+  /// **'Filter By'**
+  String get filterBy;
+
+  /// No description provided for @projectFilter.
+  ///
+  /// In en, this message translates to:
+  /// **'Project'**
+  String get projectFilter;
+
+  /// No description provided for @selectProject.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Project'**
+  String get selectProject;
+
+  /// No description provided for @contractNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Contract Number'**
+  String get contractNumber;
+
+  /// No description provided for @enterContractNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter contract number'**
+  String get enterContractNumber;
+
+  /// No description provided for @secNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'SEC Number'**
+  String get secNumber;
+
+  /// No description provided for @enterSecNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter SEC number'**
+  String get enterSecNumber;
+
+  /// No description provided for @statusFilter.
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get statusFilter;
+
+  /// No description provided for @notDoneOnly.
+  ///
+  /// In en, this message translates to:
+  /// **'Not Done Only'**
+  String get notDoneOnly;
+
+  /// No description provided for @doneOnly.
+  ///
+  /// In en, this message translates to:
+  /// **'Done Only'**
+  String get doneOnly;
+
+  /// No description provided for @allStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get allStatus;
+
+  /// No description provided for @search.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get search;
+
+  /// No description provided for @stage.
+  ///
+  /// In en, this message translates to:
+  /// **'Stage'**
+  String get stage;
+
+  /// No description provided for @operation.
+  ///
+  /// In en, this message translates to:
+  /// **'Operation'**
+  String get operation;
+
+  /// No description provided for @explanation.
+  ///
+  /// In en, this message translates to:
+  /// **'Explanation'**
+  String get explanation;
+
+  /// No description provided for @done.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get done;
+
+  /// No description provided for @noTasksFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No tasks found'**
+  String get noTasksFound;
+
+  /// No description provided for @loadingTasks.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading tasks...'**
+  String get loadingTasks;
+
+  /// No description provided for @dailyTasksTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily Tasks'**
+  String get dailyTasksTitle;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
