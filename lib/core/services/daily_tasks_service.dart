@@ -39,19 +39,19 @@ class DailyTasksService {
       final queryParams = <String>['UsersCode=$usersCode'];
 
       if (projectId != null && projectId.isNotEmpty) {
-        queryParams.add('PROJECT_ID=$projectId');
+        queryParams.add('ProjectId=$projectId');
       }
       if (contractNo != null && contractNo.isNotEmpty) {
-        queryParams.add('CONTRACT_NO=$contractNo');
+        queryParams.add('ContractNo=$contractNo');
       }
       if (secNo != null && secNo.isNotEmpty) {
-        queryParams.add('SEC_NO=$secNo');
+        queryParams.add('SecNo=$secNo');
       }
       if (doneFlag != null) {
-        queryParams.add('DONE_FLAG=$doneFlag');
+        queryParams.add('DoneFlag=$doneFlag');
       }
 
-      final queryString = queryParams.join('&');
+      final queryString = queryParams.join(';');
 
       final response = await http.get(
         Uri.parse(
