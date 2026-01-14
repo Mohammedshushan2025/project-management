@@ -9,6 +9,9 @@ class TaskStatusWidget extends StatefulWidget {
   final int? attFlagCheck;
   final int? attPermitCheck;
   final int? attNotifCheck;
+  final TextEditingController? notesController;
+  final String? selectedEmployeeCode;
+  final String? defaultEmployeeCode;
   final Function(int doneFlag, String doneDate)? onStatusUpdated;
 
   const TaskStatusWidget({
@@ -19,6 +22,9 @@ class TaskStatusWidget extends StatefulWidget {
     this.attFlagCheck,
     this.attPermitCheck,
     this.attNotifCheck,
+    this.notesController,
+    this.selectedEmployeeCode,
+    this.defaultEmployeeCode,
     this.onStatusUpdated,
   });
 
@@ -72,6 +78,28 @@ class _TaskStatusWidgetState extends State<TaskStatusWidget>
     // Check attNotifCheck (notification reply)
     if (widget.attNotifCheck == 0) {
       await ErrorDialog.show(context, l10n.errorNotificationReplyRequired);
+      return;
+    }
+
+    // Check notes (remarks)
+    final notesText = widget.notesController?.text ?? '';
+    if (notesText.trim().isEmpty) {
+      await ErrorDialog.show(context, l10n.errorNotesRequired);
+      return;
+    }
+
+    // Check assigned employee
+    // إذا كان هناك موظف افتراضي من API، مش لازم المستخدم يختار
+    // إذا مفيش موظف افتراضي، لازم المستخدم يختار
+    final hasDefaultEmployee =
+        widget.defaultEmployeeCode != null &&
+        widget.defaultEmployeeCode!.isNotEmpty;
+    final hasSelectedEmployee =
+        widget.selectedEmployeeCode != null &&
+        widget.selectedEmployeeCode!.isNotEmpty;
+
+    if (!hasDefaultEmployee && !hasSelectedEmployee) {
+      await ErrorDialog.show(context, l10n.errorEmployeeRequired);
       return;
     }
 

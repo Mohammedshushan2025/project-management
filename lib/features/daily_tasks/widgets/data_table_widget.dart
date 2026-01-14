@@ -1,32 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:shehabapp/features/task_details/task_details_view.dart';
-import '../../../../l10n/app_localizations.dart';
-
-class TaskData {
-  final String stage;
-  final String operation;
-  final String explanation;
-  final bool isDone;
-  final String date;
-
-  const TaskData({
-    required this.stage,
-    required this.operation,
-    required this.explanation,
-    required this.isDone,
-    required this.date,
-  });
-}
+import '../../../core/models/project_tasks_model.dart';
+import '../../../l10n/app_localizations.dart';
 
 class DataTableWidget extends StatelessWidget {
-  final List<TaskData> tasks;
-  final ValueChanged<int>? onCheckboxChanged;
+  final List<Items> tasks;
 
-  const DataTableWidget({
-    super.key,
-    required this.tasks,
-    this.onCheckboxChanged,
-  });
+  const DataTableWidget({super.key, required this.tasks});
 
   @override
   Widget build(BuildContext context) {
@@ -37,55 +17,50 @@ class DataTableWidget extends StatelessWidget {
       return _buildEmptyState(l10n);
     }
 
-    return GestureDetector(
-      onTap: () {
-        Navigator.pushNamed(context, TaskDetailsView.routeName);
-      },
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(16),
-          boxShadow: [
-            BoxShadow(
-              color: const Color(0xFF4F46E5).withValues(alpha: .08),
-              spreadRadius: 0,
-              blurRadius: 20,
-              offset: const Offset(0, 4),
-            ),
-          ],
-        ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(16),
-          child: SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: ConstrainedBox(
-              constraints: BoxConstraints(minWidth: size.width - 48),
-              child: DataTable(
-                headingRowHeight: 56,
-                dataRowMaxHeight: 64,
-                columnSpacing: 24,
-                horizontalMargin: 20,
-                headingRowColor: WidgetStateProperty.all(
-                  const Color(0xFF4F46E5).withValues(alpha: .05),
-                ),
-                decoration: BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(color: Colors.grey[200]!, width: 1),
-                  ),
-                ),
-                columns: [
-                  _buildDataColumn(l10n.stage, Icons.layers),
-                  _buildDataColumn(l10n.operation, Icons.settings),
-                  _buildDataColumn(l10n.explanation, Icons.description),
-                  _buildDataColumn(l10n.done, Icons.check_circle),
-                  _buildDataColumn(l10n.date, Icons.calendar_today),
-                ],
-                rows: tasks.asMap().entries.map((entry) {
-                  final index = entry.key;
-                  final task = entry.value;
-                  return _buildDataRow(task, index);
-                }).toList(),
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0xFF4F46E5).withValues(alpha: .08),
+            spreadRadius: 0,
+            blurRadius: 20,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(16),
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: ConstrainedBox(
+            constraints: BoxConstraints(minWidth: size.width - 48),
+            child: DataTable(
+              headingRowHeight: 56,
+              dataRowMaxHeight: 64,
+              columnSpacing: 24,
+              horizontalMargin: 20,
+              headingRowColor: WidgetStateProperty.all(
+                const Color(0xFF4F46E5).withValues(alpha: .05),
               ),
+              decoration: BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(color: Colors.grey[200]!, width: 1),
+                ),
+              ),
+              columns: [
+                _buildDataColumn(l10n.stage, Icons.layers),
+                _buildDataColumn(l10n.operation, Icons.settings),
+                _buildDataColumn(l10n.explanation, Icons.description),
+                _buildDataColumn(l10n.done, Icons.check_circle),
+                _buildDataColumn(l10n.date, Icons.calendar_today),
+              ],
+              rows: tasks.asMap().entries.map((entry) {
+                final index = entry.key;
+                final task = entry.value;
+                return _buildDataRow(context, task, index);
+              }).toList(),
             ),
           ),
         ),
@@ -112,24 +87,39 @@ class DataTableWidget extends StatelessWidget {
     );
   }
 
-  DataRow _buildDataRow(TaskData task, int index) {
+  DataRow _buildDataRow(BuildContext context, Items task, int index) {
     return DataRow(
+      onSelectChanged: (_) {
+        // Navigate to TaskDetailsView and pass the task item
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => TaskDetailsView(taskItem: task),
+          ),
+        );
+      },
       color: WidgetStateProperty.resolveWith<Color?>((Set<WidgetState> states) {
-        if (index.isEven) {
-          return Colors.grey[50];
+        // لو المهمة مكتملة (doneFlag = 1) → أخضر فاتح
+        if (task.doneFlag == 1) {
+          return Colors.green[50];
         }
-        return null;
+        // لو المهمة غير مكتملة (doneFlag = 0) → أحمر فاتح
+        if (task.doneFlag == 0) {
+          return Colors.red[50];
+        }
+        // Default (للحالات الأخرى)
+        return Colors.grey[50];
       }),
       cells: [
         DataCell(
           Text(
-            task.stage,
+            task.flowId?.toString() ?? '',
             style: TextStyle(fontSize: 13, color: Colors.grey[800]),
           ),
         ),
         DataCell(
           Text(
-            task.operation,
+            task.procOrder?.toString() ?? '',
             style: TextStyle(fontSize: 13, color: Colors.grey[800]),
           ),
         ),
@@ -137,7 +127,7 @@ class DataTableWidget extends StatelessWidget {
           ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 200),
             child: Text(
-              task.explanation,
+              task.procNameA ?? '',
               style: TextStyle(fontSize: 13, color: Colors.grey[700]),
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
@@ -146,7 +136,7 @@ class DataTableWidget extends StatelessWidget {
         ),
         DataCell(
           Checkbox(
-            value: task.isDone,
+            value: task.doneFlag == 1,
             onChanged: null, // Read-only checkbox
             activeColor: const Color(0xFF4F46E5),
             shape: RoundedRectangleBorder(
@@ -160,7 +150,7 @@ class DataTableWidget extends StatelessWidget {
               Icon(Icons.access_time, size: 14, color: Colors.grey[600]),
               const SizedBox(width: 4),
               Text(
-                task.date,
+                task.doneDate ?? '',
                 style: TextStyle(fontSize: 13, color: Colors.grey[700]),
               ),
             ],

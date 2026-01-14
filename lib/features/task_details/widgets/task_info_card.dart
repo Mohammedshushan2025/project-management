@@ -23,6 +23,15 @@ class TaskInfoCard extends StatelessWidget {
     final localeProvider = Provider.of<LocaleProvider>(context);
     final isArabic = localeProvider.locale.languageCode == 'ar';
 
+    // Fallback to Arabic if English is null
+    final displayProjectName = isArabic
+        ? projectNameAr
+        : (projectNameEn ?? projectNameAr);
+
+    final displayProcessName = isArabic
+        ? processNameAr
+        : (processNameEn ?? processNameAr);
+
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -44,7 +53,7 @@ class TaskInfoCard extends StatelessWidget {
               context,
               icon: Icons.account_tree_rounded,
               label: l10n.projectName,
-              value: isArabic ? projectNameAr : projectNameEn,
+              value: displayProjectName,
               gradientColors: [
                 const Color(0xFF4F46E5),
                 const Color(0xFF6366F1),
@@ -55,7 +64,7 @@ class TaskInfoCard extends StatelessWidget {
               context,
               icon: Icons.settings_suggest_rounded,
               label: l10n.processName,
-              value: isArabic ? processNameAr : processNameEn,
+              value: displayProcessName,
               gradientColors: [
                 const Color(0xFF7C3AED),
                 const Color(0xFF8B5CF6),

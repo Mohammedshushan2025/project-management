@@ -1118,13 +1118,13 @@ abstract class AppLocalizations {
   /// No description provided for @fromDate.
   ///
   /// In en, this message translates to:
-  /// **'From Date:'**
+  /// **'From Date'**
   String get fromDate;
 
   /// No description provided for @toDate.
   ///
   /// In en, this message translates to:
-  /// **'To Date:'**
+  /// **'To Date'**
   String get toDate;
 
   /// No description provided for @loanRequestsTitle.
@@ -2621,11 +2621,149 @@ abstract class AppLocalizations {
   /// **'Notification reply is required'**
   String get errorNotificationReplyRequired;
 
+  /// No description provided for @errorNotesRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Notes must be entered'**
+  String get errorNotesRequired;
+
+  /// No description provided for @errorEmployeeRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Employee must be assigned'**
+  String get errorEmployeeRequired;
+
   /// No description provided for @validationError.
   ///
   /// In en, this message translates to:
   /// **'Validation Error'**
   String get validationError;
+
+  /// No description provided for @checkingPermissions.
+  ///
+  /// In en, this message translates to:
+  /// **'Checking permissions...'**
+  String get checkingPermissions;
+
+  /// No description provided for @noProjectPermission.
+  ///
+  /// In en, this message translates to:
+  /// **'You don\'t have permission to view this project'**
+  String get noProjectPermission;
+
+  /// No description provided for @projectDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Project Details'**
+  String get projectDetails;
+
+  /// No description provided for @unifiedContractNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Unified Contract Number'**
+  String get unifiedContractNumber;
+
+  /// No description provided for @contractCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Contract Code'**
+  String get contractCode;
+
+  /// No description provided for @projectNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Project Number'**
+  String get projectNumber;
+
+  /// No description provided for @workOrderNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Work Order Number'**
+  String get workOrderNumber;
+
+  /// No description provided for @duration.
+  ///
+  /// In en, this message translates to:
+  /// **'Duration'**
+  String get duration;
+
+  /// No description provided for @projectStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Project Status'**
+  String get projectStatus;
+
+  /// No description provided for @assignmentAuthority.
+  ///
+  /// In en, this message translates to:
+  /// **'Assignment Authority'**
+  String get assignmentAuthority;
+
+  /// No description provided for @supervisionAuthority.
+  ///
+  /// In en, this message translates to:
+  /// **'Supervision Authority'**
+  String get supervisionAuthority;
+
+  /// No description provided for @client.
+  ///
+  /// In en, this message translates to:
+  /// **'Client'**
+  String get client;
+
+  /// No description provided for @projectEngineer.
+  ///
+  /// In en, this message translates to:
+  /// **'Project Engineer'**
+  String get projectEngineer;
+
+  /// No description provided for @projectManager.
+  ///
+  /// In en, this message translates to:
+  /// **'Project Manager'**
+  String get projectManager;
+
+  /// No description provided for @projectsManager.
+  ///
+  /// In en, this message translates to:
+  /// **'Projects Manager'**
+  String get projectsManager;
+
+  /// No description provided for @projectValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Project Value'**
+  String get projectValue;
+
+  /// No description provided for @basicInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Basic Information'**
+  String get basicInfo;
+
+  /// No description provided for @projectTeam.
+  ///
+  /// In en, this message translates to:
+  /// **'Project Team'**
+  String get projectTeam;
+
+  /// No description provided for @toggleLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'عربي/English'**
+  String get toggleLanguage;
+
+  /// No description provided for @days.
+  ///
+  /// In en, this message translates to:
+  /// **'Days'**
+  String get days;
+
+  /// No description provided for @currency.
+  ///
+  /// In en, this message translates to:
+  /// **'SAR'**
+  String get currency;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -18,6 +18,7 @@ import 'package:shehabapp/features/permissions/screens/permission_request_detail
 import 'package:shehabapp/features/permissions/screens/permission_requests_list_screen.dart';
 import 'package:shehabapp/features/resignations/screens/resignation_request_details_screen.dart';
 import 'package:shehabapp/features/resignations/screens/resignation_requests_list_screen.dart';
+import 'package:shehabapp/features/task_details/project_details_view.dart';
 import 'package:shehabapp/features/task_details/task_details_view.dart';
 
 import 'package:shehabapp/features/vacations/screens/vacation_request_details_screen.dart';
@@ -181,6 +182,9 @@ class MyApp extends StatelessWidget {
               DailyTasksScreen.routeName: (context) => const DailyTasksScreen(),
               // Task Details Screen
               TaskDetailsView.routeName: (context) => const TaskDetailsView(),
+              // Project Details Screen
+              ProjectDetailsView.routeName: (context) =>
+                  const ProjectDetailsView(),
               // --== مسارات جديدة ==--
               VacationRequestsListScreen.routeName: (context) =>
                   const VacationRequestsListScreen(),

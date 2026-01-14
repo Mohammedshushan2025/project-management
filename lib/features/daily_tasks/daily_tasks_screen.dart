@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shehabapp/core/providers/auth_provider.dart';
 import 'package:shehabapp/core/providers/daily_tasks_provider.dart';
+import '../../core/models/project_tasks_model.dart';
 import '../../l10n/app_localizations.dart';
 import '../../core/providers/locale_provider.dart';
 import 'widgets/filter_section_widget.dart';
@@ -33,7 +34,7 @@ class _DailyTasksScreenState extends State<DailyTasksScreen>
   TaskStatus _selectedStatus = TaskStatus.all;
 
   // Data state
-  List<TaskData> _tasks = [];
+  List<Items> _tasks = [];
   bool _isLoading = false;
 
   @override
@@ -81,17 +82,7 @@ class _DailyTasksScreenState extends State<DailyTasksScreen>
     // Update UI after data is loaded
     if (mounted) {
       setState(() {
-        _tasks =
-            dailyTasksProvider.projectTasksModel?.items?.map((item) {
-              return TaskData(
-                stage: item.flowId?.toString() ?? '',
-                operation: item.procOrder?.toString() ?? '',
-                explanation: item.procNameA ?? '',
-                isDone: item.doneFlag == 1,
-                date: item.doneDate ?? '',
-              );
-            }).toList() ??
-            [];
+        _tasks = dailyTasksProvider.projectTasksModel?.items ?? [];
       });
     }
   }
@@ -131,17 +122,7 @@ class _DailyTasksScreenState extends State<DailyTasksScreen>
     // Update UI with filtered data from API
     if (mounted) {
       setState(() {
-        _tasks =
-            dailyTasksProvider.projectTasksModel?.items?.map((item) {
-              return TaskData(
-                stage: item.flowId?.toString() ?? '',
-                operation: item.procOrder?.toString() ?? '',
-                explanation: item.procNameA ?? '',
-                isDone: item.doneFlag == 1,
-                date: item.doneDate ?? '',
-              );
-            }).toList() ??
-            [];
+        _tasks = dailyTasksProvider.projectTasksModel?.items ?? [];
         _isLoading = false;
       });
     }
@@ -279,22 +260,7 @@ class _DailyTasksScreenState extends State<DailyTasksScreen>
                                           ],
                                         ),
                                       )
-                                    : DataTableWidget(
-                                        tasks: _tasks,
-                                        onCheckboxChanged: (index) {
-                                          setState(() {
-                                            _tasks[index] = TaskData(
-                                              stage: _tasks[index].stage,
-                                              operation:
-                                                  _tasks[index].operation,
-                                              explanation:
-                                                  _tasks[index].explanation,
-                                              isDone: !_tasks[index].isDone,
-                                              date: _tasks[index].date,
-                                            );
-                                          });
-                                        },
-                                      ),
+                                    : DataTableWidget(tasks: _tasks),
                               ),
                             ],
                           ),

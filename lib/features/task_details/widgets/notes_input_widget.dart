@@ -4,11 +4,13 @@ import '../../../l10n/app_localizations.dart';
 class NotesInputWidget extends StatelessWidget {
   final TextEditingController notesController;
   final TextEditingController replyController;
+  final bool isReplyReadOnly;
 
   const NotesInputWidget({
     super.key,
     required this.notesController,
     required this.replyController,
+    this.isReplyReadOnly = false,
   });
 
   @override
@@ -50,6 +52,7 @@ class NotesInputWidget extends StatelessWidget {
               label: l10n.notificationReply,
               hint: l10n.notificationReplyHint,
               icon: Icons.reply_rounded,
+              isReadOnly: isReplyReadOnly,
               gradientColors: [
                 const Color(0xFF3B82F6),
                 const Color(0xFF2563EB),
@@ -68,6 +71,7 @@ class NotesInputWidget extends StatelessWidget {
     required String hint,
     required IconData icon,
     required List<Color> gradientColors,
+    bool isReadOnly = false,
   }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -117,8 +121,12 @@ class NotesInputWidget extends StatelessWidget {
           ),
           child: TextField(
             controller: controller,
+            enabled: !isReadOnly,
             maxLines: 3,
-            style: TextStyle(fontSize: 14, color: Colors.grey[800]),
+            style: TextStyle(
+              fontSize: 14,
+              color: isReadOnly ? Colors.grey[600] : Colors.grey[800],
+            ),
             decoration: InputDecoration(
               hintText: hint,
               hintStyle: TextStyle(color: Colors.grey[400], fontSize: 13),

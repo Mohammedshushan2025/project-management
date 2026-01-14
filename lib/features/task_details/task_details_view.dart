@@ -10,6 +10,7 @@ import 'widgets/employee_dropdown_widget.dart';
 import 'widgets/notes_input_widget.dart';
 import 'widgets/task_status_widget.dart';
 import 'widgets/action_buttons_widget.dart';
+import 'project_details_view.dart';
 
 class TaskDetailsView extends StatefulWidget {
   final Items? taskItem;
@@ -57,6 +58,9 @@ class _TaskDetailsViewState extends State<TaskDetailsView>
     // Initialize with existing remarks if any
     _notesController.text = widget.taskItem?.remarks ?? '';
 
+    // Initialize reply controller with manager remarks (read-only from API)
+    _replyController.text = widget.taskItem?.managerRemarks ?? '';
+
     // Load all users after first frame
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final authProvider = Provider.of<AuthProvider>(context, listen: false);
@@ -68,6 +72,7 @@ class _TaskDetailsViewState extends State<TaskDetailsView>
       dailyTasksProvider.checkExecuteStatus(
         altKey: widget.taskItem?.altKey ?? '',
       );
+      dailyTasksProvider.getTaskProccess(altKey: widget.taskItem?.altKey ?? '');
     });
   }
 
@@ -141,26 +146,44 @@ class _TaskDetailsViewState extends State<TaskDetailsView>
                               const SizedBox(height: 16),
 
                               // Project and Process Information
-                              TaskInfoCard(
-                                projectNameAr: widget.taskItem?.NameA,
-                                projectNameEn: widget.taskItem?.NameE,
-                                processNameAr: widget.taskItem?.procNameA,
-                                processNameEn: widget.taskItem?.procNameE,
+                              Consumer<DailyTasksProvider>(
+                                builder: (context, dailyTasksProvider, child) {
+                                  final processData = dailyTasksProvider
+                                      .taskProccessModel
+                                      ?.items
+                                      ?.first;
+                                  return TaskInfoCard(
+                                    projectNameAr: processData?.nameA,
+                                    projectNameEn: processData?.nameE,
+                                    processNameAr: processData?.procNameA,
+                                    processNameEn: processData?.procNameE,
+                                  );
+                                },
                               ),
                               const SizedBox(height: 16),
 
                               // Employee Dropdown
-                              Consumer<AuthProvider>(
-                                builder: (context, authProvider, child) {
-                                  return EmployeeDropdownWidget(
-                                    users: authProvider.allUsers,
-                                    defaultEmployeeCode:
-                                        widget.taskItem?.NextUsersCodeAct,
-                                    selectedEmployeeCode: _selectedEmployeeCode,
-                                    onChanged: (value) {
-                                      setState(() {
-                                        _selectedEmployeeCode = value;
-                                      });
+                              Consumer<DailyTasksProvider>(
+                                builder: (context, dailyTasksProvider, _) {
+                                  final processData = dailyTasksProvider
+                                      .taskProccessModel
+                                      ?.items
+                                      ?.first;
+                                  return Consumer<AuthProvider>(
+                                    builder: (context, authProvider, child) {
+                                      return EmployeeDropdownWidget(
+                                        users: authProvider.allUsers,
+                                        defaultEmployeeCode: processData
+                                            ?.nextUsersCodeAct
+                                            ?.toString(),
+                                        selectedEmployeeCode:
+                                            _selectedEmployeeCode,
+                                        onChanged: (value) {
+                                          setState(() {
+                                            _selectedEmployeeCode = value;
+                                          });
+                                        },
+                                      );
                                     },
                                   );
                                 },
@@ -171,6 +194,7 @@ class _TaskDetailsViewState extends State<TaskDetailsView>
                               NotesInputWidget(
                                 notesController: _notesController,
                                 replyController: _replyController,
+                                isReplyReadOnly: true,
                               ),
                               const SizedBox(height: 16),
 
@@ -182,12 +206,22 @@ class _TaskDetailsViewState extends State<TaskDetailsView>
                                       ?.items
                                       ?.first;
 
+                                  final processData = dailyTasksProvider
+                                      .taskProccessModel
+                                      ?.items
+                                      ?.first;
+
                                   return TaskStatusWidget(
                                     doneFlag: widget.taskItem?.doneFlag,
                                     doneDate: widget.taskItem?.doneDate,
                                     attFlagCheck: taskDetails?.attFlagCheck,
                                     attPermitCheck: taskDetails?.attPermitCheck,
                                     attNotifCheck: taskDetails?.attNotifCheck,
+                                    notesController: _notesController,
+                                    selectedEmployeeCode: _selectedEmployeeCode,
+                                    defaultEmployeeCode: processData
+                                        ?.nextUsersCodeAct
+                                        ?.toString(),
                                     onExecute: _handleExecute,
                                     onStatusUpdated: (doneFlag, doneDate) {
                                       // Here you can update the task in the backend
@@ -208,11 +242,8 @@ class _TaskDetailsViewState extends State<TaskDetailsView>
 
                               // Action Buttons
                               ActionButtonsWidget(
-                                onProjectTap: () {
-                                  _showComingSoonSnackbar(
-                                    context,
-                                    l10n.projectButton,
-                                  );
+                                onProjectTap: () async {
+                                  await _handleProjectTap(context);
                                 },
                                 onAttachmentsTap: () {
                                   _showComingSoonSnackbar(
@@ -369,18 +400,144 @@ class _TaskDetailsViewState extends State<TaskDetailsView>
     );
   }
 
-  void _handleExecute() {
-    // TODO: Implement execute logic
-    // This should save the task data and update the status
+  Future<void> _handleExecute() async {
     final l10n = AppLocalizations.of(context)!;
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('${l10n.executeButton} - ${l10n.comingSoon}'),
-        backgroundColor: const Color(0xFF4F46E5),
-        behavior: SnackBarBehavior.floating,
-        duration: const Duration(seconds: 2),
-      ),
+    final dailyTasksProvider = Provider.of<DailyTasksProvider>(
+      context,
+      listen: false,
     );
+
+    // Get process data for next user code
+    final processData = dailyTasksProvider.taskProccessModel?.items?.first;
+
+    // Determine which employee code to use (selected or default)
+    final nextUsersCode =
+        _selectedEmployeeCode ??
+        processData?.nextUsersCodeAct?.toString() ??
+        '';
+
+    // Get current date in proper format
+    final now = DateTime.now();
+    final formattedDate =
+        '${now.year}-${now.month.toString().padLeft(2, '0')}-${now.day.toString().padLeft(2, '0')}';
+
+    try {
+      // Call the update method
+      await dailyTasksProvider.updateTaskProccess(
+        altKey: widget.taskItem?.altKey ?? '',
+        remarks: _notesController.text,
+        nextUsersCode: nextUsersCode,
+        doneFlag: '1', // Mark as done
+        doneDate: formattedDate,
+      );
+
+      // Show success message
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(l10n.actionSuccess),
+            backgroundColor: const Color(0xFF10B981),
+            behavior: SnackBarBehavior.floating,
+            duration: const Duration(seconds: 2),
+          ),
+        );
+
+        // Navigate back after successful update
+        Navigator.of(context).pop();
+      }
+    } catch (e) {
+      // Show error message
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('${l10n.errorOccurred}: $e'),
+            backgroundColor: Colors.red,
+            behavior: SnackBarBehavior.floating,
+            duration: const Duration(seconds: 3),
+          ),
+        );
+      }
+    }
+  }
+
+  Future<void> _handleProjectTap(BuildContext context) async {
+    final l10n = AppLocalizations.of(context)!;
+    final dailyTasksProvider = Provider.of<DailyTasksProvider>(
+      context,
+      listen: false,
+    );
+
+    // Get the usersCode from the task item
+    final usersCode = widget.taskItem?.usersCode?.toString();
+
+    if (usersCode == null || usersCode.isEmpty) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(l10n.errorOccurred),
+            backgroundColor: Colors.red,
+            behavior: SnackBarBehavior.floating,
+            duration: const Duration(seconds: 2),
+          ),
+        );
+      }
+      return;
+    }
+
+    // Show loading snackbar
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(l10n.checkingPermissions),
+          backgroundColor: const Color(0xFF4F46E5),
+          behavior: SnackBarBehavior.floating,
+          duration: const Duration(seconds: 1),
+        ),
+      );
+    }
+
+    try {
+      // Check if user has permission to see the project
+      await dailyTasksProvider.checkSeeProject(usersCode: usersCode);
+
+      // Check if the returned list is empty or has data
+      final hasPermission =
+          dailyTasksProvider.checkSeeProjectModel?.items?.isNotEmpty ?? false;
+
+      if (!mounted) return;
+
+      if (hasPermission) {
+        // User has permission, navigate to project details
+        final projectId = widget.taskItem?.projectId?.toString();
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => ProjectDetailsView(projectId: projectId),
+          ),
+        );
+      } else {
+        // User doesn't have permission
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(l10n.noProjectPermission),
+            backgroundColor: Colors.red,
+            behavior: SnackBarBehavior.floating,
+            duration: const Duration(seconds: 3),
+          ),
+        );
+      }
+    } catch (e) {
+      // Show error message
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('${l10n.errorOccurred}: $e'),
+            backgroundColor: Colors.red,
+            behavior: SnackBarBehavior.floating,
+            duration: const Duration(seconds: 3),
+          ),
+        );
+      }
+    }
   }
 
   void _showComingSoonSnackbar(BuildContext context, String feature) {

@@ -521,10 +521,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get requestInfo => 'Request Information';
 
   @override
-  String get fromDate => 'From Date:';
+  String get fromDate => 'From Date';
 
   @override
-  String get toDate => 'To Date:';
+  String get toDate => 'To Date';
 
   @override
   String get loanRequestsTitle => 'Loan Requests';
@@ -1278,5 +1278,74 @@ class AppLocalizationsEn extends AppLocalizations {
   String get errorNotificationReplyRequired => 'Notification reply is required';
 
   @override
+  String get errorNotesRequired => 'Notes must be entered';
+
+  @override
+  String get errorEmployeeRequired => 'Employee must be assigned';
+
+  @override
   String get validationError => 'Validation Error';
+
+  @override
+  String get checkingPermissions => 'Checking permissions...';
+
+  @override
+  String get noProjectPermission => 'You don\'t have permission to view this project';
+
+  @override
+  String get projectDetails => 'Project Details';
+
+  @override
+  String get unifiedContractNumber => 'Unified Contract Number';
+
+  @override
+  String get contractCode => 'Contract Code';
+
+  @override
+  String get projectNumber => 'Project Number';
+
+  @override
+  String get workOrderNumber => 'Work Order Number';
+
+  @override
+  String get duration => 'Duration';
+
+  @override
+  String get projectStatus => 'Project Status';
+
+  @override
+  String get assignmentAuthority => 'Assignment Authority';
+
+  @override
+  String get supervisionAuthority => 'Supervision Authority';
+
+  @override
+  String get client => 'Client';
+
+  @override
+  String get projectEngineer => 'Project Engineer';
+
+  @override
+  String get projectManager => 'Project Manager';
+
+  @override
+  String get projectsManager => 'Projects Manager';
+
+  @override
+  String get projectValue => 'Project Value';
+
+  @override
+  String get basicInfo => 'Basic Information';
+
+  @override
+  String get projectTeam => 'Project Team';
+
+  @override
+  String get toggleLanguage => 'عربي/English';
+
+  @override
+  String get days => 'Days';
+
+  @override
+  String get currency => 'SAR';
 }

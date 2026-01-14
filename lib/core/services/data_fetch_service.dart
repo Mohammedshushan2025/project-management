@@ -1,4 +1,5 @@
 import 'dart:convert'; // لاستخدام utf8 و json
+import 'dart:developer';
 import 'package:http/http.dart' as http;
 import '../api/api_constants.dart';
 import '../models/notification_model.dart';
@@ -11,22 +12,35 @@ class DataFetchService {
     print('$functionName failed with status code: ${response.statusCode}');
     try {
       // محاولة طباعة الجسم بعد فك ترميزه إذا أمكن، أو كجسم خام
-      print('Response body (UTF-8 decoded for error): ${utf8.decode(response.bodyBytes)}');
+      print(
+        'Response body (UTF-8 decoded for error): ${utf8.decode(response.bodyBytes)}',
+      );
     } catch (e) {
-      print('Response body (raw, could not decode for error): ${response.body}');
+      print(
+        'Response body (raw, could not decode for error): ${response.body}',
+      );
       print('Error decoding response body for logging: $e');
     }
   }
 
   Future<NotificationItem?> fetchUserNotifications(int usersCode) async {
     try {
+      final url =
+          '${ApiConstants.baseUrl}${ApiConstants.userTransactionsInfoEndpoint}?q=UsersCode=$usersCode';
+      log('🌐 API Request URL: $url', name: 'DataFetchService');
+
       final response = await http.get(
-        Uri.parse('${ApiConstants.baseUrl}${ApiConstants.userTransactionsInfoEndpoint}?q=UsersCode=$usersCode'),
+        Uri.parse(url),
         headers: {'Content-Type': 'application/json'},
       );
 
       if (response.statusCode == 200) {
         String responseBody = utf8.decode(response.bodyBytes);
+        log(
+          '✅ API Response (fetchUserNotifications): $responseBody',
+          name: 'DataFetchService',
+        );
+
         final Map<String, dynamic> decodedResponse = json.decode(responseBody);
         if (decodedResponse.containsKey('items') &&
             decodedResponse['items'] is List &&
@@ -35,83 +49,144 @@ class DataFetchService {
         }
         return null; // لا توجد بيانات أو تنسيق غير متوقع
       } else {
+        log(
+          '❌ API Error (${response.statusCode}): ${utf8.decode(response.bodyBytes)}',
+          name: 'DataFetchService',
+        );
         _printErrorDetails('fetchUserNotifications', response);
-        throw Exception('Failed to load user notifications. Status Code: ${response.statusCode}');
+        throw Exception(
+          'Failed to load user notifications. Status Code: ${response.statusCode}',
+        );
       }
     } catch (e) {
-      print('Error in fetchUserNotifications: $e');
-      throw Exception('An error occurred while fetching user notifications: $e');
+      log(
+        '💥 Exception in fetchUserNotifications: $e',
+        name: 'DataFetchService',
+      );
+      throw Exception(
+        'An error occurred while fetching user notifications: $e',
+      );
     }
   }
 
   Future<UserProfileData?> fetchUserProfile(int compEmpCode) async {
     try {
+      final url =
+          '${ApiConstants.baseUrl}${ApiConstants.userSalaryInfoEndpoint}?q=CompEmpCode=$compEmpCode';
+      log('🌐 API Request URL: $url', name: 'DataFetchService');
+
       final response = await http.get(
-        Uri.parse('${ApiConstants.baseUrl}${ApiConstants.userSalaryInfoEndpoint}?q=CompEmpCode=$compEmpCode'),
+        Uri.parse(url),
         headers: {'Content-Type': 'application/json'},
       );
 
       if (response.statusCode == 200) {
         String responseBody = utf8.decode(response.bodyBytes);
+        log(
+          '✅ API Response (fetchUserProfile): $responseBody',
+          name: 'DataFetchService',
+        );
+
         final Map<String, dynamic> decodedResponse = json.decode(responseBody);
         if (decodedResponse.containsKey('items') &&
             decodedResponse['items'] is List &&
             (decodedResponse['items'] as List).isNotEmpty) {
           return UserProfileData.fromJson(decodedResponse['items'][0]);
         }
-        print('User profile data not found or empty for CompEmpCode: $compEmpCode');
+        log(
+          '⚠️ User profile data not found or empty for CompEmpCode: $compEmpCode',
+          name: 'DataFetchService',
+        );
         return null;
       } else {
+        log(
+          '❌ API Error (${response.statusCode}): ${utf8.decode(response.bodyBytes)}',
+          name: 'DataFetchService',
+        );
         _printErrorDetails('fetchUserProfile', response);
-        throw Exception('Failed to load user profile. Status Code: ${response.statusCode}');
+        throw Exception(
+          'Failed to load user profile. Status Code: ${response.statusCode}',
+        );
       }
     } catch (e) {
-      print('Error in fetchUserProfile: $e');
+      log('💥 Exception in fetchUserProfile: $e', name: 'DataFetchService');
       throw Exception('An error occurred while fetching user profile: $e');
     }
   }
 
   Future<List<PurchaseOrderItem>> fetchPurchaseOrders(int usersCode) async {
     try {
+      final url =
+          '${ApiConstants.baseUrl}${ApiConstants.purchaseOrdersEndpoint}?q=UsersCode=$usersCode';
+      log('🌐 API Request URL: $url', name: 'DataFetchService');
+
       final response = await http.get(
-        Uri.parse('${ApiConstants.baseUrl}${ApiConstants.purchaseOrdersEndpoint}?q=UsersCode=$usersCode'),
+        Uri.parse(url),
         headers: {'Content-Type': 'application/json'},
       );
 
       if (response.statusCode == 200) {
         String responseBody = utf8.decode(response.bodyBytes);
+        log(
+          '✅ API Response (fetchPurchaseOrders): $responseBody',
+          name: 'DataFetchService',
+        );
+
         final Map<String, dynamic> decodedResponse = json.decode(responseBody);
-        if (decodedResponse.containsKey('items') && decodedResponse['items'] is List) {
+        if (decodedResponse.containsKey('items') &&
+            decodedResponse['items'] is List) {
           List<dynamic> itemsJson = decodedResponse['items'];
-          return itemsJson.map((jsonItem) => PurchaseOrderItem.fromJson(jsonItem)).toList();
+          return itemsJson
+              .map((jsonItem) => PurchaseOrderItem.fromJson(jsonItem))
+              .toList();
         }
         return []; // لا توجد أوامر شراء
       } else {
+        log(
+          '❌ API Error (${response.statusCode}): ${utf8.decode(response.bodyBytes)}',
+          name: 'DataFetchService',
+        );
         _printErrorDetails('fetchPurchaseOrders', response);
-        throw Exception('Failed to load purchase orders. Status Code: ${response.statusCode}');
+        throw Exception(
+          'Failed to load purchase orders. Status Code: ${response.statusCode}',
+        );
       }
     } catch (e) {
-      print('Error in fetchPurchaseOrders: $e');
+      log('💥 Exception in fetchPurchaseOrders: $e', name: 'DataFetchService');
       throw Exception('An error occurred while fetching purchase orders: $e');
     }
   }
 
   Future<Map<String, dynamic>?> fetchDataFromUrl(String url) async {
     try {
+      log('🌐 API Request URL: $url', name: 'DataFetchService');
+
       final response = await http.get(
         Uri.parse(url), // الـ URL هنا يجب أن يكون كاملًا
         headers: {'Content-Type': 'application/json'},
       );
+
       if (response.statusCode == 200) {
         String responseBody = utf8.decode(response.bodyBytes);
+        log(
+          '✅ API Response (fetchDataFromUrl): $responseBody',
+          name: 'DataFetchService',
+        );
         return json.decode(responseBody) as Map<String, dynamic>;
       } else {
+        log(
+          '❌ API Error (${response.statusCode}): ${utf8.decode(response.bodyBytes)}',
+          name: 'DataFetchService',
+        );
         _printErrorDetails('fetchDataFromUrl (URL: $url)', response);
         // يمكنك اختيار إرجاع null أو throw Exception بناءً على كيفية معالجة الخطأ في الـ Provider
         return null;
       }
     } catch (e) {
-      print('Error in fetchDataFromUrl (URL: $url): $e');
+      log(
+        '💥 Exception in fetchDataFromUrl (URL: $url): $e',
+        name: 'DataFetchService',
+      );
       // يمكنك اختيار إرجاع null أو throw Exception
       return null;
     }

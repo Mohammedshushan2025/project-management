@@ -521,10 +521,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get requestInfo => 'معلومات الطلب';
 
   @override
-  String get fromDate => 'من تاريخ:';
+  String get fromDate => 'من تاريخ';
 
   @override
-  String get toDate => 'إلى تاريخ:';
+  String get toDate => 'إلى تاريخ';
 
   @override
   String get loanRequestsTitle => 'طلبات السلف';
@@ -1152,7 +1152,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get selectCategory => 'اختر الفئة للمتابعة';
 
   @override
-  String get filterBy => 'تصفية حسب';
+  String get filterBy => 'بيانات الاستعلام';
 
   @override
   String get projectFilter => 'المشروع';
@@ -1221,7 +1221,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get processName => 'اسم العملية';
 
   @override
-  String get assignedEmployee => 'الموظف المسند';
+  String get assignedEmployee => 'موظف المرحلة التالية';
 
   @override
   String get selectEmployee => 'اختر الموظف';
@@ -1278,5 +1278,74 @@ class AppLocalizationsAr extends AppLocalizations {
   String get errorNotificationReplyRequired => 'يجب الرد على الإشعار';
 
   @override
+  String get errorNotesRequired => 'يجب إدخال الملاحظات';
+
+  @override
+  String get errorEmployeeRequired => 'يجب إسناد موظف';
+
+  @override
   String get validationError => 'خطأ في التحقق';
+
+  @override
+  String get checkingPermissions => 'جاري التحقق من الصلاحيات...';
+
+  @override
+  String get noProjectPermission => 'ليس لديك صلاحية لعرض هذا المشروع';
+
+  @override
+  String get projectDetails => 'تفاصيل المشروع';
+
+  @override
+  String get unifiedContractNumber => 'رقم العقد الموحد';
+
+  @override
+  String get contractCode => 'كود العقد';
+
+  @override
+  String get projectNumber => 'رقم المشروع';
+
+  @override
+  String get workOrderNumber => 'رقم أمر العمل';
+
+  @override
+  String get duration => 'المدة';
+
+  @override
+  String get projectStatus => 'حالة المشروع';
+
+  @override
+  String get assignmentAuthority => 'جهة الإسناد';
+
+  @override
+  String get supervisionAuthority => 'جهة الإشراف';
+
+  @override
+  String get client => 'العميل';
+
+  @override
+  String get projectEngineer => 'مهندس المشروع';
+
+  @override
+  String get projectManager => 'مدير المشروع';
+
+  @override
+  String get projectsManager => 'مدير المشاريع';
+
+  @override
+  String get projectValue => 'قيمة المشروع';
+
+  @override
+  String get basicInfo => 'المعلومات الأساسية';
+
+  @override
+  String get projectTeam => 'فريق المشروع';
+
+  @override
+  String get toggleLanguage => 'عربي/English';
+
+  @override
+  String get days => 'يوم';
+
+  @override
+  String get currency => 'ريال';
 }
