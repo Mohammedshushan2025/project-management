@@ -1,14 +1,11 @@
-import 'dart:io';
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:file_picker/file_picker.dart';
-import 'package:open_file/open_file.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../core/models/attachment_model.dart';
 import '../../../core/providers/task_permission_provider.dart';
 import '../../../l10n/app_localizations.dart';
+import 'add_attachment_bottom_sheet.dart';
 
 class AttachmentBottomSheet extends StatefulWidget {
   final AttatchmentModel? attachmentData;
@@ -32,10 +29,6 @@ class AttachmentBottomSheet extends StatefulWidget {
 
 class _AttachmentBottomSheetState extends State<AttachmentBottomSheet>
     with SingleTickerProviderStateMixin {
-  File? _selectedFile;
-  File? _selectedImage;
-  final ImagePicker _imagePicker = ImagePicker();
-  final TextEditingController _fileDescController = TextEditingController();
   late AnimationController _animationController;
   late Animation<double> _fadeAnimation;
   late Animation<Offset> _slideAnimation;
@@ -66,833 +59,628 @@ class _AttachmentBottomSheetState extends State<AttachmentBottomSheet>
   @override
   void dispose() {
     _animationController.dispose();
-    _fileDescController.dispose();
     super.dispose();
   }
 
-  Future<void> _pickFile() async {
-    try {
-      FilePickerResult? result = await FilePicker.platform.pickFiles();
-
-      if (result != null) {
-        setState(() {
-          _selectedFile = File(result.files.single.path!);
-          _selectedImage = null; // Clear image if file is selected
-        });
-      }
-    } catch (e) {
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              widget.isArabic
-                  ? 'فشل اختيار الملف: $e'
-                  : 'Failed to pick file: $e',
-            ),
-            backgroundColor: const Color(0xFFEF4444),
-            behavior: SnackBarBehavior.floating,
-          ),
-        );
-      }
-    }
+  Future<void> _refreshAttachments() async {
+    final provider = Provider.of<TaskPermissionProvider>(
+      context,
+      listen: false,
+    );
+    await provider.getAttachment(widget.projectId, widget.permitSerial);
   }
 
-  Future<void> _pickImage(ImageSource source) async {
-    try {
-      final XFile? image = await _imagePicker.pickImage(
-        source: source,
-        imageQuality: 85,
-      );
-
-      if (image != null) {
-        setState(() {
-          _selectedImage = File(image.path);
-          _selectedFile = null; // Clear file if image is selected
-        });
-      }
-    } catch (e) {
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              widget.isArabic
-                  ? 'فشل اختيار الصورة: $e'
-                  : 'Failed to pick image: $e',
-            ),
-            backgroundColor: const Color(0xFFEF4444),
-            behavior: SnackBarBehavior.floating,
-          ),
-        );
-      }
-    }
-  }
-
-  void _showImageSourceDialog() {
-    final l10n = AppLocalizations.of(context)!;
-    showDialog(
+  void _showAddAttachmentSheet() async {
+    final result = await showModalBottomSheet<bool>(
       context: context,
-      builder: (context) => AlertDialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        title: Text(
-          l10n.selectFileSource,
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: Colors.grey[800],
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) => Padding(
+        padding: EdgeInsets.only(
+          bottom: MediaQuery.of(context).viewInsets.bottom,
+        ),
+        child: AddAttachmentBottomSheet(
+          isArabic: widget.isArabic,
+          projectId: widget.projectId,
+          permitSerial: widget.permitSerial,
+          attachmentData: widget.attachmentData,
+        ),
+      ),
+    );
+
+    // If attachment was added successfully, refresh the list
+    if (result == true) {
+      await _refreshAttachments();
+      if (mounted) setState(() {});
+    }
+  }
+
+  String _getFileExtension(String? docPath) {
+    if (docPath == null || docPath.isEmpty) return '';
+    final parts = docPath.split('.');
+    if (parts.length > 1) {
+      return parts.last.toLowerCase();
+    }
+    return '';
+  }
+
+  bool _isImageFile(String extension) {
+    return ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp'].contains(extension);
+  }
+
+  bool _isPdfFile(String extension) {
+    return extension == 'pdf';
+  }
+
+  bool _isExcelFile(String extension) {
+    return ['xls', 'xlsx', 'xlsm'].contains(extension);
+  }
+
+  IconData _getFileIcon(String extension) {
+    if (_isImageFile(extension)) return Icons.image;
+    if (_isPdfFile(extension)) return Icons.picture_as_pdf;
+    if (_isExcelFile(extension)) return Icons.table_chart;
+    return Icons.insert_drive_file;
+  }
+
+  void _showFullscreenFile(Items item) {
+    if (item.photo64 == null || item.photo64!.isEmpty) return;
+
+    final extension = _getFileExtension(item.docPath);
+
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => Scaffold(
+          backgroundColor: Colors.black,
+          appBar: AppBar(
+            backgroundColor: Colors.black,
+            leading: IconButton(
+              icon: const Icon(Icons.close, color: Colors.white),
+              onPressed: () => Navigator.pop(context),
+            ),
+            title: Text(
+              item.fileDesc ?? 'Attachment',
+              style: const TextStyle(color: Colors.white),
+            ),
+          ),
+          body: Center(
+            child: _isImageFile(extension)
+                ? InteractiveViewer(
+                    child: Image.memory(
+                      base64Decode(item.photo64!),
+                      fit: BoxFit.contain,
+                    ),
+                  )
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        _getFileIcon(extension),
+                        size: 100,
+                        color: Colors.white70,
+                      ),
+                      const SizedBox(height: 24),
+                      Text(
+                        widget.isArabic
+                            ? 'معاينة ${extension.toUpperCase()} غير متاحة'
+                            : '${extension.toUpperCase()} preview not available',
+                        style: const TextStyle(
+                          color: Colors.white70,
+                          fontSize: 18,
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                      Text(
+                        widget.isArabic
+                            ? 'استخدم زر التحميل لفتح الملف'
+                            : 'Use download button to open file',
+                        style: const TextStyle(
+                          color: Colors.white54,
+                          fontSize: 14,
+                        ),
+                      ),
+                    ],
+                  ),
           ),
         ),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            _buildSourceOption(
-              icon: Icons.camera_alt,
-              label: l10n.camera,
-              onTap: () {
-                Navigator.pop(context);
-                _pickImage(ImageSource.camera);
-              },
-            ),
-            const SizedBox(height: 12),
-            _buildSourceOption(
-              icon: Icons.photo_library,
-              label: l10n.gallery,
-              onTap: () {
-                Navigator.pop(context);
-                _pickImage(ImageSource.gallery);
-              },
-            ),
-          ],
-        ),
       ),
     );
-  }
-
-  Widget _buildSourceOption({
-    required IconData icon,
-    required String label,
-    required VoidCallback onTap,
-  }) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(12),
-      child: Container(
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: Colors.grey[300]!),
-        ),
-        child: Row(
-          children: [
-            Container(
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: const Color(0xFF4F46E5).withOpacity(0.1),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Icon(icon, color: const Color(0xFF4F46E5), size: 24),
-            ),
-            const SizedBox(width: 16),
-            Text(
-              label,
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-                color: Colors.grey[800],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Future<void> _viewFile() async {
-    if (_selectedFile != null) {
-      try {
-        await OpenFile.open(_selectedFile!.path);
-      } catch (e) {
-        if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(
-                widget.isArabic
-                    ? 'فشل فتح الملف: $e'
-                    : 'Failed to open file: $e',
-              ),
-              backgroundColor: const Color(0xFFEF4444),
-              behavior: SnackBarBehavior.floating,
-            ),
-          );
-        }
-      }
-    } else {
-      final l10n = AppLocalizations.of(context)!;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(l10n.selectFileFirst),
-          backgroundColor: const Color(0xFFF59E0B),
-          behavior: SnackBarBehavior.floating,
-        ),
-      );
-    }
   }
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    final item = widget.attachmentData?.items?.isNotEmpty == true
-        ? widget.attachmentData!.items!.first
-        : null;
 
-    return FadeTransition(
-      opacity: _fadeAnimation,
-      child: SlideTransition(
-        position: _slideAnimation,
-        child: Container(
-          decoration: BoxDecoration(
-            color: Colors.grey[50],
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(30),
-              topRight: Radius.circular(30),
-            ),
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              // Header
-              Container(
-                padding: const EdgeInsets.all(24),
-                decoration: BoxDecoration(
-                  gradient: const LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [
-                      Color(0xFF4F46E5),
-                      Color(0xFF7C3AED),
-                      Color(0xFFEC4899),
+    return Consumer<TaskPermissionProvider>(
+      builder: (context, provider, child) {
+        // Use provider data if available, otherwise fallback to widget data
+        final items =
+            provider.attatchmentModel?.items ??
+            widget.attachmentData?.items ??
+            [];
+
+        return FadeTransition(
+          opacity: _fadeAnimation,
+          child: SlideTransition(
+            position: _slideAnimation,
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.grey[50],
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(30),
+                  topRight: Radius.circular(30),
+                ),
+              ),
+              child: Stack(
+                children: [
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      // Header
+                      Container(
+                        padding: const EdgeInsets.all(24),
+                        decoration: BoxDecoration(
+                          gradient: const LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                            colors: [
+                              Color(0xFF4F46E5),
+                              Color(0xFF7C3AED),
+                              Color(0xFFEC4899),
+                            ],
+                          ),
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(30),
+                            topRight: Radius.circular(30),
+                          ),
+                        ),
+                        child: Row(
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.all(12),
+                              decoration: BoxDecoration(
+                                color: Colors.white.withOpacity(0.2),
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              child: const Icon(
+                                Icons.attach_file,
+                                color: Colors.white,
+                                size: 24,
+                              ),
+                            ),
+                            const SizedBox(width: 16),
+                            Expanded(
+                              child: Text(
+                                l10n.attachmentDetails,
+                                style: const TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                            IconButton(
+                              onPressed: () => Navigator.pop(context),
+                              icon: const Icon(
+                                Icons.close,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      // Content
+                      Flexible(
+                        child: items.isEmpty
+                            ? _buildEmptyState(l10n)
+                            : _buildAttachmentsList(items),
+                      ),
                     ],
                   ),
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(30),
-                    topRight: Radius.circular(30),
+
+                  // Floating Action Button
+                  Positioned(
+                    bottom: 24,
+                    right: widget.isArabic ? null : 24,
+                    left: widget.isArabic ? 24 : null,
+                    child: _buildFAB(),
                   ),
-                ),
-                child: Row(
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _buildEmptyState(AppLocalizations l10n) {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(48),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              padding: const EdgeInsets.all(24),
+              decoration: BoxDecoration(
+                color: Colors.grey[200],
+                shape: BoxShape.circle,
+              ),
+              child: Icon(Icons.folder_open, size: 64, color: Colors.grey[400]),
+            ),
+            const SizedBox(height: 24),
+            Text(
+              l10n.noAttachmentData,
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
+                color: Colors.grey[600],
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 8),
+            Text(
+              widget.isArabic
+                  ? 'اضغط على زر + لإضافة مرفق جديد'
+                  : 'Tap the + button to add a new attachment',
+              style: TextStyle(fontSize: 14, color: Colors.grey[500]),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildAttachmentsList(List<Items> items) {
+    return ListView.builder(
+      padding: const EdgeInsets.fromLTRB(
+        24,
+        16,
+        24,
+        100,
+      ), // Extra bottom padding for FAB
+      itemCount: items.length,
+      itemBuilder: (context, index) {
+        final item = items[index];
+        return _buildAttachmentCard(item, index);
+      },
+    );
+  }
+
+  Widget _buildAttachmentCard(Items item, int index) {
+    // Find the enclosure link
+    final enclosureLink = item.links?.firstWhere(
+      (link) => link.rel == 'enclosure',
+      orElse: () => Links(),
+    );
+
+    final hasDownloadLink =
+        enclosureLink?.href != null && enclosureLink!.href!.isNotEmpty;
+
+    return Container(
+      margin: const EdgeInsets.only(bottom: 16),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [Colors.white, Colors.grey[50]!],
+        ),
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0xFF4F46E5).withOpacity(0.1),
+            blurRadius: 20,
+            offset: const Offset(0, 8),
+          ),
+        ],
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(20),
+        child: Container(
+          decoration: BoxDecoration(
+            border: Border(
+              left: BorderSide(color: _getColorForIndex(index), width: 4),
+            ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Header with icon and serial number
+                Row(
                   children: [
                     Container(
                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.2),
+                        color: _getColorForIndex(index).withOpacity(0.1),
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: const Icon(
-                        Icons.attach_file,
-                        color: Colors.white,
+                      child: Icon(
+                        Icons.insert_drive_file,
+                        color: _getColorForIndex(index),
                         size: 24,
                       ),
                     ),
                     const SizedBox(width: 16),
                     Expanded(
-                      child: Text(
-                        l10n.attachmentDetails,
-                        style: const TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            widget.isArabic ? 'مرفق رقم' : 'Attachment',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.grey[600],
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            '#${item.docSerial ?? '-'}',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.grey[800],
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                    IconButton(
-                      onPressed: () => Navigator.pop(context),
-                      icon: const Icon(Icons.close, color: Colors.white),
                     ),
                   ],
                 ),
-              ),
 
-              // Content
-              Flexible(
-                child: SingleChildScrollView(
-                  padding: const EdgeInsets.all(24),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // API Data Section
-                      if (item != null) ...[
-                        _buildDataCard(
-                          l10n.tableName,
-                          item.tblNm ?? '-',
-                          Icons.table_chart,
-                        ),
-                        const SizedBox(height: 12),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: _buildDataCard(
-                                l10n.primaryKey1,
-                                item.pk1 ?? '-',
-                                Icons.key,
-                              ),
-                            ),
-                            const SizedBox(width: 12),
-                            Expanded(
-                              child: _buildDataCard(
-                                l10n.primaryKey2,
-                                item.pk2 ?? '-',
-                                Icons.key,
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 12),
-                        _buildDataCard(
-                          l10n.fileDescription,
-                          item.fileDesc ?? '-',
-                          Icons.description,
-                        ),
-                        const SizedBox(height: 12),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: _buildDataCard(
-                                l10n.documentSerial,
-                                item.docSerial?.toString() ?? '-',
-                                Icons.numbers,
-                              ),
-                            ),
-                            const SizedBox(width: 12),
-                            Expanded(
-                              child: _buildDataCard(
-                                l10n.documentType,
-                                item.docType?.toString() ?? '-',
-                                Icons.category,
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 12),
-                        _buildDataCard(
-                          l10n.alternateKey,
-                          item.altKey ?? '-',
-                          Icons.vpn_key,
-                        ),
-                        const SizedBox(height: 24),
+                const SizedBox(height: 16),
 
-                        // Download Button (only if enclosure link exists)
-                        if (item.links != null && item.links!.isNotEmpty)
-                          ...() {
-                            // Find the enclosure link
-                            final enclosureLink = item.links!.firstWhere(
-                              (link) => link.rel == 'enclosure',
-                              orElse: () => Links(),
-                            );
-
-                            if (enclosureLink.href != null &&
-                                enclosureLink.href!.isNotEmpty) {
-                              return [
-                                SizedBox(
-                                  width: double.infinity,
-                                  child: _buildActionButton(
-                                    icon: Icons.download,
-                                    label: widget.isArabic
-                                        ? 'تحميل المرفق'
-                                        : 'Download Attachment',
-                                    color: const Color(0xFF0891B2),
-                                    onPressed: () async {
-                                      try {
-                                        final Uri url = Uri.parse(
-                                          enclosureLink.href!,
-                                        );
-                                        if (await canLaunchUrl(url)) {
-                                          await launchUrl(
-                                            url,
-                                            mode:
-                                                LaunchMode.externalApplication,
-                                          );
-                                        } else {
-                                          throw Exception(
-                                            'Could not launch URL',
-                                          );
-                                        }
-                                      } catch (e) {
-                                        if (mounted) {
-                                          ScaffoldMessenger.of(
-                                            context,
-                                          ).showSnackBar(
-                                            SnackBar(
-                                              content: Text(
-                                                widget.isArabic
-                                                    ? 'فشل فتح الرابط: $e'
-                                                    : 'Failed to open link: $e',
-                                              ),
-                                              backgroundColor: const Color(
-                                                0xFFEF4444,
-                                              ),
-                                              behavior:
-                                                  SnackBarBehavior.floating,
-                                            ),
-                                          );
-                                        }
-                                      }
-                                    },
-                                  ),
-                                ),
-                                const SizedBox(height: 24),
-                              ];
-                            }
-                            return <Widget>[];
-                          }(),
-                      ] else ...[
-                        Center(
-                          child: Padding(
-                            padding: const EdgeInsets.all(24),
-                            child: Text(
-                              l10n.noAttachmentData,
-                              style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.grey[600],
-                              ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 24),
+                // Divider
+                Container(
+                  height: 1,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        _getColorForIndex(index).withOpacity(0.1),
+                        _getColorForIndex(index).withOpacity(0.3),
+                        _getColorForIndex(index).withOpacity(0.1),
                       ],
+                    ),
+                  ),
+                ),
 
-                      // Preview Section
-                      if (_selectedImage != null) ...[
-                        Text(
-                          l10n.selectedImage,
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey[800],
-                          ),
-                        ),
-                        const SizedBox(height: 12),
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(16),
-                          child: Image.file(
-                            _selectedImage!,
-                            height: 200,
-                            width: double.infinity,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        const SizedBox(height: 24),
-                      ],
+                const SizedBox(height: 16),
 
-                      if (_selectedFile != null) ...[
-                        Container(
-                          padding: const EdgeInsets.all(16),
+                // File Description
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Icon(Icons.description, size: 20, color: Colors.grey[600]),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            widget.isArabic ? 'الوصف' : 'Description',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.grey[600],
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            item.fileDesc ?? '-',
+                            style: TextStyle(
+                              fontSize: 15,
+                              color: Colors.grey[800],
+                              fontWeight: FontWeight.w600,
+                              height: 1.4,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+
+                // File Preview Section
+                if (item.photo64 != null && item.photo64!.isNotEmpty) ...[
+                  const SizedBox(height: 20),
+                  GestureDetector(
+                    onTap: () => _showFullscreenFile(item),
+                    child: Container(
+                      height: 200,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
+                        color: Colors.grey[100],
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(16),
+                        child: _buildFilePreview(item),
+                      ),
+                    ),
+                  ),
+                ],
+
+                // Download Button
+                if (hasDownloadLink) ...[
+                  const SizedBox(height: 20),
+                  SizedBox(
+                    width: double.infinity,
+                    child: Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                        onTap: () => _downloadAttachment(enclosureLink.href!),
+                        borderRadius: BorderRadius.circular(12),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 14,
+                            horizontal: 20,
+                          ),
                           decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(16),
+                            gradient: LinearGradient(
+                              colors: [
+                                _getColorForIndex(index),
+                                _getColorForIndex(index).withOpacity(0.8),
+                              ],
+                            ),
+                            borderRadius: BorderRadius.circular(12),
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.black.withOpacity(0.05),
-                                blurRadius: 10,
+                                color: _getColorForIndex(
+                                  index,
+                                ).withOpacity(0.3),
+                                blurRadius: 8,
                                 offset: const Offset(0, 4),
                               ),
                             ],
                           ),
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Container(
-                                padding: const EdgeInsets.all(12),
-                                decoration: BoxDecoration(
-                                  color: const Color(
-                                    0xFF4F46E5,
-                                  ).withOpacity(0.1),
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: const Icon(
-                                  Icons.insert_drive_file,
-                                  color: Color(0xFF4F46E5),
-                                  size: 32,
-                                ),
+                              const Icon(
+                                Icons.download,
+                                color: Colors.white,
+                                size: 20,
                               ),
-                              const SizedBox(width: 16),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      l10n.selectedFile,
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                        color: Colors.grey[600],
-                                      ),
-                                    ),
-                                    const SizedBox(height: 4),
-                                    Text(
-                                      _selectedFile!.path.split('/').last,
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w600,
-                                        color: Colors.grey[800],
-                                      ),
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ],
+                              const SizedBox(width: 8),
+                              Text(
+                                widget.isArabic ? 'تحميل المرفق' : 'Download',
+                                style: const TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
                                 ),
                               ),
                             ],
                           ),
                         ),
-                        const SizedBox(height: 24),
-                      ],
-
-                      // File Description Input
-                      Container(
-                        padding: const EdgeInsets.all(16),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(16),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.05),
-                              blurRadius: 10,
-                              offset: const Offset(0, 4),
-                            ),
-                          ],
-                        ),
-                        child: TextField(
-                          controller: _fileDescController,
-                          decoration: InputDecoration(
-                            labelText: l10n.fileDescription,
-                            hintText: widget.isArabic
-                                ? 'أدخل وصف المرفق...'
-                                : 'Enter file description...',
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
-                              borderSide: BorderSide(color: Colors.grey[300]!),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
-                              borderSide: BorderSide(color: Colors.grey[300]!),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
-                              borderSide: const BorderSide(
-                                color: Color(0xFF4F46E5),
-                                width: 2,
-                              ),
-                            ),
-                            prefixIcon: const Icon(
-                              Icons.description_outlined,
-                              color: Color(0xFF4F46E5),
-                            ),
-                          ),
-                          maxLines: 3,
-                          textDirection: widget.isArabic
-                              ? TextDirection.rtl
-                              : TextDirection.ltr,
-                        ),
                       ),
-                      const SizedBox(height: 24),
-
-                      // Action Buttons
-                      Row(
-                        children: [
-                          Expanded(
-                            child: _buildActionButton(
-                              icon: Icons.upload_file,
-                              label: l10n.uploadFile,
-                              color: const Color(0xFF4F46E5),
-                              onPressed: _pickFile,
-                            ),
-                          ),
-                          const SizedBox(width: 12),
-                          Expanded(
-                            child: _buildActionButton(
-                              icon: Icons.image,
-                              label: l10n.uploadImage,
-                              color: const Color(0xFF7C3AED),
-                              onPressed: _showImageSourceDialog,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 12),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: _buildActionButton(
-                              icon: Icons.visibility,
-                              label: l10n.viewFile,
-                              color: const Color(0xFF059669),
-                              onPressed: _viewFile,
-                              isDisabled: _selectedFile == null,
-                            ),
-                          ),
-                          const SizedBox(width: 12),
-                          Expanded(
-                            child: _buildActionButton(
-                              icon: Icons.save,
-                              label: l10n.save,
-                              color: const Color(0xFFEC4899),
-                              onPressed: () async {
-                                // Validate that a file or image is selected
-                                if (_selectedFile == null &&
-                                    _selectedImage == null) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                        widget.isArabic
-                                            ? 'يرجى اختيار ملف أو صورة أولاً'
-                                            : 'Please select a file or image first',
-                                      ),
-                                      backgroundColor: const Color(0xFFF59E0B),
-                                      behavior: SnackBarBehavior.floating,
-                                    ),
-                                  );
-                                  return;
-                                }
-
-                                // Validate file description
-                                if (_fileDescController.text.trim().isEmpty) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                        widget.isArabic
-                                            ? 'يرجى إدخال وصف المرفق'
-                                            : 'Please enter file description',
-                                      ),
-                                      backgroundColor: const Color(0xFFF59E0B),
-                                      behavior: SnackBarBehavior.floating,
-                                    ),
-                                  );
-                                  return;
-                                }
-
-                                // Calculate next DocSerial
-                                int nextDocSerial = 1;
-                                if (widget.attachmentData?.items != null &&
-                                    widget.attachmentData!.items!.isNotEmpty) {
-                                  // Find the maximum DocSerial
-                                  int maxSerial = 0;
-                                  for (var item
-                                      in widget.attachmentData!.items!) {
-                                    if (item.docSerial != null &&
-                                        item.docSerial! > maxSerial) {
-                                      maxSerial = item.docSerial!;
-                                    }
-                                  }
-                                  nextDocSerial = maxSerial + 1;
-                                }
-
-                                // Show loading dialog
-                                showDialog(
-                                  context: context,
-                                  barrierDismissible: false,
-                                  builder: (context) => Center(
-                                    child: Container(
-                                      padding: const EdgeInsets.all(24),
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(16),
-                                      ),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          const CircularProgressIndicator(
-                                            color: Color(0xFF4F46E5),
-                                          ),
-                                          const SizedBox(height: 16),
-                                          Text(
-                                            widget.isArabic
-                                                ? 'جاري رفع المرفق...'
-                                                : 'Uploading attachment...',
-                                            style: TextStyle(
-                                              color: Colors.grey[800],
-                                              fontSize: 16,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                );
-
-                                try {
-                                  // Get the file to upload
-                                  final File fileToUpload =
-                                      _selectedImage ?? _selectedFile!;
-
-                                  // Convert file to base64
-                                  final bytes = await fileToUpload
-                                      .readAsBytes();
-                                  final base64String = base64Encode(bytes);
-
-                                  // Upload using provider
-                                  final provider =
-                                      Provider.of<TaskPermissionProvider>(
-                                        context,
-                                        listen: false,
-                                      );
-
-                                  await provider.uploadAttachment(
-                                    projectId: widget.projectId,
-                                    permitSerial: widget.permitSerial,
-                                    docSerial: nextDocSerial,
-                                    docPath: fileToUpload.path,
-                                    fileDesc: _fileDescController.text.trim(),
-                                    fileContent: base64String,
-                                  );
-
-                                  // Close loading dialog and bottom sheet
-                                  if (mounted) {
-                                    Navigator.of(
-                                      context,
-                                    ).pop(); // Close loading
-                                    Navigator.of(
-                                      context,
-                                    ).pop(); // Close bottom sheet
-                                  }
-                                } catch (e) {
-                                  // Close loading dialog
-                                  if (mounted) Navigator.of(context).pop();
-
-                                  // Extract error message
-                                  String errorMessage = e.toString();
-                                  if (errorMessage.contains('Body:')) {
-                                    final bodyIndex = errorMessage.indexOf(
-                                      'Body:',
-                                    );
-                                    errorMessage = errorMessage
-                                        .substring(bodyIndex + 6)
-                                        .trim();
-                                  } else if (errorMessage.contains(
-                                    'Exception:',
-                                  )) {
-                                    errorMessage = errorMessage
-                                        .replaceAll('Exception:', '')
-                                        .trim();
-                                  }
-
-                                  // Show error message
-                                  if (mounted) {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text(
-                                          widget.isArabic
-                                              ? 'خطأ: $errorMessage'
-                                              : 'Error: $errorMessage',
-                                        ),
-                                        backgroundColor: const Color(
-                                          0xFFEF4444,
-                                        ),
-                                        behavior: SnackBarBehavior.floating,
-                                        duration: const Duration(seconds: 5),
-                                      ),
-                                    );
-                                  }
-                                }
-                              },
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 24),
-                    ],
+                    ),
                   ),
-                ),
-              ),
-            ],
+                ],
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 
-  Widget _buildDataCard(String label, String value, IconData icon) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      child: Row(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: const Color(0xFF4F46E5).withOpacity(0.1),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Icon(icon, color: const Color(0xFF4F46E5), size: 20),
-          ),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  label,
-                  style: TextStyle(fontSize: 12, color: Colors.grey[600]),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  value,
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.grey[800],
+  Widget _buildFilePreview(Items item) {
+    final extension = _getFileExtension(item.docPath);
+
+    if (_isImageFile(extension)) {
+      try {
+        final imageBytes = base64Decode(item.photo64!);
+        return Stack(
+          fit: StackFit.expand,
+          children: [
+            Image.memory(imageBytes, fit: BoxFit.cover),
+            // Overlay with tap hint
+            Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: Container(
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.topCenter,
+                    colors: [Colors.black.withOpacity(0.7), Colors.transparent],
                   ),
                 ),
-              ],
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(Icons.fullscreen, color: Colors.white, size: 16),
+                    const SizedBox(width: 8),
+                    Text(
+                      widget.isArabic
+                          ? 'اضغط للعرض بملء الشاشة'
+                          : 'Tap to view fullscreen',
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
+          ],
+        );
+      } catch (e) {
+        return _buildFileIconPreview(extension);
+      }
+    } else {
+      return _buildFileIconPreview(extension);
+    }
+  }
+
+  Widget _buildFileIconPreview(String extension) {
+    return Container(
+      color: Colors.grey[100],
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(_getFileIcon(extension), size: 80, color: Colors.grey[400]),
+          const SizedBox(height: 16),
+          Text(
+            extension.toUpperCase(),
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Colors.grey[600],
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            widget.isArabic ? 'اضغط للعرض' : 'Tap to view',
+            style: TextStyle(fontSize: 12, color: Colors.grey[500]),
           ),
         ],
       ),
     );
   }
 
-  Widget _buildActionButton({
-    required IconData icon,
-    required String label,
-    required Color color,
-    required VoidCallback onPressed,
-    bool isDisabled = false,
-  }) {
+  Widget _buildFAB() {
     return Material(
-      color: Colors.transparent,
+      elevation: 8,
+      borderRadius: BorderRadius.circular(20),
       child: InkWell(
-        onTap: isDisabled ? null : onPressed,
-        borderRadius: BorderRadius.circular(16),
+        onTap: _showAddAttachmentSheet,
+        borderRadius: BorderRadius.circular(20),
         child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
           decoration: BoxDecoration(
-            gradient: isDisabled
-                ? LinearGradient(colors: [Colors.grey[400]!, Colors.grey[500]!])
-                : LinearGradient(colors: [color, color.withOpacity(0.8)]),
-            borderRadius: BorderRadius.circular(16),
-            boxShadow: isDisabled
-                ? []
-                : [
-                    BoxShadow(
-                      color: color.withOpacity(0.3),
-                      blurRadius: 8,
-                      offset: const Offset(0, 4),
-                    ),
-                  ],
+            gradient: const LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [Color(0xFF10B981), Color(0xFF059669)],
+            ),
+            borderRadius: BorderRadius.circular(20),
+            boxShadow: [
+              BoxShadow(
+                color: const Color(0xFF10B981).withOpacity(0.4),
+                blurRadius: 16,
+                offset: const Offset(0, 8),
+              ),
+            ],
           ),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(icon, color: Colors.white, size: 20),
-              const SizedBox(width: 8),
+              const Icon(Icons.add_circle, color: Colors.white, size: 24),
+              const SizedBox(width: 12),
               Text(
-                label,
+                widget.isArabic ? 'إضافة مرفق' : 'Add Attachment',
                 style: const TextStyle(
-                  fontSize: 14,
+                  fontSize: 16,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
                 ),
@@ -902,5 +690,42 @@ class _AttachmentBottomSheetState extends State<AttachmentBottomSheet>
         ),
       ),
     );
+  }
+
+  Color _getColorForIndex(int index) {
+    final colors = [
+      const Color(0xFF4F46E5), // Indigo
+      const Color(0xFF7C3AED), // Purple
+      const Color(0xFFEC4899), // Pink
+      const Color(0xFF0891B2), // Cyan
+      const Color(0xFF10B981), // Green
+      const Color(0xFFF59E0B), // Amber
+    ];
+    return colors[index % colors.length];
+  }
+
+  Future<void> _downloadAttachment(String url) async {
+    try {
+      final Uri uri = Uri.parse(url);
+      if (await canLaunchUrl(uri)) {
+        await launchUrl(uri, mode: LaunchMode.externalApplication);
+      } else {
+        throw Exception('Could not launch URL');
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              widget.isArabic
+                  ? 'فشل فتح الرابط: $e'
+                  : 'Failed to open link: $e',
+            ),
+            backgroundColor: const Color(0xFFEF4444),
+            behavior: SnackBarBehavior.floating,
+          ),
+        );
+      }
+    }
   }
 }

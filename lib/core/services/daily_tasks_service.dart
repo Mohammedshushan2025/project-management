@@ -22,10 +22,10 @@ class DailyTasksService {
 
       if (response.statusCode == 200) {
         String responseBody = utf8.decode(response.bodyBytes);
-        log(
-          '✅ API Response (getProjects): $responseBody',
-          name: 'DailyTasksService',
-        );
+        // log(
+        //   '✅ API Response (getProjects): $responseBody',
+        //   name: 'DailyTasksService',
+        // );
 
         final ProjectsModel projectsModel = ProjectsModel.fromJson(
           json.decode(responseBody),
@@ -80,10 +80,10 @@ class DailyTasksService {
 
       if (response.statusCode == 200) {
         String responseBody = utf8.decode(response.bodyBytes);
-        log(
-          '✅ API Response (getProjectsDetails): $responseBody',
-          name: 'DailyTasksService',
-        );
+        // log(
+        //   '✅ API Response (getProjectsDetails): $responseBody',
+        //   name: 'DailyTasksService',
+        // );
 
         final ProjectTasksModel projectsDetails = ProjectTasksModel.fromJson(
           json.decode(responseBody),
@@ -150,10 +150,10 @@ class DailyTasksService {
 
       if (response.statusCode == 200) {
         String responseBody = utf8.decode(response.bodyBytes);
-        log(
-          '✅ API Response (getTaskProccess): $responseBody',
-          name: 'getTaskProccess',
-        );
+        // log(
+        //   '✅ API Response (getTaskProccess): $responseBody',
+        //   name: 'getTaskProccess',
+        // );
 
         final ProccessModel taskProccess = ProccessModel.fromJson(
           json.decode(responseBody),

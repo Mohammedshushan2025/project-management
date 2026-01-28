@@ -67,6 +67,7 @@ class Items {
   String? fileDesc;
   int? docSerial;
   String? docPath;
+  String? photo64;
   dynamic docFlag;
   dynamic valideFDate;
   dynamic valideTDate;
@@ -92,6 +93,7 @@ class Items {
     this.fileDesc,
     this.docSerial,
     this.docPath,
+    this.photo64,
     this.docFlag,
     this.valideFDate,
     this.valideTDate,
@@ -118,6 +120,7 @@ class Items {
     fileDesc = json['FileDesc'];
     docSerial = json['DocSerial'];
     docPath = json['DocPath'];
+    photo64 = json['Photo64'];
     docFlag = json['DocFlag'];
     valideFDate = json['ValideFDate'];
     valideTDate = json['ValideTDate'];
@@ -150,6 +153,7 @@ class Items {
     data['FileDesc'] = this.fileDesc;
     data['DocSerial'] = this.docSerial;
     data['DocPath'] = this.docPath;
+    data['Photo64'] = this.photo64;
     data['DocFlag'] = this.docFlag;
     data['ValideFDate'] = this.valideFDate;
     data['ValideTDate'] = this.valideTDate;

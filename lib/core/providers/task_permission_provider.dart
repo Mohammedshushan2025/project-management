@@ -193,6 +193,28 @@ class TaskPermissionProvider extends ChangeNotifier {
     }
   }
 
+  Future<int> getMaxDocSerial() async {
+    final taskPermissionService = TaskPermissionService();
+    try {
+      final allAttachments = await taskPermissionService.getMaxDocSerial();
+
+      // Find the maximum DocSerial from all items
+      int maxSerial = 0;
+      if (allAttachments.items != null && allAttachments.items!.isNotEmpty) {
+        for (var item in allAttachments.items!) {
+          if (item.docSerial != null && item.docSerial! > maxSerial) {
+            maxSerial = item.docSerial!;
+          }
+        }
+      }
+
+      return maxSerial;
+    } on Exception catch (e) {
+      log('💥 Exception in getMaxDocSerial: $e', name: 'getMaxDocSerial');
+      throw Exception('An error occurred while fetching max doc serial: $e');
+    }
+  }
+
   // Filter permissions by status (Active/Expired/All)
   List<Permission> filterByStatus(String status) {
     if (permissionModel?.items == null) return [];

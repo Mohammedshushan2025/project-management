@@ -363,6 +363,53 @@ class TaskPermissionService {
     }
   }
 
+  Future<AttatchmentModel> getMaxDocSerial() async {
+    try {
+      final url =
+          'http://168.119.35.125:7013/TdpSelfServiceWebSrvc-RESTWebService-context-root/rest/V1/SysDocsVO1?q=TblNm=PROJECTS_PERMITS';
+
+      log('🔵 Request URL: $url', name: 'TaskPermissionService');
+
+      final response = await http.get(
+        Uri.parse(url),
+        // headers: {
+        //   "Content-Type":
+        //       "application/vnd.oracle.adf.resourceitem+json; charset=UTF-8",
+        // },
+      );
+      log('🔵 Response Body: ${response.body}', name: 'TaskPermissionService');
+
+      log(
+        '🔵 Response Status Code: ${response.statusCode}',
+        name: 'TaskPermissionService',
+      );
+
+      if (response.statusCode == 200) {
+        String decodedBody = utf8.decode(response.bodyBytes);
+        log('✅ Successfully parsed JSON data', name: 'TaskPermissionService');
+        log('🔵 Response Body: $decodedBody', name: 'TaskPermissionService');
+        return AttatchmentModel.fromJson(jsonDecode(decodedBody));
+      } else {
+        String decodedBody = utf8.decode(response.bodyBytes);
+        log(
+          '❌ Failed with status code: ${response.statusCode}',
+          name: 'TaskPermissionService',
+        );
+        log(
+          '❌ Error Response Body: $decodedBody',
+          name: 'TaskPermissionService',
+        );
+        throw Exception(
+          'Failed to load attachment - Status: ${response.statusCode}, Body: $decodedBody',
+        );
+      }
+    } catch (e, stackTrace) {
+      log('💥 Exception occurred: $e', name: 'TaskPermissionService');
+      log('💥 Stack trace: $stackTrace', name: 'TaskPermissionService');
+      throw Exception('Failed to load permission details: $e');
+    }
+  }
+
   Future<void> uploadAttachment({
     required String projectId,
     required String permitSerial,

@@ -189,10 +189,12 @@ class _TaskPermissionsViewState extends State<TaskPermissionsView>
                               // Project Info Card
                               Consumer<TaskPermissionProvider>(
                                 builder: (context, permissionProvider, child) {
-                                  final firstPermission = permissionProvider
-                                      .permissionModel
-                                      ?.items
-                                      ?.first;
+                                  final items =
+                                      permissionProvider.permissionModel?.items;
+                                  final firstPermission =
+                                      (items != null && items.isNotEmpty)
+                                      ? items.first
+                                      : null;
                                   return PermissionInfoCardWidget(
                                     projectNameAr:
                                         firstPermission?.projectNameA,

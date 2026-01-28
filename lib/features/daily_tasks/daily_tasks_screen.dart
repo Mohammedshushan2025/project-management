@@ -247,30 +247,27 @@ class _DailyTasksScreenState extends State<DailyTasksScreen>
                               const SizedBox(height: 24),
 
                               // Data Table
-                              SizedBox(
-                                height: 400,
-                                child: _isLoading
-                                    ? Center(
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            const CircularProgressIndicator(
-                                              color: Color(0xFF4F46E5),
+                              _isLoading
+                                  ? Center(
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          const CircularProgressIndicator(
+                                            color: Color(0xFF4F46E5),
+                                          ),
+                                          const SizedBox(height: 16),
+                                          Text(
+                                            l10n.loading,
+                                            style: TextStyle(
+                                              color: Colors.grey[600],
+                                              fontSize: 14,
                                             ),
-                                            const SizedBox(height: 16),
-                                            Text(
-                                              l10n.loading, // Using existing localization key
-                                              style: TextStyle(
-                                                color: Colors.grey[600],
-                                                fontSize: 14,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      )
-                                    : DataTableWidget(tasks: _tasks),
-                              ),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  : DataTableWidget(tasks: _tasks),
                             ],
                           ),
                         ),
