@@ -226,18 +226,32 @@ class TaskPermissionService {
     }
   }
 
-  Future<void> createPermission(PermissionModel permission) async {
+  Future<void> createPermission(Map<String, dynamic> permissionData) async {
     try {
       final url = '${ApiConstants.baseUrl}${ApiConstants.createPermission}';
+
+      // Print URL
       log('🔵 Request URL: $url', name: 'TaskPermissionService');
+
+      // Print body as formatted JSON
+      log('🔵 Request Body (JSON):', name: 'TaskPermissionService');
+      permissionData.forEach((key, value) {
+        log('   $key: $value', name: 'TaskPermissionService');
+      });
+
+      // Also print the full JSON string
+      final jsonString = jsonEncode(permissionData);
+      log('🔵 Full JSON Body: $jsonString', name: 'TaskPermissionService');
+
       final response = await http.post(
         Uri.parse(url),
         headers: {
           "Content-Type":
               "application/vnd.oracle.adf.resourceitem+json; charset=UTF-8",
         },
-        body: jsonEncode(permission.toJson()),
+        body: jsonString,
       );
+
       if (response.statusCode == 200) {
         log('✅ Successfully created permission', name: 'TaskPermissionService');
       } else {
@@ -245,6 +259,7 @@ class TaskPermissionService {
           '❌ Failed with status code: ${response.statusCode}',
           name: 'TaskPermissionService',
         );
+        log('❌ Response Body: ${response.body}', name: 'TaskPermissionService');
         throw Exception('Failed to create permission: ${response.statusCode}');
       }
     } catch (e, stackTrace) {

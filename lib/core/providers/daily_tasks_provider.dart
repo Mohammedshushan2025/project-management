@@ -195,12 +195,25 @@ class DailyTasksProvider with ChangeNotifier {
         fileDesc: fileDesc,
         fileContent: fileContent,
       );
+
+      // Wait a moment for the server to process the upload
+      await Future.delayed(const Duration(seconds: 1));
+
+      // Refresh attachments list after successful upload
+      await getTaskDetailsAttachment(
+        projectId: projectId,
+        PartId: PartId,
+        FlowId: FlowId,
+        ProcId: ProcId,
+      );
+
       isLoading = false;
       notifyListeners();
     } catch (e) {
       errorMessage = e.toString();
       isLoading = false;
       notifyListeners();
+      rethrow; // Re-throw to let the UI handle the error
     }
   }
 }

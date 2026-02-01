@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shehabapp/core/providers/daily_tasks_provider.dart';
 import 'package:shehabapp/core/providers/hr_provider.dart';
+import 'package:shehabapp/core/providers/notification_provider.dart';
 import 'package:shehabapp/core/providers/task_permission_provider.dart';
 import 'package:shehabapp/features/attendance/providers/attendance_provider.dart';
 import 'package:shehabapp/features/attendance/screens/attendance_main_screen.dart';
@@ -8,6 +9,7 @@ import 'package:shehabapp/features/attendance/screens/attendance_months_list_scr
 import 'package:shehabapp/features/attendance/screens/checked_attendance_months_list_screen.dart';
 import 'package:shehabapp/features/auth/screens/auth_wrapper.dart';
 import 'package:shehabapp/features/auth/screens/project_categories.dart';
+import 'package:shehabapp/features/create_notification/notifications_view.dart';
 import 'package:shehabapp/features/daily_tasks/daily_tasks_screen.dart';
 import 'package:shehabapp/features/loans/screens/loan_request_details_screen.dart';
 import 'package:shehabapp/features/loans/screens/loan_requests_list_screen.dart';
@@ -85,6 +87,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => TaskPermissionProvider()),
         ChangeNotifierProvider(create: (_) => UserProvider()),
         ChangeNotifierProvider(create: (_) => PurchaseProvider()),
+        ChangeNotifierProvider(create: (_) => NotificationProvider()),
         ChangeNotifierProvider(
           create: (_) => HrProvider(),
         ), // <-- الإضافة الجديدة
@@ -185,6 +188,12 @@ class MyApp extends StatelessWidget {
               // Project Details Screen
               ProjectDetailsView.routeName: (context) =>
                   const ProjectDetailsView(),
+              NotificationsView.routeName: (context) => NotificationsView(
+                projectId: ModalRoute.of(context)!.settings.arguments as int,
+                partId: ModalRoute.of(context)!.settings.arguments as int,
+                flowId: ModalRoute.of(context)!.settings.arguments as int,
+                procId: ModalRoute.of(context)!.settings.arguments as int,
+              ),
               // --== مسارات جديدة ==--
               VacationRequestsListScreen.routeName: (context) =>
                   const VacationRequestsListScreen(),

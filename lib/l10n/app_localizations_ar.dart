@@ -387,7 +387,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get item => 'الصنف';
 
   @override
-  String get description => 'الوصف';
+  String get description => 'الشرح';
 
   @override
   String get price => 'سعر';
@@ -825,7 +825,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get notesOptional => 'ملاحظات (اختياري)';
 
   @override
-  String get noDataAvailable => 'لا توجد بيانات متاحة.';
+  String get noDataAvailable => 'لا توجد بيانات';
 
   @override
   String get sendRequest => 'إرسال الطلب';
@@ -1582,4 +1582,85 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get noAttachmentData => 'لا توجد بيانات مرفق';
+
+  @override
+  String get notificationsView => 'الإشعارات';
+
+  @override
+  String get notificationsTitle => 'عرض الإشعارات';
+
+  @override
+  String get operationFilter => 'العملية';
+
+  @override
+  String get selectOperation => 'اختر العملية';
+
+  @override
+  String get responseStatusFilter => 'حالة الرد';
+
+  @override
+  String get notReplied => 'لم يتم الرد';
+
+  @override
+  String get replied => 'تم الرد';
+
+  @override
+  String get serialNumber => 'م';
+
+  @override
+  String get userType => 'نوع المستخدم';
+
+  @override
+  String get notificationType => 'نوع الإشعار';
+
+  @override
+  String get notificationDate => 'تاريخ الإشعار';
+
+  @override
+  String get replyStatus => 'تم الرد';
+
+  @override
+  String get noNotificationsFound => 'لا توجد إشعارات';
+
+  @override
+  String get loadingNotifications => 'جار تحميل الإشعارات...';
+
+  @override
+  String get notificationsList => 'قائمة الإشعارات';
+
+  @override
+  String get notificationDetails => 'تفاصيل الإشعار';
+
+  @override
+  String get notificationDetailsTitle => 'عرض تفاصيل الإشعار';
+
+  @override
+  String get project => 'المشروع';
+
+  @override
+  String get userName => 'المستخدم';
+
+  @override
+  String get notificationTypeLabel => 'نوع الإشعار';
+
+  @override
+  String get notificationDateLabel => 'تاريخ الإشعار';
+
+  @override
+  String get replyStatusLabel => 'تم الرد';
+
+  @override
+  String get replyDateLabel => 'تاريخ الرد';
+
+  @override
+  String get replyDescription => 'وصف الرد';
+
+  @override
+  String get insertUserLabel => 'مدخل الإشعار';
+
+  @override
+  String get notRepliedYet => 'لم يتم الرد بعد';
+
+  @override
+  String get loadingNotificationDetails => 'جار تحميل تفاصيل الإشعار...';
 }

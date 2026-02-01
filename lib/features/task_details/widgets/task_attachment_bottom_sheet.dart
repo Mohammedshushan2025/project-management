@@ -579,13 +579,36 @@ class _TaskAttachmentBottomSheetState extends State<TaskAttachmentBottomSheet>
   Widget _buildFilePreview(Items item) {
     final extension = _getFileExtension(item.docPath);
 
-    if (_isImageFile(extension)) {
+    // Debug logging
+    print('🖼️ Building preview for item:');
+    print('   - DocPath: ${item.docPath}');
+    print('   - Extension: $extension');
+    print('   - Photo64 exists: ${item.photo64 != null}');
+    print('   - Photo64 length: ${item.photo64?.length ?? 0}');
+    print(
+      '   - Photo64 preview: ${item.photo64?.substring(0, item.photo64!.length > 50 ? 50 : item.photo64!.length)}...',
+    );
+
+    // Try to display image if photo64 exists, regardless of extension
+    if (item.photo64 != null && item.photo64!.isNotEmpty) {
       try {
+        // Try to decode as image
         final imageBytes = base64Decode(item.photo64!);
+        print(
+          '✅ Successfully decoded base64 image (${imageBytes.length} bytes)',
+        );
+
         return Stack(
           fit: StackFit.expand,
           children: [
-            Image.memory(imageBytes, fit: BoxFit.cover),
+            Image.memory(
+              imageBytes,
+              fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) {
+                print('❌ Error displaying image: $error');
+                return _buildFileIconPreview(extension);
+              },
+            ),
             // Overlay with tap hint
             Positioned(
               bottom: 0,
@@ -622,9 +645,11 @@ class _TaskAttachmentBottomSheetState extends State<TaskAttachmentBottomSheet>
           ],
         );
       } catch (e) {
+        print('❌ Error decoding base64: $e');
         return _buildFileIconPreview(extension);
       }
     } else {
+      print('⚠️ No photo64 data available');
       return _buildFileIconPreview(extension);
     }
   }

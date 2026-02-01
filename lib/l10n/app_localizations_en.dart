@@ -825,7 +825,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get notesOptional => 'Notes (Optional)';
 
   @override
-  String get noDataAvailable => 'No data available.';
+  String get noDataAvailable => 'No Data Available';
 
   @override
   String get sendRequest => 'Send Request';
@@ -1582,4 +1582,85 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get noAttachmentData => 'No attachment data';
+
+  @override
+  String get notificationsView => 'Notifications';
+
+  @override
+  String get notificationsTitle => 'Notifications View';
+
+  @override
+  String get operationFilter => 'Operation';
+
+  @override
+  String get selectOperation => 'Select Operation';
+
+  @override
+  String get responseStatusFilter => 'Response Status';
+
+  @override
+  String get notReplied => 'Not Replied';
+
+  @override
+  String get replied => 'Replied';
+
+  @override
+  String get serialNumber => 'No.';
+
+  @override
+  String get userType => 'User Type';
+
+  @override
+  String get notificationType => 'Notification Type';
+
+  @override
+  String get notificationDate => 'Notification Date';
+
+  @override
+  String get replyStatus => 'Replied';
+
+  @override
+  String get noNotificationsFound => 'No notifications found';
+
+  @override
+  String get loadingNotifications => 'Loading notifications...';
+
+  @override
+  String get notificationsList => 'Notifications List';
+
+  @override
+  String get notificationDetails => 'Notification Details';
+
+  @override
+  String get notificationDetailsTitle => 'View Notification Details';
+
+  @override
+  String get project => 'Project';
+
+  @override
+  String get userName => 'User Name';
+
+  @override
+  String get notificationTypeLabel => 'Notification Type';
+
+  @override
+  String get notificationDateLabel => 'Notification Date';
+
+  @override
+  String get replyStatusLabel => 'Reply Status';
+
+  @override
+  String get replyDateLabel => 'Reply Date';
+
+  @override
+  String get replyDescription => 'Reply Description';
+
+  @override
+  String get insertUserLabel => 'Insert User';
+
+  @override
+  String get notRepliedYet => 'Not Replied Yet';
+
+  @override
+  String get loadingNotificationDetails => 'Loading notification details...';
 }

@@ -13,6 +13,7 @@ import 'widgets/action_buttons_widget.dart';
 import 'project_details_view.dart';
 import '../task_permissions/task_permissions_view.dart';
 import 'widgets/task_attachment_bottom_sheet.dart';
+import '../create_notification/notifications_view.dart';
 
 class TaskDetailsView extends StatefulWidget {
   final Items? taskItem;
@@ -260,10 +261,32 @@ class _TaskDetailsViewState extends State<TaskDetailsView>
                                   );
                                 },
                                 onNotificationTap: () {
-                                  _showComingSoonSnackbar(
-                                    context,
-                                    l10n.createNotificationButton,
-                                  );
+                                  // Navigate to notifications view
+                                  final projectId = widget.taskItem?.projectId;
+                                  final partId = widget.taskItem?.partId;
+                                  final flowId = widget.taskItem?.flowId;
+                                  final procId = widget.taskItem?.procId;
+
+                                  if (projectId != null &&
+                                      partId != null &&
+                                      flowId != null &&
+                                      procId != null) {
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (context) => NotificationsView(
+                                          projectId: projectId,
+                                          partId: partId,
+                                          flowId: flowId,
+                                          procId: procId,
+                                        ),
+                                      ),
+                                    );
+                                  } else {
+                                    _showComingSoonSnackbar(
+                                      context,
+                                      l10n.createNotificationButton,
+                                    );
+                                  }
                                 },
                               ),
                               const SizedBox(height: 24),

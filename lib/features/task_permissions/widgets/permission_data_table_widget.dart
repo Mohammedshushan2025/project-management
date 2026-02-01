@@ -40,34 +40,42 @@ class PermissionDataTableWidget extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(16),
         child: SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: ConstrainedBox(
-            constraints: BoxConstraints(minWidth: size.width - 48),
-            child: DataTable(
-              headingRowHeight: 56,
-              dataRowMaxHeight: 64,
-              columnSpacing: 24,
-              horizontalMargin: 20,
-              headingRowColor: WidgetStateProperty.all(
-                const Color(0xFF4F46E5).withOpacity(0.05),
-              ),
-              decoration: BoxDecoration(
-                border: Border(
-                  bottom: BorderSide(color: Colors.grey[200]!, width: 1),
+          scrollDirection: Axis.vertical,
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: ConstrainedBox(
+              constraints: BoxConstraints(minWidth: size.width - 48),
+              child: DataTable(
+                headingRowHeight: 56,
+                dataRowMaxHeight: 64,
+                columnSpacing: 24,
+                horizontalMargin: 20,
+                headingRowColor: WidgetStateProperty.all(
+                  const Color(0xFF4F46E5).withOpacity(0.05),
                 ),
+                decoration: BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(color: Colors.grey[200]!, width: 1),
+                  ),
+                ),
+                columns: [
+                  _buildDataColumn(l10n.permissionType, Icons.category),
+                  _buildDataColumn(l10n.fromDate, Icons.calendar_today),
+                  _buildDataColumn(l10n.toDate, Icons.event),
+                  _buildDataColumn(l10n.permissionNumber, Icons.numbers),
+                  _buildDataColumn(l10n.done, Icons.check_circle),
+                ],
+                rows: permissions.asMap().entries.map((entry) {
+                  final index = entry.key;
+                  final permission = entry.value;
+                  return _buildDataRow(
+                    context,
+                    permission,
+                    index,
+                    onDataChanged,
+                  );
+                }).toList(),
               ),
-              columns: [
-                _buildDataColumn(l10n.permissionType, Icons.category),
-                _buildDataColumn(l10n.fromDate, Icons.calendar_today),
-                _buildDataColumn(l10n.toDate, Icons.event),
-                _buildDataColumn(l10n.permissionNumber, Icons.numbers),
-                _buildDataColumn(l10n.done, Icons.check_circle),
-              ],
-              rows: permissions.asMap().entries.map((entry) {
-                final index = entry.key;
-                final permission = entry.value;
-                return _buildDataRow(context, permission, index, onDataChanged);
-              }).toList(),
             ),
           ),
         ),

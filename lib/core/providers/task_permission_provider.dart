@@ -128,13 +128,13 @@ class TaskPermissionProvider extends ChangeNotifier {
     }
   }
 
-  Future<void> createPermission(PermissionModel permission) async {
+  Future<void> createPermission(Map<String, dynamic> permissionData) async {
     final taskPermissionService = TaskPermissionService();
     isLoading = true;
     errorMessage = null;
     notifyListeners();
     try {
-      await taskPermissionService.createPermission(permission);
+      await taskPermissionService.createPermission(permissionData);
       isLoading = false;
       notifyListeners();
     } on Exception catch (e) {

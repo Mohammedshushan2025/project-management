@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../core/providers/task_permission_provider.dart';
 import '../../core/providers/locale_provider.dart';
-import '../../core/models/task_permission_model.dart';
 import '../../l10n/app_localizations.dart';
 import 'widgets/form_text_field_widget.dart';
 import 'widgets/form_dropdown_widget.dart';
@@ -181,15 +180,15 @@ class _CreatePermissionViewState extends State<CreatePermissionView>
     }
 
     // Check attpermitcheck
-    if (_attpermitcheck == null || _attpermitcheck == 0) {
-      // Show attachments required dialog
-      AttachmentsRequiredDialog.show(
-        context,
-        title: l10n.attachmentsRequiredTitle,
-        message: l10n.attachmentsRequiredMessage,
-      );
-      return;
-    }
+    // if (_attpermitcheck == null || _attpermitcheck == 0) {
+    //   // Show attachments required dialog
+    //   AttachmentsRequiredDialog.show(
+    //     context,
+    //     title: l10n.attachmentsRequiredTitle,
+    //     message: l10n.attachmentsRequiredMessage,
+    //   );
+    //   return;
+    // }
 
     // All validation passed, proceed with API call
     setState(() {
@@ -240,13 +239,8 @@ class _CreatePermissionViewState extends State<CreatePermissionView>
 
       permissionData['DoneFlag'] = _doneFlag ? 1 : 0;
 
-      // Create PermissionModel from data
-      final permission = PermissionModel.fromJson({
-        'items': [permissionData],
-      });
-
-      // Call API
-      await provider.createPermission(permission);
+      // Call API with the permission data directly
+      await provider.createPermission(permissionData);
 
       if (mounted) {
         setState(() {

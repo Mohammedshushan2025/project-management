@@ -1718,7 +1718,7 @@ abstract class AppLocalizations {
   /// No description provided for @noDataAvailable.
   ///
   /// In en, this message translates to:
-  /// **'No data available.'**
+  /// **'No Data Available'**
   String get noDataAvailable;
 
   /// No description provided for @sendRequest.
@@ -3232,6 +3232,168 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No attachment data'**
   String get noAttachmentData;
+
+  /// No description provided for @notificationsView.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get notificationsView;
+
+  /// No description provided for @notificationsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications View'**
+  String get notificationsTitle;
+
+  /// No description provided for @operationFilter.
+  ///
+  /// In en, this message translates to:
+  /// **'Operation'**
+  String get operationFilter;
+
+  /// No description provided for @selectOperation.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Operation'**
+  String get selectOperation;
+
+  /// No description provided for @responseStatusFilter.
+  ///
+  /// In en, this message translates to:
+  /// **'Response Status'**
+  String get responseStatusFilter;
+
+  /// No description provided for @notReplied.
+  ///
+  /// In en, this message translates to:
+  /// **'Not Replied'**
+  String get notReplied;
+
+  /// No description provided for @replied.
+  ///
+  /// In en, this message translates to:
+  /// **'Replied'**
+  String get replied;
+
+  /// No description provided for @serialNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'No.'**
+  String get serialNumber;
+
+  /// No description provided for @userType.
+  ///
+  /// In en, this message translates to:
+  /// **'User Type'**
+  String get userType;
+
+  /// No description provided for @notificationType.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification Type'**
+  String get notificationType;
+
+  /// No description provided for @notificationDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification Date'**
+  String get notificationDate;
+
+  /// No description provided for @replyStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Replied'**
+  String get replyStatus;
+
+  /// No description provided for @noNotificationsFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No notifications found'**
+  String get noNotificationsFound;
+
+  /// No description provided for @loadingNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading notifications...'**
+  String get loadingNotifications;
+
+  /// No description provided for @notificationsList.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications List'**
+  String get notificationsList;
+
+  /// No description provided for @notificationDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification Details'**
+  String get notificationDetails;
+
+  /// No description provided for @notificationDetailsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'View Notification Details'**
+  String get notificationDetailsTitle;
+
+  /// No description provided for @project.
+  ///
+  /// In en, this message translates to:
+  /// **'Project'**
+  String get project;
+
+  /// No description provided for @userName.
+  ///
+  /// In en, this message translates to:
+  /// **'User Name'**
+  String get userName;
+
+  /// No description provided for @notificationTypeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification Type'**
+  String get notificationTypeLabel;
+
+  /// No description provided for @notificationDateLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification Date'**
+  String get notificationDateLabel;
+
+  /// No description provided for @replyStatusLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Reply Status'**
+  String get replyStatusLabel;
+
+  /// No description provided for @replyDateLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Reply Date'**
+  String get replyDateLabel;
+
+  /// No description provided for @replyDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Reply Description'**
+  String get replyDescription;
+
+  /// No description provided for @insertUserLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Insert User'**
+  String get insertUserLabel;
+
+  /// No description provided for @notRepliedYet.
+  ///
+  /// In en, this message translates to:
+  /// **'Not Replied Yet'**
+  String get notRepliedYet;
+
+  /// No description provided for @loadingNotificationDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading notification details...'**
+  String get loadingNotificationDetails;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
