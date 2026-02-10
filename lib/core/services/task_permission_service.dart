@@ -252,7 +252,7 @@ class TaskPermissionService {
         body: jsonString,
       );
 
-      if (response.statusCode == 200) {
+      if (response.statusCode == 200 || response.statusCode == 201) {
         log('✅ Successfully created permission', name: 'TaskPermissionService');
       } else {
         log(

@@ -42,8 +42,6 @@ class _CreatePermissionViewState extends State<CreatePermissionView>
   int? _selectedPermitType;
   int? _selectedPermitLoc;
 
-  // Date values
-  DateTime? _insertDate;
   DateTime? _startDate;
   DateTime? _endDate;
   DateTime? _doneDate;
@@ -57,6 +55,8 @@ class _CreatePermissionViewState extends State<CreatePermissionView>
   // Attpermitcheck and PermitSerial
   int? _attpermitcheck;
   int? _currentPermitSerial;
+  int? _insertUser;
+  String? _insertDate;
 
   @override
   void initState() {
@@ -116,6 +116,8 @@ class _CreatePermissionViewState extends State<CreatePermissionView>
                 .map((p) => p.permitSerial ?? 0)
                 .reduce((a, b) => a > b ? a : b);
           }
+          _insertUser = permissions?.first.insertUser;
+          _insertDate = permissions?.first.insertDate;
         });
       }
     } catch (e) {
@@ -206,6 +208,8 @@ class _CreatePermissionViewState extends State<CreatePermissionView>
         // Required fields
         'ProjectId': widget.projectId,
         'PermitSerial': (_currentPermitSerial ?? 0) + 1,
+        'InsertUser': _insertUser,
+        'InsertDate': _insertDate,
         'PermitType': _selectedPermitType,
         'PermitNo': _permitNoController.text,
         'PermitCopy': int.tryParse(_permitCopyController.text) ?? 0,
@@ -367,12 +371,12 @@ class _CreatePermissionViewState extends State<CreatePermissionView>
                               _buildSectionCard(
                                 title: l10n.permissionData,
                                 children: [
-                                  FormTextFieldWidget(
-                                    label: l10n.permitSerial,
-                                    controller: _permitSerialController,
-                                    keyboardType: TextInputType.number,
-                                  ),
-                                  const SizedBox(height: 16),
+                                  // FormTextFieldWidget(
+                                  //   label: l10n.permitSerial,
+                                  //   controller: _permitSerialController,
+                                  //   keyboardType: TextInputType.number,
+                                  // ),
+                                  // const SizedBox(height: 16),
                                   FormDropdownWidget<int>(
                                     label: l10n.permissionType,
                                     hint: l10n.selectPermissionType,
@@ -492,38 +496,38 @@ class _CreatePermissionViewState extends State<CreatePermissionView>
                               _buildSectionCard(
                                 title: l10n.dates,
                                 children: [
-                                  FormTextFieldWidget(
-                                    label: l10n.requestedBy,
-                                    controller: _insertUserController,
-                                  ),
-                                  const SizedBox(height: 16),
-                                  GestureDetector(
-                                    onTap: () async {
-                                      final picked = await showDatePicker(
-                                        context: context,
-                                        initialDate:
-                                            _insertDate ?? DateTime.now(),
-                                        firstDate: DateTime(2000),
-                                        lastDate: DateTime(2100),
-                                      );
-                                      if (picked != null) {
-                                        setState(() {
-                                          _insertDate = picked;
-                                        });
-                                      }
-                                    },
-                                    child: AbsorbPointer(
-                                      child: FormTextFieldWidget(
-                                        label: l10n.requestDate,
-                                        controller: TextEditingController(
-                                          text: _insertDate != null
-                                              ? '${_insertDate!.year}-${_insertDate!.month.toString().padLeft(2, '0')}-${_insertDate!.day.toString().padLeft(2, '0')}'
-                                              : '',
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(height: 16),
+                                  // FormTextFieldWidget(
+                                  //   label: l10n.requestedBy,
+                                  //   controller: _insertUserController,
+                                  // ),
+                                  // const SizedBox(height: 16),
+                                  // GestureDetector(
+                                  //   onTap: () async {
+                                  //     final picked = await showDatePicker(
+                                  //       context: context,
+                                  //       initialDate:
+                                  //           _insertDate ?? DateTime.now(),
+                                  //       firstDate: DateTime(2000),
+                                  //       lastDate: DateTime(2100),
+                                  //     );
+                                  //     if (picked != null) {
+                                  //       setState(() {
+                                  //         _insertDate = picked;
+                                  //       });
+                                  //     }
+                                  //   },
+                                  //   child: AbsorbPointer(
+                                  //     child: FormTextFieldWidget(
+                                  //       label: l10n.requestDate,
+                                  //       controller: TextEditingController(
+                                  //         text: _insertDate != null
+                                  //             ? '${_insertDate!.year}-${_insertDate!.month.toString().padLeft(2, '0')}-${_insertDate!.day.toString().padLeft(2, '0')}'
+                                  //             : '',
+                                  //       ),
+                                  //     ),
+                                  //   ),
+                                  // ),
+                                  // const SizedBox(height: 16),
                                   GestureDetector(
                                     onTap: () async {
                                       final picked = await showDatePicker(
