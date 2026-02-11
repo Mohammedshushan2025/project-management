@@ -102,7 +102,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get systemTitle => 'Projects Management System';
 
   @override
-  String get systemWelcomeMessage => 'Welcome to the Projects Management System';
+  String get systemWelcomeMessage =>
+      'Welcome to the Projects Management System';
 
   @override
   String get loginSuccessMessage => 'Login successful';
@@ -189,7 +190,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get housingAllowanceAmount => 'Housing Allowance Amount:';
 
   @override
-  String get workScheduleAndVacation => 'Work Schedule and Vacation Information';
+  String get workScheduleAndVacation =>
+      'Work Schedule and Vacation Information';
 
   @override
   String get normalWorkingDays => 'Normal Working Days:';
@@ -300,10 +302,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get approve => 'Approve';
 
   @override
-  String get actionErrorIncompleteData => 'Error: Cannot take action, data is incomplete.';
+  String get actionErrorIncompleteData =>
+      'Error: Cannot take action, data is incomplete.';
 
   @override
-  String get waitForAuthDetails => 'Please wait for approval details to load...';
+  String get waitForAuthDetails =>
+      'Please wait for approval details to load...';
 
   @override
   String get approvalSuccess => 'Approved successfully.';
@@ -443,7 +447,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get daysUnit => 'days';
 
   @override
-  String get noRegisteredApprovalsForRequest => 'No registered approvals for this request.';
+  String get noRegisteredApprovalsForRequest =>
+      'No registered approvals for this request.';
 
   @override
   String get myVacationRequestsTitle => 'My Vacation Requests';
@@ -645,7 +650,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get resignationDateLabel => 'Resignation Date:';
 
   @override
-  String get resignationRequestSentSuccessfully => 'Resignation request sent successfully.';
+  String get resignationRequestSentSuccessfully =>
+      'Resignation request sent successfully.';
 
   @override
   String get attendanceAndDeparture => 'Attendance & Departure';
@@ -693,7 +699,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get noAttendanceLogAvailable => 'No attendance log available.';
 
   @override
-  String get detailsLinkNotAvailable => 'Details link is not available for this month.';
+  String get detailsLinkNotAvailable =>
+      'Details link is not available for this month.';
 
   @override
   String get noDataForThisMonth => 'No attendance data for this month.';
@@ -774,13 +781,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get permissionTimeLabel => 'Time';
 
   @override
-  String get selectPermissionTypeValidation => 'Please select a permission type';
+  String get selectPermissionTypeValidation =>
+      'Please select a permission type';
 
   @override
   String get selectReasonTypeValidation => 'Please select a reason type';
 
   @override
-  String get selectPermissionDateValidation => 'Please select a permission date';
+  String get selectPermissionDateValidation =>
+      'Please select a permission date';
 
   @override
   String get selectFromTimeValidation => 'Please select a start time';
@@ -789,7 +798,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get selectToTimeValidation => 'Please select an end time';
 
   @override
-  String get permissionRequestSentSuccessfully => 'Permission request sent successfully.';
+  String get permissionRequestSentSuccessfully =>
+      'Permission request sent successfully.';
 
   @override
   String get timeValidationError => 'End time must be after start time.';
@@ -861,13 +871,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get selectResumeDate => 'Please select resumption date';
 
   @override
-  String get resumeWorkRequestSentSuccessfully => 'Resume work request sent successfully.';
+  String get resumeWorkRequestSentSuccessfully =>
+      'Resume work request sent successfully.';
 
   @override
   String get endDateAfterStartDateError => 'End date must be after start date.';
 
   @override
-  String get resumeDateAfterStartDateError => 'Resumption date must be after start date.';
+  String get resumeDateAfterStartDateError =>
+      'Resumption date must be after start date.';
 
   @override
   String get componyCode => 'Company Code';
@@ -882,7 +894,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get employeeTransferInfo => 'Employee Transfer Requests';
 
   @override
-  String get noEmployeeTransferRequests => 'No employee transfer requests found.';
+  String get noEmployeeTransferRequests =>
+      'No employee transfer requests found.';
 
   @override
   String get newEmployeeTransferRequest => 'New Transfer Request';
@@ -912,7 +925,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get selectTransferDate => 'Please select the transfer date';
 
   @override
-  String get employeeTransferRequestSentSuccessfully => 'Transfer request sent successfully.';
+  String get employeeTransferRequestSentSuccessfully =>
+      'Transfer request sent successfully.';
 
   @override
   String get numericFieldsError => 'Please enter valid numbers in code fields.';
@@ -921,7 +935,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get fieldRequired => 'This field is required';
 
   @override
-  String get employeeTransferActionDialogTitle => 'Decision on Transfer Employee Request';
+  String get employeeTransferActionDialogTitle =>
+      'Decision on Transfer Employee Request';
 
   @override
   String get selectCompany => 'Select Company';
@@ -948,7 +963,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get selectCarNoValidation => 'Please enter the car number';
 
   @override
-  String get carMovementRequestSentSuccessfully => 'Car movement request sent successfully.';
+  String get carMovementRequestSentSuccessfully =>
+      'Car movement request sent successfully.';
 
   @override
   String get carMovementTimeLabel => 'Movement Time';
@@ -957,7 +973,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get carMovementDateLabel => 'Movement Date';
 
   @override
-  String get selectCarMovementDateValidation => 'Please select the movement date';
+  String get selectCarMovementDateValidation =>
+      'Please select the movement date';
 
   @override
   String get carMovementActionDialogTitle => 'Decision on Car Movement Request';
@@ -966,13 +983,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get salaryConfirmationInfo => 'Salary Confirmation Requests';
 
   @override
-  String get noSalaryConfirmationRequests => 'No salary confirmation requests found.';
+  String get noSalaryConfirmationRequests =>
+      'No salary confirmation requests found.';
 
   @override
   String get newSalaryConfirmationRequest => 'New Salary Confirmation Request';
 
   @override
-  String get salaryConfirmationRequestDetails => 'Salary Confirmation Request Details';
+  String get salaryConfirmationRequestDetails =>
+      'Salary Confirmation Request Details';
 
   @override
   String get dCodeHint => 'Organizational Structure Code';
@@ -981,31 +1000,40 @@ class AppLocalizationsEn extends AppLocalizations {
   String get selectRequestDate => 'Please select the request date';
 
   @override
-  String get selectDCodeValidation => 'Please enter the organizational structure code';
+  String get selectDCodeValidation =>
+      'Please enter the organizational structure code';
 
   @override
-  String get salaryConfirmationRequestSentSuccessfully => 'Salary confirmation request sent successfully.';
+  String get salaryConfirmationRequestSentSuccessfully =>
+      'Salary confirmation request sent successfully.';
 
   @override
-  String get salaryConfirmationActionDialogTitle => 'Decision on Salary Confirmation Request';
+  String get salaryConfirmationActionDialogTitle =>
+      'Decision on Salary Confirmation Request';
 
   @override
-  String get cancelSalaryConfirmationInfo => 'Cancel Salary Confirmation Requests';
+  String get cancelSalaryConfirmationInfo =>
+      'Cancel Salary Confirmation Requests';
 
   @override
-  String get noCancelSalaryConfirmationRequests => 'No cancel salary confirmation requests found.';
+  String get noCancelSalaryConfirmationRequests =>
+      'No cancel salary confirmation requests found.';
 
   @override
-  String get newCancelSalaryConfirmationRequest => 'New Cancel Salary Confirmation Request';
+  String get newCancelSalaryConfirmationRequest =>
+      'New Cancel Salary Confirmation Request';
 
   @override
-  String get cancelSalaryConfirmationRequestDetails => 'Cancel Salary Confirmation Request Details';
+  String get cancelSalaryConfirmationRequestDetails =>
+      'Cancel Salary Confirmation Request Details';
 
   @override
-  String get cancelSalaryConfirmationRequestSentSuccessfully => 'Cancel salary confirmation request sent successfully.';
+  String get cancelSalaryConfirmationRequestSentSuccessfully =>
+      'Cancel salary confirmation request sent successfully.';
 
   @override
-  String get cancelSalaryConfirmationActionDialogTitle => 'Decision on Cancel Salary Confirmation';
+  String get cancelSalaryConfirmationActionDialogTitle =>
+      'Decision on Cancel Salary Confirmation';
 
   @override
   String get requestForMyself => 'Request for Myself';
@@ -1293,7 +1321,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get checkingPermissions => 'Checking permissions...';
 
   @override
-  String get noProjectPermission => 'You don\'t have permission to view this project';
+  String get noProjectPermission =>
+      'You don\'t have permission to view this project';
 
   @override
   String get projectDetails => 'Project Details';
@@ -1458,19 +1487,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get permissionNotAllowedTitle => 'Not Allowed to Enable';
 
   @override
-  String get permissionNotAllowedMessage => 'This permission cannot be enabled because the permit is not available.\nPlease check the task permissions first.';
+  String get permissionNotAllowedMessage =>
+      'This permission cannot be enabled because the permit is not available.\nPlease check the task permissions first.';
 
   @override
   String get permissionAlreadyEnabledTitle => 'Permission Already Enabled';
 
   @override
-  String get permissionAlreadyEnabledMessage => 'This permission is currently enabled and cannot be disabled.';
+  String get permissionAlreadyEnabledMessage =>
+      'This permission is currently enabled and cannot be disabled.';
 
   @override
   String get permissionNotAvailableTitle => 'Not Available';
 
   @override
-  String get permissionNotAvailableMessage => 'This permission cannot be modified at this time.';
+  String get permissionNotAvailableMessage =>
+      'This permission cannot be modified at this time.';
 
   @override
   String get permissionDialogOk => 'OK';
@@ -1485,7 +1517,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get attachmentsRequiredTitle => 'Attachments Required';
 
   @override
-  String get attachmentsRequiredMessage => 'Required attachments must be uploaded before saving the permission.\nPlease add attachments first.';
+  String get attachmentsRequiredMessage =>
+      'Required attachments must be uploaded before saving the permission.\nPlease add attachments first.';
 
   @override
   String get validationErrorTitle => 'Validation Error';
@@ -1494,7 +1527,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get permissionCreatedSuccessfully => 'Permission created successfully';
 
   @override
-  String get failedToCreatePermission => 'Failed to create permission. Please try again.';
+  String get failedToCreatePermission =>
+      'Failed to create permission. Please try again.';
 
   @override
   String get pleaseSelectPermissionType => 'Please select permission type';
@@ -1695,7 +1729,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get creatingNotification => 'Creating notification...';
 
   @override
-  String get notificationCreatedSuccessfully => 'Notification created successfully';
+  String get notificationCreatedSuccessfully =>
+      'Notification created successfully';
 
   @override
   String get failedToCreateNotification => 'Failed to create notification';
@@ -1714,4 +1749,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get notificationData => 'Notification Data';
+
+  @override
+  String get savedSuccessfully => 'Saved Successfully';
+
+  @override
+  String get replySection => 'Reply Section';
+
+  @override
+  String get createdBy => 'Created By';
+
+  @override
+  String get replyDate => 'Reply Date';
 }

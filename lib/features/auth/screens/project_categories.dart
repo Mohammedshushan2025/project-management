@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shehabapp/features/daily_tasks/daily_tasks_screen.dart';
+import 'package:shehabapp/features/display_notifications/display_notifications_view.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../../core/providers/locale_provider.dart';
 import '../../../core/providers/auth_provider.dart';
@@ -180,7 +181,32 @@ class _ProjectCategoriesState extends State<ProjectCategories>
                                     ],
                                     delay: 100,
                                     onTap: () {
-                                      // TODO: Navigate to Notifications screen
+                                      final authProvider =
+                                          Provider.of<AuthProvider>(
+                                            context,
+                                            listen: false,
+                                          );
+                                      final userCode =
+                                          authProvider.currentUser?.usersCode;
+
+                                      if (userCode != null) {
+                                        Navigator.pushNamed(
+                                          context,
+                                          DisplayNotificationsView.routeName,
+                                          arguments: userCode,
+                                        );
+                                      } else {
+                                        ScaffoldMessenger.of(
+                                          context,
+                                        ).showSnackBar(
+                                          const SnackBar(
+                                            content: Text(
+                                              'خطأ: لم يتم العثور على بيانات المستخدم',
+                                            ),
+                                            backgroundColor: Colors.red,
+                                          ),
+                                        );
+                                      }
                                     },
                                     showNotifications: true,
                                     stopNotifCnt:

@@ -108,7 +108,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get loginSuccessMessage => 'تم تسجيل الدخول بنجاح';
 
   @override
-  String get loginErrorMessage => 'حدث خطأ في تسجيل الدخول. يرجى المحاولة مرة أخرى';
+  String get loginErrorMessage =>
+      'حدث خطأ في تسجيل الدخول. يرجى المحاولة مرة أخرى';
 
   @override
   String get continueButton => 'متابعة';
@@ -300,10 +301,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get approve => 'اعتماد';
 
   @override
-  String get actionErrorIncompleteData => 'خطأ: لا يمكن اتخاذ إجراء، البيانات غير مكتملة.';
+  String get actionErrorIncompleteData =>
+      'خطأ: لا يمكن اتخاذ إجراء، البيانات غير مكتملة.';
 
   @override
-  String get waitForAuthDetails => 'الرجاء الانتظار حتى يتم تحميل تفاصيل الاعتماد...';
+  String get waitForAuthDetails =>
+      'الرجاء الانتظار حتى يتم تحميل تفاصيل الاعتماد...';
 
   @override
   String get approvalSuccess => 'تم الاعتماد بنجاح.';
@@ -443,7 +446,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get daysUnit => 'أيام';
 
   @override
-  String get noRegisteredApprovalsForRequest => 'لا توجد اعتمادات مسجلة لهذا الطلب.';
+  String get noRegisteredApprovalsForRequest =>
+      'لا توجد اعتمادات مسجلة لهذا الطلب.';
 
   @override
   String get myVacationRequestsTitle => 'طلبات الإجازة الخاصة بي';
@@ -645,7 +649,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get resignationDateLabel => 'تاريخ الاستقالة:';
 
   @override
-  String get resignationRequestSentSuccessfully => 'تم إرسال طلب الاستقالة بنجاح.';
+  String get resignationRequestSentSuccessfully =>
+      'تم إرسال طلب الاستقالة بنجاح.';
 
   @override
   String get attendanceAndDeparture => 'الحضور والإنصراف';
@@ -861,13 +866,16 @@ class AppLocalizationsAr extends AppLocalizations {
   String get selectResumeDate => 'الرجاء اختيار تاريخ مباشرة العمل';
 
   @override
-  String get resumeWorkRequestSentSuccessfully => 'تم إرسال طلب مباشرة العمل بنجاح.';
+  String get resumeWorkRequestSentSuccessfully =>
+      'تم إرسال طلب مباشرة العمل بنجاح.';
 
   @override
-  String get endDateAfterStartDateError => 'تاريخ النهاية يجب أن يكون بعد تاريخ البدء.';
+  String get endDateAfterStartDateError =>
+      'تاريخ النهاية يجب أن يكون بعد تاريخ البدء.';
 
   @override
-  String get resumeDateAfterStartDateError => 'تاريخ المباشرة يجب أن يكون بعد تاريخ بدء الإجازة.';
+  String get resumeDateAfterStartDateError =>
+      'تاريخ المباشرة يجب أن يكون بعد تاريخ بدء الإجازة.';
 
   @override
   String get componyCode => 'كود الشركة';
@@ -912,7 +920,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get selectTransferDate => 'الرجاء اختيار تاريخ النقل';
 
   @override
-  String get employeeTransferRequestSentSuccessfully => 'تم إرسال طلب النقل بنجاح.';
+  String get employeeTransferRequestSentSuccessfully =>
+      'تم إرسال طلب النقل بنجاح.';
 
   @override
   String get numericFieldsError => 'الرجاء إدخال أرقام صحيحة في حقول الأكواد.';
@@ -948,7 +957,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get selectCarNoValidation => 'الرجاء إدخال رقم السيارة';
 
   @override
-  String get carMovementRequestSentSuccessfully => 'تم إرسال طلب تحريك السيارة بنجاح.';
+  String get carMovementRequestSentSuccessfully =>
+      'تم إرسال طلب تحريك السيارة بنجاح.';
 
   @override
   String get carMovementTimeLabel => 'وقت التحرك';
@@ -984,28 +994,34 @@ class AppLocalizationsAr extends AppLocalizations {
   String get selectDCodeValidation => 'الرجاء إدخال رقم الهيكل الإداري';
 
   @override
-  String get salaryConfirmationRequestSentSuccessfully => 'تم إرسال طلب تثبيت الراتب بنجاح.';
+  String get salaryConfirmationRequestSentSuccessfully =>
+      'تم إرسال طلب تثبيت الراتب بنجاح.';
 
   @override
-  String get salaryConfirmationActionDialogTitle => 'اتخاذ قرار بشأن تثبيت الراتب';
+  String get salaryConfirmationActionDialogTitle =>
+      'اتخاذ قرار بشأن تثبيت الراتب';
 
   @override
   String get cancelSalaryConfirmationInfo => 'طلبات إلغاء تثبيت راتب';
 
   @override
-  String get noCancelSalaryConfirmationRequests => 'لا توجد طلبات إلغاء تثبيت راتب حالياً.';
+  String get noCancelSalaryConfirmationRequests =>
+      'لا توجد طلبات إلغاء تثبيت راتب حالياً.';
 
   @override
   String get newCancelSalaryConfirmationRequest => 'طلب إلغاء تثبيت راتب جديد';
 
   @override
-  String get cancelSalaryConfirmationRequestDetails => 'تفاصيل طلب إلغاء تثبيت الراتب';
+  String get cancelSalaryConfirmationRequestDetails =>
+      'تفاصيل طلب إلغاء تثبيت الراتب';
 
   @override
-  String get cancelSalaryConfirmationRequestSentSuccessfully => 'تم إرسال طلب إلغاء تثبيت الراتب بنجاح.';
+  String get cancelSalaryConfirmationRequestSentSuccessfully =>
+      'تم إرسال طلب إلغاء تثبيت الراتب بنجاح.';
 
   @override
-  String get cancelSalaryConfirmationActionDialogTitle => 'اتخاذ قرار بشأن إلغاء تثبيت الراتب';
+  String get cancelSalaryConfirmationActionDialogTitle =>
+      'اتخاذ قرار بشأن إلغاء تثبيت الراتب';
 
   @override
   String get requestForMyself => 'طلب لنفسي';
@@ -1029,7 +1045,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get permissionEndDateLabel => 'تاريخ الانتهاء';
 
   @override
-  String get selectPermissionEndDateValidation => 'الرجاء اختيار تاريخ الانتهاء';
+  String get selectPermissionEndDateValidation =>
+      'الرجاء اختيار تاريخ الانتهاء';
 
   @override
   String get homeTitle => 'الرئيسية';
@@ -1458,19 +1475,22 @@ class AppLocalizationsAr extends AppLocalizations {
   String get permissionNotAllowedTitle => 'غير مسموح بالتفعيل';
 
   @override
-  String get permissionNotAllowedMessage => 'لا يمكن تفعيل هذا الإذن لأن التصريح غير متاح.\nيرجى التحقق من صلاحيات المهمة أولاً.';
+  String get permissionNotAllowedMessage =>
+      'لا يمكن تفعيل هذا الإذن لأن التصريح غير متاح.\nيرجى التحقق من صلاحيات المهمة أولاً.';
 
   @override
   String get permissionAlreadyEnabledTitle => 'الإذن مفعل بالفعل';
 
   @override
-  String get permissionAlreadyEnabledMessage => 'هذا الإذن مفعل حالياً ولا يمكن تعطيله.';
+  String get permissionAlreadyEnabledMessage =>
+      'هذا الإذن مفعل حالياً ولا يمكن تعطيله.';
 
   @override
   String get permissionNotAvailableTitle => 'غير متاح';
 
   @override
-  String get permissionNotAvailableMessage => 'لا يمكن تعديل هذا الإذن في الوقت الحالي.';
+  String get permissionNotAvailableMessage =>
+      'لا يمكن تعديل هذا الإذن في الوقت الحالي.';
 
   @override
   String get permissionDialogOk => 'حسناً';
@@ -1485,7 +1505,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get attachmentsRequiredTitle => 'مرفقات مطلوبة';
 
   @override
-  String get attachmentsRequiredMessage => 'يجب إرفاق المرفقات المطلوبة قبل حفظ التصريح.\nيرجى إضافة المرفقات أولاً.';
+  String get attachmentsRequiredMessage =>
+      'يجب إرفاق المرفقات المطلوبة قبل حفظ التصريح.\nيرجى إضافة المرفقات أولاً.';
 
   @override
   String get validationErrorTitle => 'خطأ في البيانات';
@@ -1494,7 +1515,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get permissionCreatedSuccessfully => 'تم إنشاء التصريح بنجاح';
 
   @override
-  String get failedToCreatePermission => 'فشل إنشاء التصريح. يرجى المحاولة مرة أخرى.';
+  String get failedToCreatePermission =>
+      'فشل إنشاء التصريح. يرجى المحاولة مرة أخرى.';
 
   @override
   String get pleaseSelectPermissionType => 'يرجى اختيار نوع التصريح';
@@ -1714,4 +1736,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get notificationData => 'بيانات الإشعار';
+
+  @override
+  String get savedSuccessfully => 'تم الحفظ بنجاح';
+
+  @override
+  String get replySection => 'قسم الرد';
+
+  @override
+  String get createdBy => 'مدخل الإشعار';
+
+  @override
+  String get replyDate => 'تاريخ الرد';
 }

@@ -2,13 +2,52 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:http/http.dart' as http;
+import 'package:shehabapp/core/api/api_constants.dart';
 import 'package:shehabapp/core/models/all_notification_model.dart';
 import 'package:shehabapp/core/models/attachment_model.dart';
 import 'package:shehabapp/core/models/create_notification_model.dart';
+import 'package:shehabapp/core/models/projects_model.dart';
 import 'package:shehabapp/core/models/users_model.dart';
 import 'package:shehabapp/core/models/users_type_model.dart';
 
 class NotificationService {
+  // Get all projects
+  Future<ProjectsModel> getProjects() async {
+    try {
+      final url = '${ApiConstants.baseUrl}${ApiConstants.projectsEndpoint}';
+
+      print('🔵 ========== Get Projects Request ==========');
+      print('📤 URL: $url');
+      print('🔵 ==========================================');
+
+      final response = await http.get(
+        Uri.parse(url),
+        headers: {"Content-Type": "application/json"},
+      );
+
+      if (response.statusCode == 200) {
+        String decodedBody = utf8.decode(response.bodyBytes);
+        final jsonData = jsonDecode(decodedBody);
+
+        print('🟢 ========== Get Projects Response ==========');
+        print('📥 Status Code: ${response.statusCode}');
+        if (jsonData['items'] != null) {
+          print('📥 Total Projects: ${jsonData['items'].length}');
+        }
+        print('🟢 ============================================');
+
+        return ProjectsModel.fromJson(jsonData);
+      } else {
+        throw Exception(
+          'Failed to load projects - Status: ${response.statusCode}',
+        );
+      }
+    } catch (e) {
+      log('💥 Exception in getProjects: $e', name: 'NotificationService');
+      throw Exception('Failed to load projects: $e');
+    }
+  }
+
   Future<CreateNotificationModel> getNotificationList({
     required int projectId,
     required int partId,
@@ -495,6 +534,148 @@ class NotificationService {
         name: 'NotificationService',
       );
       throw Exception('Failed to load user types: $e');
+    }
+  }
+
+  //============================================================================================================
+
+  Future<CreateNotificationModel> getNotificationListByUserCode({
+    required int userCode,
+    int? doneFlag,
+    String? projectId,
+    String? contractNo,
+  }) async {
+    try {
+      String url =
+          'http://168.119.35.125:7013/TdpSelfServiceWebSrvc-RESTWebService-context-root/rest/V1/ProjectsPartsProcNotifVO1?q=UserCode=$userCode';
+
+      // Add doneFlag to query if provided
+      if (doneFlag != null) {
+        url += ';DoneFlag=$doneFlag';
+      }
+
+      // Add projectId to query if provided
+      if (projectId != null && projectId.isNotEmpty) {
+        url += ';ProjectId=$projectId';
+      }
+
+      // Add contractNo to query if provided
+      if (contractNo != null && contractNo.isNotEmpty) {
+        url += ';ContractNo=$contractNo';
+      }
+
+      // طباعة بيانات الـ Request
+      print('🔵 ========== Notification Request ==========');
+      print('📤 URL: $url');
+      print('📤 UserCode: $userCode');
+      print('📤 DoneFlag: $doneFlag');
+      print('📤 ProjectId: $projectId');
+      print('📤 ContractNo: $contractNo');
+      print('🔵 ==========================================');
+
+      final response = await http.get(
+        Uri.parse(url),
+        headers: {
+          "Content-Type":
+              "application/vnd.oracle.adf.resourceitem+json; charset=UTF-8",
+        },
+      );
+
+      if (response.statusCode == 200) {
+        String decodedBody = utf8.decode(response.bodyBytes);
+        final jsonData = jsonDecode(decodedBody);
+
+        // طباعة بيانات الـ Response
+        print('🟢 ========== Notification Response ==========');
+        print('📥 Status Code: ${response.statusCode}');
+        print('📥 Response Data: $jsonData');
+        if (jsonData['items'] != null && jsonData['items'].isNotEmpty) {
+          print('📥 First Item: ${jsonData['items'][0]}');
+          print('📥 Total Items: ${jsonData['items'].length}');
+        }
+        print('🟢 ============================================');
+
+        return CreateNotificationModel.fromJson(jsonData);
+      } else {
+        throw Exception(
+          'Failed to load permission details - Status: ${response.statusCode}',
+        );
+      }
+    } catch (e) {
+      throw Exception('Failed to load permission details: $e');
+    }
+  }
+
+  Future<CreateNotificationModel> getNotificationDetailsByUserCode({
+    required int userCode,
+    required String altKey,
+  }) async {
+    try {
+      final url =
+          'http://168.119.35.125:7013/TdpSelfServiceWebSrvc-RESTWebService-context-root/rest/V1/ProjectsPartsProcNotifVO1?q=UserCode=$userCode;AltKey=$altKey';
+      final response = await http.get(
+        Uri.parse(url),
+        headers: {
+          "Content-Type":
+              "application/vnd.oracle.adf.resourceitem+json; charset=UTF-8",
+        },
+      );
+
+      if (response.statusCode == 200) {
+        String decodedBody = utf8.decode(response.bodyBytes);
+        final jsonData = jsonDecode(decodedBody);
+        return CreateNotificationModel.fromJson(jsonData);
+      } else {
+        throw Exception(
+          'Failed to load notification details - Status: ${response.statusCode}',
+        );
+      }
+    } catch (e) {
+      throw Exception('Failed to load notification details: $e');
+    }
+  }
+
+  Future<void> updateDoneFlag(
+    String altKey,
+    int doneFlag,
+    String doneDate,
+    String reDesc,
+  ) async {
+    try {
+      final url =
+          'http://168.119.35.125:7013/TdpSelfServiceWebSrvc-RESTWebService-context-root/rest/V1/ProjectsPartsProcNotifVO1?q=AltKey=$altKey';
+      log('🔵 Request URL: $url', name: 'TaskPermissionService');
+      log('🔵 AltKey: ${altKey}', name: 'TaskPermissionService');
+      log('🔵 DoneFlag: ${doneFlag}', name: 'TaskPermissionService');
+      log('🔵 DoneDate: ${doneDate}', name: 'TaskPermissionService');
+      log('🔵 ReDesc: ${reDesc}', name: 'TaskPermissionService');
+      final response = await http.patch(
+        Uri.parse(url),
+        headers: {
+          "Content-Type":
+              "application/vnd.oracle.adf.resourceitem+json; charset=UTF-8",
+        },
+        body: jsonEncode({
+          'DoneFlag': doneFlag,
+          'DoneDate': doneDate,
+          'ReDesc': reDesc,
+        }),
+      );
+      log('🔵 Request Body: ${response.body}', name: 'TaskPermissionService');
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        log('✅ Successfully updated done flag', name: 'TaskPermissionService');
+      } else {
+        log(
+          '❌ Failed with status code: ${response.statusCode}',
+          name: 'TaskPermissionService',
+        );
+        throw Exception('Failed to update done flag: ${response.statusCode}');
+      }
+    } catch (e, stackTrace) {
+      log('💥 Exception occurred: $e', name: 'TaskPermissionService');
+      log('💥 Stack trace: $stackTrace', name: 'TaskPermissionService');
+      throw Exception('Failed to update done flag: $e');
     }
   }
 }

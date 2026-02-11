@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:shehabapp/features/attendance/screens/attendance_main_screen.dart';
 import 'package:shehabapp/features/loans/screens/loan_requests_list_screen.dart';
@@ -77,10 +76,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       vsync: this,
     );
 
-    _pageController = PageController(
-      viewportFraction: 0.85,
-      initialPage: 0,
-    );
+    _pageController = PageController(viewportFraction: 0.85, initialPage: 0);
 
     _pageController.addListener(() {
       if (_pageController.page != null) {
@@ -99,16 +95,18 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       final authProvider = Provider.of<AuthProvider>(context, listen: false);
       if (authProvider.currentUser != null && mounted) {
         print("[HomeScreen] Current user exists, loading notifications...");
-        Provider.of<HomeProvider>(context, listen: false)
-            .loadNotifications(authProvider.currentUser!.usersCode)
-            .then((_) {
+        Provider.of<HomeProvider>(
+          context,
+          listen: false,
+        ).loadNotifications(authProvider.currentUser!.usersCode).then((_) {
           if (mounted) {
             print("[HomeScreen] Notifications loaded (or attempt finished).");
           }
         });
       } else {
         print(
-            "[HomeScreen] No current user or widget not mounted in addPostFrameCallback.");
+          "[HomeScreen] No current user or widget not mounted in addPostFrameCallback.",
+        );
       }
     });
   }
@@ -190,11 +188,14 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     }
     print("[HomeScreen] Building UI for user: ${user.usersName}");
     print(
-        "[HomeScreen] homeProvider.isLoadingNotifications: ${homeProvider.isLoadingNotifications}");
+      "[HomeScreen] homeProvider.isLoadingNotifications: ${homeProvider.isLoadingNotifications}",
+    );
     print(
-        "[HomeScreen] homeProvider.notificationError: ${homeProvider.notificationError}");
+      "[HomeScreen] homeProvider.notificationError: ${homeProvider.notificationError}",
+    );
     print(
-        "[HomeScreen] homeProvider.notificationInfo: ${homeProvider.notificationInfo != null}");
+      "[HomeScreen] homeProvider.notificationInfo: ${homeProvider.notificationInfo != null}",
+    );
 
     return Scaffold(
       body: SafeArea(
@@ -207,19 +208,22 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 child: Column(
                   children: [
                     _buildCategoryTitle(
-                        localizations.humanResources, Icons.groups_2_rounded, user.compEmpCode),
+                      localizations.humanResources,
+                      Icons.groups_2_rounded,
+                      user.compEmpCode,
+                    ),
                     const SizedBox(height: 24),
                     _buildMainCards(localizations),
                     _buildSubOptions(localizations),
                     const Spacer(),
                     _buildUserInfo(
-                        localeProvider.locale.languageCode == 'ar'
-                            ? user.usersName ?? user.usersName
-                            : user.usersNameE ?? user.usersNameE,
-                        localeProvider.locale.languageCode == 'ar'
-                            ? user.jobDesc ?? user.jobDesc
-                            : user.jobDescE ?? user.jobDescE,
-                        user.compEmpCode
+                      localeProvider.locale.languageCode == 'ar'
+                          ? user.usersName ?? user.usersName
+                          : user.usersNameE ?? user.usersNameE,
+                      localeProvider.locale.languageCode == 'ar'
+                          ? user.jobDesc ?? user.jobDesc
+                          : user.jobDescE ?? user.jobDescE,
+                      user.compEmpCode,
                     ),
                   ],
                 ),
@@ -231,7 +235,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     );
   }
 
-  Widget _buildHeader(AppLocalizations localizations, LocaleProvider localeProvider) {
+  Widget _buildHeader(
+    AppLocalizations localizations,
+    LocaleProvider localeProvider,
+  ) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
@@ -283,10 +290,16 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       GestureDetector(
                         onTap: () {
                           Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(builder: (c) => const LoginScreen()));
+                            MaterialPageRoute(
+                              builder: (c) => const LoginScreen(),
+                            ),
+                          );
                         },
                         child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8,
+                            vertical: 6,
+                          ),
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(15),
@@ -317,8 +330,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                             },
                             child: Container(
                               padding: EdgeInsets.symmetric(
-                                  horizontal: isSmallScreen ? 12 : 16,
-                                  vertical: isSmallScreen ? 8 : 10
+                                horizontal: isSmallScreen ? 12 : 16,
+                                vertical: isSmallScreen ? 8 : 10,
                               ),
                               child: Row(
                                 mainAxisSize: MainAxisSize.min,
@@ -330,7 +343,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                   ),
                                   const SizedBox(width: 6),
                                   Text(
-                                    localeProvider.locale.languageCode == 'en' ? 'العربية' : 'English',
+                                    localeProvider.locale.languageCode == 'en'
+                                        ? 'العربية'
+                                        : 'English',
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.w600,
@@ -359,11 +374,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
       child: Row(
         children: [
-          Icon(
-            icon,
-            color: const Color(0xFF1E3A8A),
-            size: 24,
-          ),
+          Icon(icon, color: const Color(0xFF1E3A8A), size: 24),
           const SizedBox(width: 10),
           Text(
             title,
@@ -386,7 +397,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           Expanded(
             child: _buildMainCard(
               title: localizations.myProfile, // طلباتي
-              icon:Icons.list_alt ,
+              icon: Icons.list_alt,
               color: const Color(0xFF4CAF50),
               isActive: _showApprovalsOptions,
               onTap: _toggleApprovalsOptions,
@@ -476,11 +487,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                         color: Colors.white.withOpacity(isActive ? 0.3 : 0.2),
                         shape: BoxShape.circle,
                       ),
-                      child: Icon(
-                        icon,
-                        size: 42,
-                        color: Colors.white,
-                      ),
+                      child: Icon(icon, size: 42, color: Colors.white),
                     ),
                     const SizedBox(height: 16),
                     Text(
@@ -530,47 +537,69 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     Expanded(
                       child: _showApprovalsOptions
                           ? SlideTransition(
-                        position: Tween<Offset>(
-                          begin: const Offset(-0.5, 0),
-                          end: Offset.zero,
-                        ).animate(CurvedAnimation(
-                          parent: _approvalsAnimController,
-                          curve: Curves.easeOutBack,
-                        )),
-                        child: FadeTransition(
-                          opacity: _approvalsAnimController,
-                          child: _buildVerticalOptionsColumn([
-                            SubOptionData(
-                              title: localizations.vacationInfo,
-                              icon: Icons.flight_takeoff_rounded,
-                              color: const Color(0xFF2196F3),
-                              onTap: () => Navigator.of(context).pushNamed(VacationRequestsListScreen.routeName),
-                            ),
-                            SubOptionData(
-                              title: localizations.loanInfo,
-                              icon: Icons.account_balance_wallet,
-                              color: const Color(0xFF4CAF50),
-                              onTap: () => Navigator.of(context).pushNamed(LoanRequestsListScreen.routeName),
-                            ),
-                            SubOptionData(
-                              title: localizations.resignationInfo,
-                              icon: Icons.exit_to_app,
-                              color: const Color(0xFFFFA000),
-                              onTap: () => Navigator.of(context).pushNamed(ResignationRequestsListScreen.routeName),
-                            ),
-                            SubOptionData(
-                              title: localizations.permissionInfo,
-                              icon: Icons.grid_view_rounded,
-                              color: const Color(0xFF8F7CB9),
-                              onTap: () => Navigator.of(context).pushNamed(PermissionRequestsListScreen.routeName),
-                            ),
-                            SubOptionData(
-                              title: localizations.resumeWorkInfo,
-                              icon: Icons.restart_alt_sharp,
-                              color: const Color(0xFF9F299D),
-                              onTap: () => Navigator.of(context).pushNamed(ResumeWorkRequestsListScreen.routeName),
-                            ),
-                            /*
+                              position:
+                                  Tween<Offset>(
+                                    begin: const Offset(-0.5, 0),
+                                    end: Offset.zero,
+                                  ).animate(
+                                    CurvedAnimation(
+                                      parent: _approvalsAnimController,
+                                      curve: Curves.easeOutBack,
+                                    ),
+                                  ),
+                              child: FadeTransition(
+                                opacity: _approvalsAnimController,
+                                child: _buildVerticalOptionsColumn([
+                                  SubOptionData(
+                                    title: localizations.vacationInfo,
+                                    icon: Icons.flight_takeoff_rounded,
+                                    color: const Color(0xFF2196F3),
+                                    onTap: () =>
+                                        Navigator.of(context).pushNamed(
+                                          VacationRequestsListScreen.routeName,
+                                        ),
+                                  ),
+                                  SubOptionData(
+                                    title: localizations.loanInfo,
+                                    icon: Icons.account_balance_wallet,
+                                    color: const Color(0xFF4CAF50),
+                                    onTap: () =>
+                                        Navigator.of(context).pushNamed(
+                                          LoanRequestsListScreen.routeName,
+                                        ),
+                                  ),
+                                  SubOptionData(
+                                    title: localizations.resignationInfo,
+                                    icon: Icons.exit_to_app,
+                                    color: const Color(0xFFFFA000),
+                                    onTap: () =>
+                                        Navigator.of(context).pushNamed(
+                                          ResignationRequestsListScreen
+                                              .routeName,
+                                        ),
+                                  ),
+                                  SubOptionData(
+                                    title: localizations.permissionInfo,
+                                    icon: Icons.grid_view_rounded,
+                                    color: const Color(0xFF8F7CB9),
+                                    onTap: () =>
+                                        Navigator.of(context).pushNamed(
+                                          PermissionRequestsListScreen
+                                              .routeName,
+                                        ),
+                                  ),
+                                  SubOptionData(
+                                    title: localizations.resumeWorkInfo,
+                                    icon: Icons.restart_alt_sharp,
+                                    color: const Color(0xFF9F299D),
+                                    onTap: () =>
+                                        Navigator.of(context).pushNamed(
+                                          ResumeWorkRequestsListScreen
+                                              .routeName,
+                                        ),
+                                  ),
+
+                                  /*
                             SubOptionData(
                               title: localizations.employeeTransferInfo,
                               icon: Icons.transfer_within_a_station,
@@ -596,11 +625,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                               onTap: () => Navigator.of(context).pushNamed(CancelSalaryConfirmationRequestsListScreen.routeName),
                             ),
                             */
-
-
-                          ]),
-                        ),
-                      )
+                                ]),
+                              ),
+                            )
                           : const SizedBox(),
                     ),
                     const SizedBox(width: 16),
@@ -608,47 +635,70 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     Expanded(
                       child: _showMyRequestsOptions
                           ? SlideTransition(
-                        position: Tween<Offset>(
-                          begin: const Offset(0.5, 0),
-                          end: Offset.zero,
-                        ).animate(CurvedAnimation(
-                          parent: _myRequestsAnimController,
-                          curve: Curves.easeOutBack,
-                        )),
-                        child: FadeTransition(
-                          opacity: _myRequestsAnimController,
-                          child: _buildVerticalOptionsColumn([
-                            SubOptionData(
-                              title: localizations.vacationInfo,
-                              icon: Icons.flight_takeoff_rounded,
-                              color: const Color(0xFF2196F3),
-                              onTap: () => Navigator.of(context).pushNamed(MyVacationRequestsListScreen.routeName),
-                            ),
-                            SubOptionData(
-                              title: localizations.loanInfo,
-                              icon: Icons.account_balance_wallet,
-                              color: const Color(0xFF4CAF50),
-                              onTap: () => Navigator.of(context).pushNamed(MyLoanRequestsListScreen.routeName),
-                            ),
-                            SubOptionData(
-                              title: localizations.resignationInfo,
-                              icon: Icons.exit_to_app,
-                              color: const Color(0xFFFFA000),
-                              onTap: () => Navigator.of(context).pushNamed(MyResignationRequestsListScreen.routeName),
-                            ),
-                            SubOptionData(
-                              title: localizations.permissionInfo,
-                              icon: Icons.grid_view_rounded,
-                              color: const Color(0xFF8F7CB9),
-                              onTap: () => Navigator.of(context).pushNamed(MyPermissionRequestsListScreen.routeName),
-                            ),
-                            SubOptionData(
-                              title: localizations.resumeWorkInfo,
-                              icon: Icons.restart_alt_sharp,
-                              color: const Color(0xFF9F299D),
-                              onTap: () => Navigator.of(context).pushNamed(MyResumeWorkRequestsListScreen.routeName),
-                            ),
-                            /*
+                              position:
+                                  Tween<Offset>(
+                                    begin: const Offset(0.5, 0),
+                                    end: Offset.zero,
+                                  ).animate(
+                                    CurvedAnimation(
+                                      parent: _myRequestsAnimController,
+                                      curve: Curves.easeOutBack,
+                                    ),
+                                  ),
+                              child: FadeTransition(
+                                opacity: _myRequestsAnimController,
+                                child: _buildVerticalOptionsColumn([
+                                  SubOptionData(
+                                    title: localizations.vacationInfo,
+                                    icon: Icons.flight_takeoff_rounded,
+                                    color: const Color(0xFF2196F3),
+                                    onTap: () =>
+                                        Navigator.of(context).pushNamed(
+                                          MyVacationRequestsListScreen
+                                              .routeName,
+                                        ),
+                                  ),
+                                  SubOptionData(
+                                    title: localizations.loanInfo,
+                                    icon: Icons.account_balance_wallet,
+                                    color: const Color(0xFF4CAF50),
+                                    onTap: () =>
+                                        Navigator.of(context).pushNamed(
+                                          MyLoanRequestsListScreen.routeName,
+                                        ),
+                                  ),
+                                  SubOptionData(
+                                    title: localizations.resignationInfo,
+                                    icon: Icons.exit_to_app,
+                                    color: const Color(0xFFFFA000),
+                                    onTap: () =>
+                                        Navigator.of(context).pushNamed(
+                                          MyResignationRequestsListScreen
+                                              .routeName,
+                                        ),
+                                  ),
+                                  SubOptionData(
+                                    title: localizations.permissionInfo,
+                                    icon: Icons.grid_view_rounded,
+                                    color: const Color(0xFF8F7CB9),
+                                    onTap: () =>
+                                        Navigator.of(context).pushNamed(
+                                          MyPermissionRequestsListScreen
+                                              .routeName,
+                                        ),
+                                  ),
+                                  SubOptionData(
+                                    title: localizations.resumeWorkInfo,
+                                    icon: Icons.restart_alt_sharp,
+                                    color: const Color(0xFF9F299D),
+                                    onTap: () =>
+                                        Navigator.of(context).pushNamed(
+                                          MyResumeWorkRequestsListScreen
+                                              .routeName,
+                                        ),
+                                  ),
+
+                                  /*
                             SubOptionData(
                               title: localizations.employeeTransferInfo,
                               icon: Icons.transfer_within_a_station,
@@ -675,10 +725,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                             ),
 
                              */
-
-                          ]),
-                        ),
-                      )
+                                ]),
+                              ),
+                            )
                           : const SizedBox(),
                     ),
                   ],
@@ -693,10 +742,14 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   Widget _buildVerticalOptionsColumn(List<SubOptionData> options) {
     return Column(
-      children: options.map((option) => Padding(
-        padding: const EdgeInsets.only(bottom: 12),
-        child: _buildSubOptionCard(option),
-      )).toList(),
+      children: options
+          .map(
+            (option) => Padding(
+              padding: const EdgeInsets.only(bottom: 12),
+              child: _buildSubOptionCard(option),
+            ),
+          )
+          .toList(),
     );
   }
 
@@ -741,11 +794,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(
-                    option.icon,
-                    size: 28,
-                    color: Colors.white,
-                  ),
+                  Icon(option.icon, size: 28, color: Colors.white),
                   const SizedBox(height: 8),
                   Text(
                     option.title,
@@ -767,64 +816,62 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   Widget _buildUserInfo(String? name, String? title, int compEmpCode) {
     return GestureDetector(
-        onTap: () {
-          Navigator.of(context)
-              .pushNamed('/user-profile', arguments: compEmpCode);
-        },
-        child: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 20),
-          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
-          decoration: BoxDecoration(
-            color: const Color(0xFFF5F5F5),
-            borderRadius: BorderRadius.circular(16),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.05),
-                blurRadius: 10,
-                offset: const Offset(0, 2),
-              ),
-            ],
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Icon(
-                Icons.person,
-                color: Color(0xFF1E3A8A),
-                size: 40,
-              ),
-              const SizedBox(width: 16),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Text(
-                      " ${name ?? ''} ",
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFF1E3A8A),
-                      ),
-                      textDirection: TextDirection.rtl,
+      onTap: () {
+        Navigator.of(
+          context,
+        ).pushNamed('/user-profile', arguments: compEmpCode);
+      },
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+        decoration: BoxDecoration(
+          color: const Color(0xFFF5F5F5),
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.05),
+              blurRadius: 10,
+              offset: const Offset(0, 2),
+            ),
+          ],
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Icon(Icons.person, color: Color(0xFF1E3A8A), size: 40),
+            const SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Text(
+                    " ${name ?? ''} ",
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF1E3A8A),
                     ),
-                    const SizedBox(height: 4),
-                    Text(
-                      "${title ?? ''}",
-                      style: const TextStyle(
-                        fontSize: 12,
-                        color: Colors.red,
-                        fontWeight: FontWeight.w500,
-                      ),
-                      textDirection: TextDirection.rtl,
-                    )
-                  ],
-                ),
+                    textDirection: TextDirection.rtl,
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    "${title ?? ''}",
+                    style: const TextStyle(
+                      fontSize: 12,
+                      color: Colors.red,
+                      fontWeight: FontWeight.w500,
+                    ),
+                    textDirection: TextDirection.rtl,
+                  ),
+                ],
               ),
-              const SizedBox(width: 5),
-              const Icon(Icons.arrow_back_ios),
-            ],
-          ),
-        ));
+            ),
+            const SizedBox(width: 5),
+            const Icon(Icons.arrow_back_ios),
+          ],
+        ),
+      ),
+    );
   }
 }
 
@@ -862,21 +909,23 @@ class _HeroIconState extends State<HeroIcon>
         return Transform.rotate(
           angle: (_controller.value * 2 * math.pi) / 20,
           child: Container(
-              padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.red.withOpacity(0.3 + (_controller.value * 0.2)),
-                    blurRadius: 10,
-                    spreadRadius: _controller.value * 2,
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.red.withOpacity(
+                    0.3 + (_controller.value * 0.2),
                   ),
-                ],
-              ),
-              child: const CircleAvatar(
-                maxRadius: 15,
-                backgroundImage: AssetImage("assets/images/ascon.jpg"),
-              )
+                  blurRadius: 10,
+                  spreadRadius: _controller.value * 2,
+                ),
+              ],
+            ),
+            child: const CircleAvatar(
+              maxRadius: 15,
+              backgroundImage: AssetImage("assets/images/ascon.jpg"),
+            ),
           ),
         );
       },

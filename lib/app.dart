@@ -11,6 +11,7 @@ import 'package:shehabapp/features/auth/screens/auth_wrapper.dart';
 import 'package:shehabapp/features/auth/screens/project_categories.dart';
 import 'package:shehabapp/features/create_notification/notifications_view.dart';
 import 'package:shehabapp/features/daily_tasks/daily_tasks_screen.dart';
+import 'package:shehabapp/features/display_notifications/display_notifications_view.dart';
 import 'package:shehabapp/features/loans/screens/loan_request_details_screen.dart';
 import 'package:shehabapp/features/loans/screens/loan_requests_list_screen.dart';
 import 'package:shehabapp/features/permissions/screens/my_requests/my_permission_requests_list_screen.dart';
@@ -194,6 +195,10 @@ class MyApp extends StatelessWidget {
                 flowId: ModalRoute.of(context)!.settings.arguments as int,
                 procId: ModalRoute.of(context)!.settings.arguments as int,
               ),
+              DisplayNotificationsView.routeName: (context) =>
+                  DisplayNotificationsView(
+                    userCode: ModalRoute.of(context)!.settings.arguments as int,
+                  ),
               // --== مسارات جديدة ==--
               VacationRequestsListScreen.routeName: (context) =>
                   const VacationRequestsListScreen(),

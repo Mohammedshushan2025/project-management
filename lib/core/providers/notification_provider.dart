@@ -5,6 +5,7 @@ import 'package:shehabapp/core/models/create_notification_model.dart';
 import 'package:shehabapp/core/models/attachment_model.dart';
 import 'package:shehabapp/core/models/users_model.dart';
 import 'package:shehabapp/core/models/users_type_model.dart';
+import 'package:shehabapp/core/models/projects_model.dart'; // NEW: Projects model import
 import 'package:shehabapp/core/services/notification_service.dart';
 
 class NotificationProvider extends ChangeNotifier {
@@ -14,6 +15,9 @@ class NotificationProvider extends ChangeNotifier {
   UsersModel? notificationUsersModel;
   UsersTypeModel? notificationUsersTypeModel;
   AllNotificationsModel? allNotificationsModel;
+  CreateNotificationModel? NotificationsModelByUserCode;
+  CreateNotificationModel? NotificationDetailsModelByUserCode;
+  ProjectsModel? projectsModel; // NEW: For projects dropdown
   String? errMessage;
   bool isLoading = false;
   bool isAttachmentLoading = false;
@@ -261,6 +265,25 @@ class NotificationProvider extends ChangeNotifier {
     }
   }
 
+  // Get all projects for dropdown
+  Future<void> getProjects() async {
+    final notificationService = NotificationService();
+    isLoading = true;
+    errMessage = null;
+    notifyListeners();
+
+    try {
+      projectsModel = await notificationService.getProjects();
+      isLoading = false;
+      notifyListeners();
+    } catch (e) {
+      isLoading = false;
+      errMessage = 'An error occurred while fetching projects: $e';
+      notifyListeners();
+      throw Exception('An error occurred while fetching projects: $e');
+    }
+  }
+
   // Get notification users type
   Future<void> getUsersType({
     required int usersCode,
@@ -387,6 +410,103 @@ class NotificationProvider extends ChangeNotifier {
       errMessage = 'An error occurred while loading user types: $e';
       notifyListeners();
       throw Exception('An error occurred while loading user types: $e');
+    }
+  }
+
+  //=====================================================================================
+
+  Future<void> getNotificationDetailsByUserCode({
+    required int userCode,
+    required String altKey,
+  }) async {
+    final notificationService = NotificationService();
+    isLoading = true;
+    errMessage = null;
+    notifyListeners();
+
+    try {
+      NotificationsModelByUserCode = await notificationService
+          .getNotificationDetailsByUserCode(userCode: userCode, altKey: altKey);
+      isLoading = false;
+      notifyListeners();
+    } on Exception catch (e) {
+      log(
+        '💥 Exception in getNotificationDetailsByUserCode: $e',
+        name: 'getNotificationDetailsByUserCode',
+      );
+      isLoading = false;
+      errMessage = 'An error occurred while fetching notification details: $e';
+      notifyListeners();
+      throw Exception(
+        'An error occurred while fetching notification details: $e',
+      );
+    }
+  }
+
+  Future<void> getNotificationListByUserCode({
+    required int userCode,
+    int? doneFlag,
+    String? projectId,
+    String? contractNo,
+  }) async {
+    final notificationService = NotificationService();
+    isLoading = true;
+    errMessage = null;
+    notifyListeners();
+
+    try {
+      NotificationsModelByUserCode = await notificationService
+          .getNotificationListByUserCode(
+            userCode: userCode,
+            doneFlag: doneFlag,
+            projectId: projectId,
+            contractNo: contractNo,
+          );
+      isLoading = false;
+      notifyListeners();
+    } on Exception catch (e) {
+      log(
+        '💥 Exception in getNotificationListByUserCode: $e',
+        name: 'getNotificationListByUserCode',
+      );
+      isLoading = false;
+      errMessage = 'An error occurred while fetching notification list: $e';
+      notifyListeners();
+      throw Exception('An error occurred while fetching notification list: $e');
+    }
+  }
+
+  // Update done flag for notification
+  Future<void> updateDoneFlag({
+    required String altKey,
+    required int doneFlag,
+    required String doneDate,
+    required String reDesc,
+  }) async {
+    final notificationService = NotificationService();
+    isLoading = true;
+    errMessage = null;
+    notifyListeners();
+
+    try {
+      await notificationService.updateDoneFlag(
+        altKey,
+        doneFlag,
+        doneDate,
+        reDesc,
+      );
+      isLoading = false;
+      notifyListeners();
+      log(
+        '✅ Successfully updated done flag in provider',
+        name: 'NotificationProvider',
+      );
+    } on Exception catch (e) {
+      log('💥 Exception in updateDoneFlag: $e', name: 'NotificationProvider');
+      isLoading = false;
+      errMessage = 'An error occurred while updating done flag: $e';
+      notifyListeners();
+      throw Exception('An error occurred while updating done flag: $e');
     }
   }
 }
