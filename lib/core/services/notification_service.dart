@@ -643,7 +643,7 @@ class NotificationService {
   ) async {
     try {
       final url =
-          'http://168.119.35.125:7013/TdpSelfServiceWebSrvc-RESTWebService-context-root/rest/V1/ProjectsPartsProcNotifVO1?q=AltKey=$altKey';
+          'http://168.119.35.125:7013/TdpSelfServiceWebSrvc-RESTWebService-context-root/rest/V1/ProjectsPartsProcNotifVO1/$altKey';
       log('🔵 Request URL: $url', name: 'TaskPermissionService');
       log('🔵 AltKey: ${altKey}', name: 'TaskPermissionService');
       log('🔵 DoneFlag: ${doneFlag}', name: 'TaskPermissionService');
