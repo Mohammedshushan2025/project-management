@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shehabapp/core/providers/auth_provider.dart';
 import '../../core/providers/notification_provider.dart';
 import '../../l10n/app_localizations.dart';
 import '../../core/providers/locale_provider.dart';
@@ -324,7 +325,25 @@ class _DisplayNotificationsViewState extends State<DisplayNotificationsView>
         children: [
           // Back Button
           GestureDetector(
-            onTap: () => Navigator.of(context).pop(),
+            onTap: () async {
+              // Refresh counts BEFORE navigating back
+              final authProvider = Provider.of<AuthProvider>(
+                context,
+                listen: false,
+              );
+              final usersCode = authProvider.currentUser?.usersCode.toString();
+
+              if (usersCode != null && usersCode.isNotEmpty) {
+                await authProvider.getProjectCategoriesCount(
+                  usersCode: usersCode,
+                );
+              }
+
+              // Now navigate back with refreshed data
+              if (mounted) {
+                Navigator.of(context).pop();
+              }
+            },
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
               decoration: BoxDecoration(
