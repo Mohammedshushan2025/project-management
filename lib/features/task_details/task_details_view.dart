@@ -160,6 +160,8 @@ class _TaskDetailsViewState extends State<TaskDetailsView>
                                     projectNameEn: processData?.nameE,
                                     processNameAr: processData?.procNameA,
                                     processNameEn: processData?.procNameE,
+                                    contractNo: processData?.contractNo
+                                        ?.toString(),
                                   );
                                 },
                               ),
@@ -317,7 +319,8 @@ class _TaskDetailsViewState extends State<TaskDetailsView>
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.25),
+                color: Colors.white.withValues(alpha: 0.25),
+
                 borderRadius: BorderRadius.circular(12),
               ),
               child: const Icon(
@@ -344,7 +347,8 @@ class _TaskDetailsViewState extends State<TaskDetailsView>
               final isArabic = provider.locale.languageCode == 'ar';
               return Container(
                 decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.25),
+                  color: Colors.white.withValues(alpha: 0.25),
+
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Material(
@@ -404,7 +408,8 @@ class _TaskDetailsViewState extends State<TaskDetailsView>
             borderRadius: BorderRadius.circular(10),
             boxShadow: [
               BoxShadow(
-                color: const Color(0xFF4F46E5).withOpacity(0.3),
+                color: const Color(0xFF4F46E5).withValues(alpha: 0.3),
+
                 blurRadius: 8,
                 offset: const Offset(0, 3),
               ),
@@ -431,9 +436,6 @@ class _TaskDetailsViewState extends State<TaskDetailsView>
       context,
       listen: false,
     );
-
-    // Get process data for next user code
-    final processData = dailyTasksProvider.taskProccessModel?.items?.first;
 
     // Determine which employee code to use (selected or default)
     final nextUsersCode = _selectedEmployeeCode;

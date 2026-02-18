@@ -1178,10 +1178,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get selectProject => 'اختر المشروع';
 
   @override
-  String get contractNumber => 'رقم العقد';
+  String get contractNumber => 'الرقم الداخلى';
 
   @override
-  String get enterContractNumber => 'أدخل رقم العقد';
+  String get enterContractNumber => 'أدخل الرقم الداخلى';
 
   @override
   String get secNumber => 'رقم SEC';
@@ -1738,14 +1738,17 @@ class AppLocalizationsAr extends AppLocalizations {
   String get notificationData => 'بيانات الإشعار';
 
   @override
-  String get savedSuccessfully => 'تم الحفظ بنجاح';
-
-  @override
   String get replySection => 'قسم الرد';
 
   @override
-  String get createdBy => 'مدخل الإشعار';
+  String get savedSuccessfully => 'تم الحفظ بنجاح';
 
   @override
   String get replyDate => 'تاريخ الرد';
+
+  @override
+  String get internalNumber => 'الرقم الداخلي';
+
+  @override
+  String get executionDate => 'تاريخ التنفيذ';
 }

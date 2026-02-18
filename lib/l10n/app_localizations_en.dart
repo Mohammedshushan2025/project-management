@@ -1751,14 +1751,17 @@ class AppLocalizationsEn extends AppLocalizations {
   String get notificationData => 'Notification Data';
 
   @override
-  String get savedSuccessfully => 'Saved Successfully';
-
-  @override
   String get replySection => 'Reply Section';
 
   @override
-  String get createdBy => 'Created By';
+  String get savedSuccessfully => 'Saved Successfully';
 
   @override
   String get replyDate => 'Reply Date';
+
+  @override
+  String get internalNumber => 'Internal No';
+
+  @override
+  String get executionDate => 'Execution Date';
 }

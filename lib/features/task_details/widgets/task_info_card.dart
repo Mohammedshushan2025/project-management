@@ -8,6 +8,7 @@ class TaskInfoCard extends StatelessWidget {
   final String? projectNameEn;
   final String? processNameAr;
   final String? processNameEn;
+  final String? contractNo;
 
   const TaskInfoCard({
     super.key,
@@ -15,6 +16,7 @@ class TaskInfoCard extends StatelessWidget {
     this.projectNameEn,
     this.processNameAr,
     this.processNameEn,
+    this.contractNo,
   });
 
   @override
@@ -24,9 +26,9 @@ class TaskInfoCard extends StatelessWidget {
     final isArabic = localeProvider.locale.languageCode == 'ar';
 
     // Fallback to Arabic if English is null
-    final displayProjectName = isArabic
-        ? projectNameAr
-        : (projectNameEn ?? projectNameAr);
+    String displayProjectName = isArabic
+        ? (projectNameAr ?? '')
+        : (projectNameEn ?? projectNameAr ?? '');
 
     final displayProcessName = isArabic
         ? processNameAr
@@ -35,10 +37,12 @@ class TaskInfoCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
+
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFF4F46E5).withOpacity(0.1),
+            color: const Color(0xFF4F46E5).withValues(alpha: 0.1),
+
             blurRadius: 20,
             offset: const Offset(0, 8),
           ),
@@ -49,6 +53,19 @@ class TaskInfoCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            if (contractNo != null && contractNo!.isNotEmpty) ...[
+              _buildInfoRow(
+                context,
+                icon: Icons.tag,
+                label: l10n.internalNumber,
+                value: contractNo,
+                gradientColors: [
+                  const Color(0xFFEC4899),
+                  const Color(0xFFF472B6),
+                ],
+              ),
+              const SizedBox(height: 16),
+            ],
             _buildInfoRow(
               context,
               icon: Icons.account_tree_rounded,
@@ -59,6 +76,7 @@ class TaskInfoCard extends StatelessWidget {
                 const Color(0xFF6366F1),
               ],
             ),
+
             const SizedBox(height: 16),
             _buildInfoRow(
               context,
@@ -97,7 +115,8 @@ class TaskInfoCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(12),
             boxShadow: [
               BoxShadow(
-                color: gradientColors[0].withOpacity(0.3),
+                color: gradientColors[0].withValues(alpha: 0.3),
+
                 blurRadius: 8,
                 offset: const Offset(0, 3),
               ),

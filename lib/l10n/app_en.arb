@@ -586,5 +586,10 @@
     "pleaseEnterDescription": "Please enter description",
     "addNotificationButton": "Create Notification",
     "notificationData": "Notification Data",
-    "notificationTypeLabel": "Notification Type"
+    "notificationTypeLabel": "Notification Type",
+    "replySection": "Reply Section",
+    "savedSuccessfully": "Saved Successfully",
+    "replyDate": "Reply Date",
+    "internalNumber": "Internal No",
+    "executionDate": "Execution Date"
 }

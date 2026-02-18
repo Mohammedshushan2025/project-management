@@ -100,3429 +100,3435 @@ abstract class AppLocalizations {
 
   /// No description provided for @appName.
   ///
-  /// In en, this message translates to:
-  /// **'Home'**
+  /// In ar, this message translates to:
+  /// **'الرئيسية'**
   String get appName;
 
   /// No description provided for @loginTitle.
   ///
-  /// In en, this message translates to:
-  /// **'Login'**
+  /// In ar, this message translates to:
+  /// **'تسجيل الدخول'**
   String get loginTitle;
 
   /// No description provided for @userCodeHint.
   ///
-  /// In en, this message translates to:
-  /// **'User Code'**
+  /// In ar, this message translates to:
+  /// **'رقم المستخدم'**
   String get userCodeHint;
 
   /// No description provided for @passwordHint.
   ///
-  /// In en, this message translates to:
-  /// **'Password'**
+  /// In ar, this message translates to:
+  /// **'كلمة المرور'**
   String get passwordHint;
 
   /// No description provided for @login.
   ///
-  /// In en, this message translates to:
-  /// **'Login'**
+  /// In ar, this message translates to:
+  /// **'دخول'**
   String get login;
 
   /// No description provided for @welcome.
   ///
-  /// In en, this message translates to:
-  /// **'Welcome'**
+  /// In ar, this message translates to:
+  /// **'أهلاً بك'**
   String get welcome;
 
   /// No description provided for @services.
   ///
-  /// In en, this message translates to:
-  /// **'Available Services'**
+  /// In ar, this message translates to:
+  /// **'الخدمات المتاحة'**
   String get services;
 
   /// No description provided for @purchases.
   ///
-  /// In en, this message translates to:
-  /// **'Purchase'**
+  /// In ar, this message translates to:
+  /// **'المشتريات '**
   String get purchases;
 
   /// No description provided for @purchasesO.
   ///
-  /// In en, this message translates to:
-  /// **'Purchase orders '**
+  /// In ar, this message translates to:
+  /// **'أوامر الشراء  '**
   String get purchasesO;
 
   /// No description provided for @purchasesR.
   ///
-  /// In en, this message translates to:
-  /// **'purchase requisitions '**
+  /// In ar, this message translates to:
+  /// **'طلبات الشراء  '**
   String get purchasesR;
 
   /// No description provided for @humanResources.
   ///
-  /// In en, this message translates to:
-  /// **'My requests'**
+  /// In ar, this message translates to:
+  /// **'طلباتي'**
   String get humanResources;
 
   /// No description provided for @custody.
   ///
-  /// In en, this message translates to:
-  /// **'Custody'**
+  /// In ar, this message translates to:
+  /// **'العهد'**
   String get custody;
 
   /// No description provided for @maintenance.
   ///
-  /// In en, this message translates to:
-  /// **'Maintenance'**
+  /// In ar, this message translates to:
+  /// **'الصيانة'**
   String get maintenance;
 
   /// No description provided for @about.
   ///
-  /// In en, this message translates to:
-  /// **'About App'**
+  /// In ar, this message translates to:
+  /// **'حول التطبيق'**
   String get about;
 
   /// No description provided for @myProfile.
   ///
-  /// In en, this message translates to:
-  /// **'Approval required'**
+  /// In ar, this message translates to:
+  /// **'الموافقة المطلوبة'**
   String get myProfile;
 
   /// No description provided for @logout.
   ///
-  /// In en, this message translates to:
-  /// **'Logout'**
+  /// In ar, this message translates to:
+  /// **'تسجيل الخروج'**
   String get logout;
 
   /// No description provided for @personalInfo.
   ///
-  /// In en, this message translates to:
-  /// **'Personal Information'**
+  /// In ar, this message translates to:
+  /// **'المعلومات الشخصية'**
   String get personalInfo;
 
   /// No description provided for @jobInfo.
   ///
-  /// In en, this message translates to:
-  /// **'Job Information'**
+  /// In ar, this message translates to:
+  /// **'المعلومات الوظيفية'**
   String get jobInfo;
 
   /// No description provided for @financialInfo.
   ///
-  /// In en, this message translates to:
-  /// **'Financial Information'**
+  /// In ar, this message translates to:
+  /// **'المعلومات المالية'**
   String get financialInfo;
 
   /// No description provided for @vacationInfo.
   ///
-  /// In en, this message translates to:
-  /// **'Vacation request'**
+  /// In ar, this message translates to:
+  /// **'طلبات الإجازات'**
   String get vacationInfo;
 
   /// No description provided for @loanInfo.
   ///
-  /// In en, this message translates to:
-  /// **'Loan request'**
+  /// In ar, this message translates to:
+  /// **'طلبات السلف'**
   String get loanInfo;
 
   /// No description provided for @resignationInfo.
   ///
-  /// In en, this message translates to:
-  /// **'Resignation request'**
+  /// In ar, this message translates to:
+  /// **'طلبات الاستقالة'**
   String get resignationInfo;
 
   /// No description provided for @attendanceInfo.
   ///
-  /// In en, this message translates to:
-  /// **'Attendance and departure'**
+  /// In ar, this message translates to:
+  /// **'الحضور والانصراف'**
   String get attendanceInfo;
 
   /// No description provided for @ticketsInfo.
   ///
-  /// In en, this message translates to:
-  /// **'Tickets Information'**
+  /// In ar, this message translates to:
+  /// **'معلومات تذاكر السفر'**
   String get ticketsInfo;
 
   /// No description provided for @department.
   ///
-  /// In en, this message translates to:
-  /// **'Department'**
+  /// In ar, this message translates to:
+  /// **'الإدارة'**
   String get department;
 
   /// No description provided for @job.
   ///
-  /// In en, this message translates to:
-  /// **'Job'**
+  /// In ar, this message translates to:
+  /// **'الوظيفة'**
   String get job;
 
   /// No description provided for @nationality.
   ///
-  /// In en, this message translates to:
-  /// **'Nationality'**
+  /// In ar, this message translates to:
+  /// **'الجنسية'**
   String get nationality;
 
   /// No description provided for @gender.
   ///
-  /// In en, this message translates to:
-  /// **'Gender'**
+  /// In ar, this message translates to:
+  /// **'الجنس'**
   String get gender;
 
   /// No description provided for @male.
   ///
-  /// In en, this message translates to:
-  /// **'Male'**
+  /// In ar, this message translates to:
+  /// **'ذكر'**
   String get male;
 
   /// No description provided for @female.
   ///
-  /// In en, this message translates to:
-  /// **'Female'**
+  /// In ar, this message translates to:
+  /// **'أنثى'**
   String get female;
 
   /// No description provided for @systemTitle.
   ///
-  /// In en, this message translates to:
-  /// **'Projects Management System'**
+  /// In ar, this message translates to:
+  /// **'نظام إدارة المشاريع'**
   String get systemTitle;
 
   /// No description provided for @systemWelcomeMessage.
   ///
-  /// In en, this message translates to:
-  /// **'Welcome to the Projects Management System'**
+  /// In ar, this message translates to:
+  /// **'مرحباً بك في نظام إدارة المشاريع'**
   String get systemWelcomeMessage;
 
   /// No description provided for @loginSuccessMessage.
   ///
-  /// In en, this message translates to:
-  /// **'Login successful'**
+  /// In ar, this message translates to:
+  /// **'تم تسجيل الدخول بنجاح'**
   String get loginSuccessMessage;
 
   /// No description provided for @loginErrorMessage.
   ///
-  /// In en, this message translates to:
-  /// **'Login failed. Please try again'**
+  /// In ar, this message translates to:
+  /// **'حدث خطأ في تسجيل الدخول. يرجى المحاولة مرة أخرى'**
   String get loginErrorMessage;
 
   /// No description provided for @continueButton.
   ///
-  /// In en, this message translates to:
-  /// **'Continue'**
+  /// In ar, this message translates to:
+  /// **'متابعة'**
   String get continueButton;
 
   /// No description provided for @forgotPassword.
   ///
-  /// In en, this message translates to:
-  /// **'Forgot Password?'**
+  /// In ar, this message translates to:
+  /// **'نسيت كلمة المرور؟'**
   String get forgotPassword;
 
   /// No description provided for @noAccountText.
   ///
-  /// In en, this message translates to:
-  /// **'Don\'t have an account?'**
+  /// In ar, this message translates to:
+  /// **'ليس لديك حساب؟'**
   String get noAccountText;
 
   /// No description provided for @signUpText.
   ///
-  /// In en, this message translates to:
-  /// **'Sign Up'**
+  /// In ar, this message translates to:
+  /// **'تسجيل جديد'**
   String get signUpText;
 
   /// No description provided for @userCodeValidationError.
   ///
-  /// In en, this message translates to:
-  /// **'Please enter your user code'**
+  /// In ar, this message translates to:
+  /// **'يرجى إدخال رقم المستخدم'**
   String get userCodeValidationError;
 
   /// No description provided for @passwordValidationError.
   ///
-  /// In en, this message translates to:
-  /// **'Please enter your password'**
+  /// In ar, this message translates to:
+  /// **'يرجى إدخال كلمة المرور'**
   String get passwordValidationError;
 
   /// No description provided for @passwordLengthError.
   ///
-  /// In en, this message translates to:
-  /// **'Password is too short'**
+  /// In ar, this message translates to:
+  /// **'كلمة المرور قصيرة جداً'**
   String get passwordLengthError;
 
   /// No description provided for @profileDetails.
   ///
-  /// In en, this message translates to:
-  /// **'Profile Details'**
+  /// In ar, this message translates to:
+  /// **'تفاصيل الملف الشخصي'**
   String get profileDetails;
 
   /// No description provided for @basicInformation.
   ///
-  /// In en, this message translates to:
-  /// **'Basic Information'**
+  /// In ar, this message translates to:
+  /// **'المعلومات الأساسية'**
   String get basicInformation;
 
   /// No description provided for @employeeCode.
   ///
-  /// In en, this message translates to:
-  /// **'Employee Code (Company):'**
+  /// In ar, this message translates to:
+  /// **'كود الموظف (الشركة):'**
   String get employeeCode;
 
   /// No description provided for @employeeName.
   ///
-  /// In en, this message translates to:
-  /// **'Employee Name:'**
+  /// In ar, this message translates to:
+  /// **'اسم الموظف:'**
   String get employeeName;
 
   /// No description provided for @jobTitle.
   ///
-  /// In en, this message translates to:
-  /// **'Job Title:'**
+  /// In ar, this message translates to:
+  /// **'المسمى الوظيفي:'**
   String get jobTitle;
 
   /// No description provided for @salaryAndAllowances.
   ///
-  /// In en, this message translates to:
-  /// **'Salary and Allowances Details'**
+  /// In ar, this message translates to:
+  /// **'تفاصيل الراتب والبدلات'**
   String get salaryAndAllowances;
 
   /// No description provided for @basicSalary.
   ///
-  /// In en, this message translates to:
-  /// **'Basic Salary:'**
+  /// In ar, this message translates to:
+  /// **'الراتب الأساسي:'**
   String get basicSalary;
 
   /// No description provided for @transportationAllowance.
   ///
-  /// In en, this message translates to:
-  /// **'Transportation Allowance:'**
+  /// In ar, this message translates to:
+  /// **'بدل النقل:'**
   String get transportationAllowance;
 
   /// No description provided for @workNatureAllowance.
   ///
-  /// In en, this message translates to:
-  /// **'Work Nature Allowance:'**
+  /// In ar, this message translates to:
+  /// **'بدل طبيعة عمل:'**
   String get workNatureAllowance;
 
   /// No description provided for @foodAllowance.
   ///
-  /// In en, this message translates to:
-  /// **'Food Allowance:'**
+  /// In ar, this message translates to:
+  /// **'بدل طعام:'**
   String get foodAllowance;
 
   /// No description provided for @extra.
   ///
-  /// In en, this message translates to:
-  /// **'Extra:'**
+  /// In ar, this message translates to:
+  /// **'إضافي:'**
   String get extra;
 
   /// No description provided for @otherAllowances.
   ///
-  /// In en, this message translates to:
-  /// **'Other Allowances:'**
+  /// In ar, this message translates to:
+  /// **'بدلات أخرى:'**
   String get otherAllowances;
 
   /// No description provided for @otherDeductions.
   ///
-  /// In en, this message translates to:
-  /// **'Other Deductions:'**
+  /// In ar, this message translates to:
+  /// **'خصومات أخرى:'**
   String get otherDeductions;
 
   /// No description provided for @allowance1.
   ///
-  /// In en, this message translates to:
-  /// **'Allowance 1:'**
+  /// In ar, this message translates to:
+  /// **'بدل 1:'**
   String get allowance1;
 
   /// No description provided for @allowance2.
   ///
-  /// In en, this message translates to:
-  /// **'Allowance 2:'**
+  /// In ar, this message translates to:
+  /// **'بدل 2:'**
   String get allowance2;
 
   /// No description provided for @allowance3.
   ///
-  /// In en, this message translates to:
-  /// **'Allowance 3:'**
+  /// In ar, this message translates to:
+  /// **'بدل 3:'**
   String get allowance3;
 
   /// No description provided for @housingInformation.
   ///
-  /// In en, this message translates to:
-  /// **'Housing Information'**
+  /// In ar, this message translates to:
+  /// **'معلومات السكن'**
   String get housingInformation;
 
   /// No description provided for @housingAllowanceMonths.
   ///
-  /// In en, this message translates to:
-  /// **'Housing Allowance Months:'**
+  /// In ar, this message translates to:
+  /// **'شهور بدل السكن:'**
   String get housingAllowanceMonths;
 
   /// No description provided for @housingAllowanceAmount.
   ///
-  /// In en, this message translates to:
-  /// **'Housing Allowance Amount:'**
+  /// In ar, this message translates to:
+  /// **'مبلغ بدل السكن:'**
   String get housingAllowanceAmount;
 
   /// No description provided for @workScheduleAndVacation.
   ///
-  /// In en, this message translates to:
-  /// **'Work Schedule and Vacation Information'**
+  /// In ar, this message translates to:
+  /// **'معلومات الدوام والإجازات'**
   String get workScheduleAndVacation;
 
   /// No description provided for @normalWorkingDays.
   ///
-  /// In en, this message translates to:
-  /// **'Normal Working Days:'**
+  /// In ar, this message translates to:
+  /// **'أيام الدوام العادية:'**
   String get normalWorkingDays;
 
   /// No description provided for @unauthorizedAbsenceDays.
   ///
-  /// In en, this message translates to:
-  /// **'Unauthorized Absence Days:'**
+  /// In ar, this message translates to:
+  /// **'أيام الغياب غير المسموح بها:'**
   String get unauthorizedAbsenceDays;
 
   /// No description provided for @vacationEvery.
   ///
-  /// In en, this message translates to:
-  /// **'Vacation Every (Month/Year):'**
+  /// In ar, this message translates to:
+  /// **'إجازة كل (شهر/سنة):'**
   String get vacationEvery;
 
   /// No description provided for @travelTicketsInformation.
   ///
-  /// In en, this message translates to:
-  /// **'Travel Tickets Information'**
+  /// In ar, this message translates to:
+  /// **'معلومات تذاكر السفر'**
   String get travelTicketsInformation;
 
   /// No description provided for @ticketsAmount.
   ///
-  /// In en, this message translates to:
-  /// **'Tickets Amount:'**
+  /// In ar, this message translates to:
+  /// **'مبلغ التذاكر:'**
   String get ticketsAmount;
 
   /// No description provided for @ticketsEvery.
   ///
-  /// In en, this message translates to:
-  /// **'Tickets Every (Month/Year):'**
+  /// In ar, this message translates to:
+  /// **'تذاكر كل (شهر/سنة):'**
   String get ticketsEvery;
 
   /// No description provided for @ticketsType.
   ///
-  /// In en, this message translates to:
-  /// **'Tickets Type:'**
+  /// In ar, this message translates to:
+  /// **'نوع التذاكر:'**
   String get ticketsType;
 
   /// No description provided for @travelCity.
   ///
-  /// In en, this message translates to:
-  /// **'Travel City:'**
+  /// In ar, this message translates to:
+  /// **'مدينة السفر:'**
   String get travelCity;
 
   /// No description provided for @airline.
   ///
-  /// In en, this message translates to:
-  /// **'Airline:'**
+  /// In ar, this message translates to:
+  /// **'شركة الطيران:'**
   String get airline;
 
   /// No description provided for @notAvailable.
   ///
-  /// In en, this message translates to:
-  /// **'Not available'**
+  /// In ar, this message translates to:
+  /// **'غير متوفر'**
   String get notAvailable;
 
   /// No description provided for @noUserDataFound.
   ///
-  /// In en, this message translates to:
-  /// **'No user data found.'**
+  /// In ar, this message translates to:
+  /// **'لم يتم العثور على بيانات للمستخدم.'**
   String get noUserDataFound;
 
   /// No description provided for @invalidFormat.
   ///
-  /// In en, this message translates to:
-  /// **'Invalid format'**
+  /// In ar, this message translates to:
+  /// **'تنسيق غير صالح'**
   String get invalidFormat;
 
   /// No description provided for @underAction.
   ///
-  /// In en, this message translates to:
-  /// **'Under Action'**
+  /// In ar, this message translates to:
+  /// **'قيد الإجراء'**
   String get underAction;
 
   /// No description provided for @notSpecified.
   ///
-  /// In en, this message translates to:
-  /// **'Not specified'**
+  /// In ar, this message translates to:
+  /// **'غير محدد'**
   String get notSpecified;
 
   /// No description provided for @supplierName.
   ///
-  /// In en, this message translates to:
-  /// **'Supplier Name'**
+  /// In ar, this message translates to:
+  /// **'اسم المورد'**
   String get supplierName;
 
   /// No description provided for @orderNumber.
   ///
-  /// In en, this message translates to:
-  /// **'Order Number'**
+  /// In ar, this message translates to:
+  /// **'رقم الأمر'**
   String get orderNumber;
 
   /// No description provided for @orderDate.
   ///
-  /// In en, this message translates to:
-  /// **'Order Date'**
+  /// In ar, this message translates to:
+  /// **'تاريخ الأمر'**
   String get orderDate;
 
   /// No description provided for @approved.
   ///
-  /// In en, this message translates to:
-  /// **'Approved'**
+  /// In ar, this message translates to:
+  /// **'معتمد'**
   String get approved;
 
   /// No description provided for @rejected.
   ///
-  /// In en, this message translates to:
-  /// **'Rejected'**
+  /// In ar, this message translates to:
+  /// **'مرفوض'**
   String get rejected;
 
   /// No description provided for @orderDetailsTitle.
   ///
-  /// In en, this message translates to:
-  /// **'Order Details'**
+  /// In ar, this message translates to:
+  /// **'تفاصيل الأمر'**
   String get orderDetailsTitle;
 
   /// No description provided for @errorLoadingOrder.
   ///
-  /// In en, this message translates to:
-  /// **'Error loading order details.'**
+  /// In ar, this message translates to:
+  /// **'خطأ في تحميل تفاصيل الأمر.'**
   String get errorLoadingOrder;
 
   /// No description provided for @approvals.
   ///
-  /// In en, this message translates to:
-  /// **'Approvals'**
+  /// In ar, this message translates to:
+  /// **'الاعتمادات'**
   String get approvals;
 
   /// No description provided for @items.
   ///
-  /// In en, this message translates to:
-  /// **'Items'**
+  /// In ar, this message translates to:
+  /// **'الأصناف'**
   String get items;
 
   /// No description provided for @orderNumberLabel.
   ///
-  /// In en, this message translates to:
-  /// **'Order No:'**
+  /// In ar, this message translates to:
+  /// **'رقم الأمر:'**
   String get orderNumberLabel;
 
   /// No description provided for @orderDateLabel.
   ///
-  /// In en, this message translates to:
-  /// **'Order Date:'**
+  /// In ar, this message translates to:
+  /// **'تاريخ الأمر:'**
   String get orderDateLabel;
 
   /// No description provided for @supplierNameLabel.
   ///
-  /// In en, this message translates to:
-  /// **'Supplier Name:'**
+  /// In ar, this message translates to:
+  /// **'اسم المورد:'**
   String get supplierNameLabel;
 
   /// No description provided for @totalOrderAmount.
   ///
-  /// In en, this message translates to:
-  /// **'Total Order Amount:'**
+  /// In ar, this message translates to:
+  /// **'الإجمالي الكلي للأمر:'**
   String get totalOrderAmount;
 
   /// No description provided for @calculatingTotal.
   ///
-  /// In en, this message translates to:
-  /// **'Calculating total...'**
+  /// In ar, this message translates to:
+  /// **'جاري حساب الإجمالي...'**
   String get calculatingTotal;
 
   /// No description provided for @takeAction.
   ///
-  /// In en, this message translates to:
-  /// **'Take Action'**
+  /// In ar, this message translates to:
+  /// **'اتخاذ قرار'**
   String get takeAction;
 
   /// No description provided for @actionDialogTitle.
   ///
-  /// In en, this message translates to:
-  /// **'Decision on Purchase Order'**
+  /// In ar, this message translates to:
+  /// **'اتخاذ قرار بشأن أمر الشراء'**
   String get actionDialogTitle;
 
   /// No description provided for @statementLabel.
   ///
-  /// In en, this message translates to:
-  /// **'Statement (Notes for current action)'**
+  /// In ar, this message translates to:
+  /// **'البيان (ملاحظات للإجراء الحالي)'**
   String get statementLabel;
 
   /// No description provided for @statementHint.
   ///
-  /// In en, this message translates to:
-  /// **'Enter your notes here (optional)...'**
+  /// In ar, this message translates to:
+  /// **'أدخل ملاحظاتك هنا (اختياري)...'**
   String get statementHint;
 
   /// No description provided for @submittingAction.
   ///
-  /// In en, this message translates to:
-  /// **'Submitting action...'**
+  /// In ar, this message translates to:
+  /// **'جاري إرسال الإجراء...'**
   String get submittingAction;
 
   /// No description provided for @cancel.
   ///
-  /// In en, this message translates to:
-  /// **'Cancel'**
+  /// In ar, this message translates to:
+  /// **'إلغاء'**
   String get cancel;
 
   /// No description provided for @reject.
   ///
-  /// In en, this message translates to:
-  /// **'Reject'**
+  /// In ar, this message translates to:
+  /// **'رفض'**
   String get reject;
 
   /// No description provided for @approve.
   ///
-  /// In en, this message translates to:
-  /// **'Approve'**
+  /// In ar, this message translates to:
+  /// **'اعتماد'**
   String get approve;
 
   /// No description provided for @actionErrorIncompleteData.
   ///
-  /// In en, this message translates to:
-  /// **'Error: Cannot take action, data is incomplete.'**
+  /// In ar, this message translates to:
+  /// **'خطأ: لا يمكن اتخاذ إجراء، البيانات غير مكتملة.'**
   String get actionErrorIncompleteData;
 
   /// No description provided for @waitForAuthDetails.
   ///
-  /// In en, this message translates to:
-  /// **'Please wait for approval details to load...'**
+  /// In ar, this message translates to:
+  /// **'الرجاء الانتظار حتى يتم تحميل تفاصيل الاعتماد...'**
   String get waitForAuthDetails;
 
   /// No description provided for @approvalSuccess.
   ///
-  /// In en, this message translates to:
-  /// **'Approved successfully.'**
+  /// In ar, this message translates to:
+  /// **'تم الاعتماد بنجاح.'**
   String get approvalSuccess;
 
   /// No description provided for @rejectionSuccess.
   ///
-  /// In en, this message translates to:
-  /// **'Rejection registered successfully.'**
+  /// In ar, this message translates to:
+  /// **'تم تسجيل الرفض بنجاح.'**
   String get rejectionSuccess;
 
   /// No description provided for @unexpectedError.
   ///
-  /// In en, this message translates to:
-  /// **'An unexpected error occurred.'**
+  /// In ar, this message translates to:
+  /// **'حدث خطأ غير متوقع.'**
   String get unexpectedError;
 
   /// No description provided for @errorLoadingApprovals.
   ///
-  /// In en, this message translates to:
-  /// **'Error loading approvals:'**
+  /// In ar, this message translates to:
+  /// **'خطأ تحميل الاعتمادات:'**
   String get errorLoadingApprovals;
 
   /// No description provided for @noApprovalData.
   ///
-  /// In en, this message translates to:
-  /// **'No approval data for this order.'**
+  /// In ar, this message translates to:
+  /// **'لا توجد بيانات اعتماد لهذا الأمر.'**
   String get noApprovalData;
 
   /// No description provided for @noRegisteredApprovals.
   ///
-  /// In en, this message translates to:
-  /// **'No registered approvals for this order.'**
+  /// In ar, this message translates to:
+  /// **'لا توجد اعتمادات مسجلة لهذا الأمر.'**
   String get noRegisteredApprovals;
 
   /// No description provided for @approvalChain.
   ///
-  /// In en, this message translates to:
-  /// **'Approval Chain:'**
+  /// In ar, this message translates to:
+  /// **'سلسلة الاعتمادات:'**
   String get approvalChain;
 
   /// No description provided for @unknownUser.
   ///
-  /// In en, this message translates to:
-  /// **'Unknown'**
+  /// In ar, this message translates to:
+  /// **'غير معروف'**
   String get unknownUser;
 
   /// No description provided for @dateLabel.
   ///
-  /// In en, this message translates to:
-  /// **'Date:'**
+  /// In ar, this message translates to:
+  /// **'التاريخ:'**
   String get dateLabel;
 
   /// No description provided for @notesLabel.
   ///
-  /// In en, this message translates to:
-  /// **'Notes:'**
+  /// In ar, this message translates to:
+  /// **'الملاحظات:'**
   String get notesLabel;
 
   /// No description provided for @authStatusPending.
   ///
-  /// In en, this message translates to:
-  /// **'Pending'**
+  /// In ar, this message translates to:
+  /// **'قيد الإجراء'**
   String get authStatusPending;
 
   /// No description provided for @authStatusApproved.
   ///
-  /// In en, this message translates to:
-  /// **'Approved'**
+  /// In ar, this message translates to:
+  /// **'معتمد'**
   String get authStatusApproved;
 
   /// No description provided for @authStatusRejected.
   ///
-  /// In en, this message translates to:
-  /// **'Rejected'**
+  /// In ar, this message translates to:
+  /// **'مرفوض'**
   String get authStatusRejected;
 
   /// No description provided for @authStatusUndefined.
   ///
-  /// In en, this message translates to:
-  /// **'Undefined'**
+  /// In ar, this message translates to:
+  /// **'غير محددة'**
   String get authStatusUndefined;
 
   /// No description provided for @errorLoadingServices.
   ///
-  /// In en, this message translates to:
-  /// **'Error loading services:'**
+  /// In ar, this message translates to:
+  /// **'خطأ تحميل الخدمات:'**
   String get errorLoadingServices;
 
   /// No description provided for @noServiceData.
   ///
-  /// In en, this message translates to:
-  /// **'No services for this order.'**
+  /// In ar, this message translates to:
+  /// **'لا توجد خدمات لهذا الأمر.'**
   String get noServiceData;
 
   /// No description provided for @noRegisteredServices.
   ///
-  /// In en, this message translates to:
-  /// **'No registered services for this order.'**
+  /// In ar, this message translates to:
+  /// **'لا توجد خدمات مسجلة لهذا الأمر.'**
   String get noRegisteredServices;
 
   /// No description provided for @service.
   ///
-  /// In en, this message translates to:
-  /// **'Service'**
+  /// In ar, this message translates to:
+  /// **'الخدمة'**
   String get service;
 
   /// No description provided for @unit.
   ///
-  /// In en, this message translates to:
-  /// **'Unit'**
+  /// In ar, this message translates to:
+  /// **'الوحدة'**
   String get unit;
 
   /// No description provided for @quantity.
   ///
-  /// In en, this message translates to:
-  /// **'Quantity'**
+  /// In ar, this message translates to:
+  /// **'كمية'**
   String get quantity;
 
   /// No description provided for @cost.
   ///
-  /// In en, this message translates to:
-  /// **'Cost'**
+  /// In ar, this message translates to:
+  /// **'تكلفة'**
   String get cost;
 
   /// No description provided for @tax.
   ///
-  /// In en, this message translates to:
-  /// **'Tax'**
+  /// In ar, this message translates to:
+  /// **'ضريبة'**
   String get tax;
 
   /// No description provided for @total.
   ///
-  /// In en, this message translates to:
-  /// **'Total'**
+  /// In ar, this message translates to:
+  /// **'إجمالي'**
   String get total;
 
   /// No description provided for @errorLoadingItems.
   ///
-  /// In en, this message translates to:
-  /// **'Error loading items:'**
+  /// In ar, this message translates to:
+  /// **'خطأ تحميل الأصناف:'**
   String get errorLoadingItems;
 
   /// No description provided for @noItemData.
   ///
-  /// In en, this message translates to:
-  /// **'No items for this order.'**
+  /// In ar, this message translates to:
+  /// **'لا توجد أصناف لهذا الأمر.'**
   String get noItemData;
 
   /// No description provided for @noRegisteredItems.
   ///
-  /// In en, this message translates to:
-  /// **'No registered items for this order.'**
+  /// In ar, this message translates to:
+  /// **'لا توجد أصناف مسجلة لهذا الأمر.'**
   String get noRegisteredItems;
 
   /// No description provided for @item.
   ///
-  /// In en, this message translates to:
-  /// **'Item'**
+  /// In ar, this message translates to:
+  /// **'الصنف'**
   String get item;
 
   /// No description provided for @description.
   ///
-  /// In en, this message translates to:
-  /// **'Description'**
+  /// In ar, this message translates to:
+  /// **'الشرح'**
   String get description;
 
   /// No description provided for @price.
   ///
-  /// In en, this message translates to:
-  /// **'Price'**
+  /// In ar, this message translates to:
+  /// **'سعر'**
   String get price;
 
   /// No description provided for @purchaseOrdersTitle.
   ///
-  /// In en, this message translates to:
-  /// **'Purchase Orders'**
+  /// In ar, this message translates to:
+  /// **'أوامر الشراء'**
   String get purchaseOrdersTitle;
 
   /// No description provided for @retry.
   ///
-  /// In en, this message translates to:
-  /// **'Retry'**
+  /// In ar, this message translates to:
+  /// **'إعادة المحاولة'**
   String get retry;
 
   /// No description provided for @noPurchaseOrders.
   ///
-  /// In en, this message translates to:
-  /// **'No purchase orders currently.'**
+  /// In ar, this message translates to:
+  /// **'لا توجد أوامر شراء حاليًا.'**
   String get noPurchaseOrders;
 
   /// No description provided for @refresh.
   ///
-  /// In en, this message translates to:
-  /// **'Refresh'**
+  /// In ar, this message translates to:
+  /// **'تحديث'**
   String get refresh;
 
   /// No description provided for @vacationRequestsTitle.
   ///
-  /// In en, this message translates to:
-  /// **'Vacation Requests'**
+  /// In ar, this message translates to:
+  /// **'طلبات الإجازة'**
   String get vacationRequestsTitle;
 
   /// No description provided for @noVacationRequests.
   ///
-  /// In en, this message translates to:
-  /// **'No vacation requests at the moment.'**
+  /// In ar, this message translates to:
+  /// **'لا توجد طلبات إجازة حالياً.'**
   String get noVacationRequests;
 
   /// No description provided for @vacationRequestDetailsTitle.
   ///
-  /// In en, this message translates to:
-  /// **'Vacation Request Details'**
+  /// In ar, this message translates to:
+  /// **'تفاصيل طلب الإجازة'**
   String get vacationRequestDetailsTitle;
 
   /// No description provided for @noRequestSelected.
   ///
-  /// In en, this message translates to:
-  /// **'No request has been selected.'**
+  /// In ar, this message translates to:
+  /// **'لم يتم تحديد الطلب.'**
   String get noRequestSelected;
 
   /// No description provided for @vacationActionDialogTitle.
   ///
-  /// In en, this message translates to:
-  /// **'Decision on Vacation Request'**
+  /// In ar, this message translates to:
+  /// **'اتخاذ قرار بشأن طلب الإجازة'**
   String get vacationActionDialogTitle;
 
   /// No description provided for @anErrorOccurred.
   ///
-  /// In en, this message translates to:
-  /// **'An error occurred'**
+  /// In ar, this message translates to:
+  /// **'حدث خطأ'**
   String get anErrorOccurred;
 
   /// No description provided for @requestFor.
   ///
-  /// In en, this message translates to:
-  /// **'Request for: {employeeName}'**
+  /// In ar, this message translates to:
+  /// **'طلب  لـ: {employeeName}'**
   String requestFor(Object employeeName);
 
   /// No description provided for @vacationTypeLabel.
   ///
-  /// In en, this message translates to:
-  /// **'Vacation Type:'**
+  /// In ar, this message translates to:
+  /// **'نوع الإجازة:'**
   String get vacationTypeLabel;
 
   /// No description provided for @startDateLabel.
   ///
-  /// In en, this message translates to:
-  /// **'Start Date:'**
+  /// In ar, this message translates to:
+  /// **'تاريخ البداية:'**
   String get startDateLabel;
 
   /// No description provided for @endDateLabel.
   ///
-  /// In en, this message translates to:
-  /// **'End Date:'**
+  /// In ar, this message translates to:
+  /// **'تاريخ النهاية:'**
   String get endDateLabel;
 
   /// No description provided for @durationLabel.
   ///
-  /// In en, this message translates to:
-  /// **'Duration:'**
+  /// In ar, this message translates to:
+  /// **'المدة:'**
   String get durationLabel;
 
   /// No description provided for @daysUnit.
   ///
-  /// In en, this message translates to:
-  /// **'days'**
+  /// In ar, this message translates to:
+  /// **'أيام'**
   String get daysUnit;
 
   /// No description provided for @noRegisteredApprovalsForRequest.
   ///
-  /// In en, this message translates to:
-  /// **'No registered approvals for this request.'**
+  /// In ar, this message translates to:
+  /// **'لا توجد اعتمادات مسجلة لهذا الطلب.'**
   String get noRegisteredApprovalsForRequest;
 
   /// No description provided for @myVacationRequestsTitle.
   ///
-  /// In en, this message translates to:
-  /// **'My Vacation Requests'**
+  /// In ar, this message translates to:
+  /// **'طلبات الإجازة الخاصة بي'**
   String get myVacationRequestsTitle;
 
   /// No description provided for @newRequest.
   ///
-  /// In en, this message translates to:
-  /// **'New Request'**
+  /// In ar, this message translates to:
+  /// **'طلب جديد'**
   String get newRequest;
 
   /// No description provided for @newVacationRequestTitle.
   ///
-  /// In en, this message translates to:
-  /// **'New Vacation Request'**
+  /// In ar, this message translates to:
+  /// **'طلب إجازة جديد'**
   String get newVacationRequestTitle;
 
   /// No description provided for @requestData.
   ///
-  /// In en, this message translates to:
-  /// **'Request Data'**
+  /// In ar, this message translates to:
+  /// **'بيانات الطلب'**
   String get requestData;
 
   /// No description provided for @vacationType.
   ///
-  /// In en, this message translates to:
-  /// **'Vacation Type'**
+  /// In ar, this message translates to:
+  /// **'نوع الإجازة'**
   String get vacationType;
 
   /// No description provided for @vacationTypeAnnual.
   ///
-  /// In en, this message translates to:
-  /// **'Annual'**
+  /// In ar, this message translates to:
+  /// **'سنوية'**
   String get vacationTypeAnnual;
 
   /// No description provided for @vacationTypeRegular.
   ///
-  /// In en, this message translates to:
-  /// **'Regular'**
+  /// In ar, this message translates to:
+  /// **'عادية'**
   String get vacationTypeRegular;
 
   /// No description provided for @vacationTypeUnpaid.
   ///
-  /// In en, this message translates to:
-  /// **'Unpaid'**
+  /// In ar, this message translates to:
+  /// **'بدون مرتب'**
   String get vacationTypeUnpaid;
 
   /// No description provided for @vacationStartDate.
   ///
-  /// In en, this message translates to:
-  /// **'Vacation Start Date'**
+  /// In ar, this message translates to:
+  /// **'تاريخ بداية الإجازة'**
   String get vacationStartDate;
 
   /// No description provided for @vacationEndDate.
   ///
-  /// In en, this message translates to:
-  /// **'Vacation End Date'**
+  /// In ar, this message translates to:
+  /// **'تاريخ نهاية الإجازة'**
   String get vacationEndDate;
 
   /// No description provided for @durationInDays.
   ///
-  /// In en, this message translates to:
-  /// **'Duration (days)'**
+  /// In ar, this message translates to:
+  /// **'المدة (أيام)'**
   String get durationInDays;
 
   /// No description provided for @notes.
   ///
-  /// In en, this message translates to:
-  /// **'Notes'**
+  /// In ar, this message translates to:
+  /// **'الملاحظات'**
   String get notes;
 
   /// No description provided for @saving.
   ///
-  /// In en, this message translates to:
-  /// **'Saving...'**
+  /// In ar, this message translates to:
+  /// **'جاري الحفظ...'**
   String get saving;
 
   /// No description provided for @saveRequest.
   ///
-  /// In en, this message translates to:
-  /// **'Save Request'**
+  /// In ar, this message translates to:
+  /// **'حفظ الطلب'**
   String get saveRequest;
 
   /// No description provided for @selectVacationTypeValidation.
   ///
-  /// In en, this message translates to:
-  /// **'Please select a vacation type'**
+  /// In ar, this message translates to:
+  /// **'الرجاء اختيار نوع الإجازة'**
   String get selectVacationTypeValidation;
 
   /// No description provided for @selectDate.
   ///
-  /// In en, this message translates to:
-  /// **'Select a date'**
+  /// In ar, this message translates to:
+  /// **'اختر تاريخ'**
   String get selectDate;
 
   /// No description provided for @selectDateValidation.
   ///
-  /// In en, this message translates to:
-  /// **'Please select a date'**
+  /// In ar, this message translates to:
+  /// **'الرجاء اختيار التاريخ'**
   String get selectDateValidation;
 
   /// No description provided for @requestSentSuccessfully.
   ///
-  /// In en, this message translates to:
-  /// **'Request sent successfully.'**
+  /// In ar, this message translates to:
+  /// **'تم إرسال الطلب بنجاح.'**
   String get requestSentSuccessfully;
 
   /// No description provided for @vacationRequest.
   ///
-  /// In en, this message translates to:
-  /// **'Vacation Request'**
+  /// In ar, this message translates to:
+  /// **'طلب إجازة'**
   String get vacationRequest;
 
   /// No description provided for @from.
   ///
-  /// In en, this message translates to:
-  /// **'From:'**
+  /// In ar, this message translates to:
+  /// **'من:'**
   String get from;
 
   /// No description provided for @to.
   ///
-  /// In en, this message translates to:
-  /// **'To:'**
+  /// In ar, this message translates to:
+  /// **'إلى:'**
   String get to;
 
   /// No description provided for @requestDateLabel.
   ///
-  /// In en, this message translates to:
-  /// **'Request Date:'**
+  /// In ar, this message translates to:
+  /// **'تاريخ الطلب:'**
   String get requestDateLabel;
 
   /// No description provided for @requestDetails.
   ///
-  /// In en, this message translates to:
-  /// **'Request Details'**
+  /// In ar, this message translates to:
+  /// **'تفاصيل الطلب'**
   String get requestDetails;
 
   /// No description provided for @close.
   ///
-  /// In en, this message translates to:
-  /// **'Close'**
+  /// In ar, this message translates to:
+  /// **'إغلاق'**
   String get close;
 
   /// No description provided for @requestInfo.
   ///
-  /// In en, this message translates to:
-  /// **'Request Information'**
+  /// In ar, this message translates to:
+  /// **'معلومات الطلب'**
   String get requestInfo;
 
   /// No description provided for @fromDate.
   ///
-  /// In en, this message translates to:
-  /// **'From Date'**
+  /// In ar, this message translates to:
+  /// **'من تاريخ'**
   String get fromDate;
 
   /// No description provided for @toDate.
   ///
-  /// In en, this message translates to:
-  /// **'To Date'**
+  /// In ar, this message translates to:
+  /// **'إلى تاريخ'**
   String get toDate;
 
   /// No description provided for @loanRequestsTitle.
   ///
-  /// In en, this message translates to:
-  /// **'Loan Requests'**
+  /// In ar, this message translates to:
+  /// **'طلبات السلف'**
   String get loanRequestsTitle;
 
   /// No description provided for @noLoanRequests.
   ///
-  /// In en, this message translates to:
-  /// **'No loan requests at the moment.'**
+  /// In ar, this message translates to:
+  /// **'لا توجد طلبات سلف حالياً.'**
   String get noLoanRequests;
 
   /// No description provided for @loanRequestDetailsTitle.
   ///
-  /// In en, this message translates to:
-  /// **'Loan Request Details'**
+  /// In ar, this message translates to:
+  /// **'تفاصيل طلب السلفة'**
   String get loanRequestDetailsTitle;
 
   /// No description provided for @loanActionDialogTitle.
   ///
-  /// In en, this message translates to:
-  /// **'Decision on Loan Request'**
+  /// In ar, this message translates to:
+  /// **'اتخاذ قرار بشأن طلب السلفة'**
   String get loanActionDialogTitle;
 
   /// No description provided for @requestForLoan.
   ///
-  /// In en, this message translates to:
-  /// **'Loan request for: {employeeName}'**
+  /// In ar, this message translates to:
+  /// **'طلب سلفة لـ: {employeeName}'**
   String requestForLoan(Object employeeName);
 
   /// No description provided for @loanTypeLabel.
   ///
-  /// In en, this message translates to:
-  /// **'Loan Type:'**
+  /// In ar, this message translates to:
+  /// **'نوع السلفة:'**
   String get loanTypeLabel;
 
   /// No description provided for @descriptionLabel.
   ///
-  /// In en, this message translates to:
-  /// **'Description:'**
+  /// In ar, this message translates to:
+  /// **'الوصف:'**
   String get descriptionLabel;
 
   /// No description provided for @loanStartDateLabel.
   ///
-  /// In en, this message translates to:
-  /// **'Start Date:'**
+  /// In ar, this message translates to:
+  /// **'تاريخ البدء:'**
   String get loanStartDateLabel;
 
   /// No description provided for @myLoanRequestsTitle.
   ///
-  /// In en, this message translates to:
-  /// **'My Loan Requests'**
+  /// In ar, this message translates to:
+  /// **'طلبات السلف الخاصة بي'**
   String get myLoanRequestsTitle;
 
   /// No description provided for @newLoanRequestTitle.
   ///
-  /// In en, this message translates to:
-  /// **'New Loan Request'**
+  /// In ar, this message translates to:
+  /// **'طلب سلفة جديد'**
   String get newLoanRequestTitle;
 
   /// No description provided for @loanType.
   ///
-  /// In en, this message translates to:
-  /// **'Loan Type'**
+  /// In ar, this message translates to:
+  /// **'نوع السلفة'**
   String get loanType;
 
   /// No description provided for @totalLoanAmount.
   ///
-  /// In en, this message translates to:
-  /// **'Total Loan Amount'**
+  /// In ar, this message translates to:
+  /// **'إجمالي السلفة'**
   String get totalLoanAmount;
 
   /// No description provided for @installmentsCount.
   ///
-  /// In en, this message translates to:
-  /// **'Number of Installments'**
+  /// In ar, this message translates to:
+  /// **'عدد الأقساط'**
   String get installmentsCount;
 
   /// No description provided for @installmentValue.
   ///
-  /// In en, this message translates to:
-  /// **'Installment Value'**
+  /// In ar, this message translates to:
+  /// **'قيمة القسط'**
   String get installmentValue;
 
   /// No description provided for @repaymentStartDate.
   ///
-  /// In en, this message translates to:
-  /// **'Repayment Start Date'**
+  /// In ar, this message translates to:
+  /// **'تاريخ بداية السداد'**
   String get repaymentStartDate;
 
   /// No description provided for @selectLoanTypeValidation.
   ///
-  /// In en, this message translates to:
-  /// **'Please select a loan type'**
+  /// In ar, this message translates to:
+  /// **'الرجاء اختيار نوع السلفة'**
   String get selectLoanTypeValidation;
 
   /// No description provided for @fieldRequiredValidation.
   ///
-  /// In en, this message translates to:
-  /// **'This field is required'**
+  /// In ar, this message translates to:
+  /// **'هذا الحقل مطلوب'**
   String get fieldRequiredValidation;
 
   /// No description provided for @loanRequestSentSuccessfully.
   ///
-  /// In en, this message translates to:
-  /// **'Loan request sent successfully.'**
+  /// In ar, this message translates to:
+  /// **'تم إرسال الطلب بنجاح.'**
   String get loanRequestSentSuccessfully;
 
   /// No description provided for @loanRequest.
   ///
-  /// In en, this message translates to:
-  /// **'Loan Request'**
+  /// In ar, this message translates to:
+  /// **'طلب سلفة'**
   String get loanRequest;
 
   /// No description provided for @loanValueLabel.
   ///
-  /// In en, this message translates to:
-  /// **'Loan Value:'**
+  /// In ar, this message translates to:
+  /// **'قيمة السلفة:'**
   String get loanValueLabel;
 
   /// No description provided for @installmentValueLabel.
   ///
-  /// In en, this message translates to:
-  /// **'Installment Value:'**
+  /// In ar, this message translates to:
+  /// **'قيمة القسط:'**
   String get installmentValueLabel;
 
   /// No description provided for @installmentsCountLabel.
   ///
-  /// In en, this message translates to:
-  /// **'Installments Count:'**
+  /// In ar, this message translates to:
+  /// **'عدد الأقساط:'**
   String get installmentsCountLabel;
 
   /// No description provided for @repaymentDateLabel.
   ///
-  /// In en, this message translates to:
-  /// **'Repayment Date:'**
+  /// In ar, this message translates to:
+  /// **'تاريخ السداد:'**
   String get repaymentDateLabel;
 
   /// No description provided for @resignationRequestsTitle.
   ///
-  /// In en, this message translates to:
-  /// **'Resignation Requests'**
+  /// In ar, this message translates to:
+  /// **'طلبات الاستقالة'**
   String get resignationRequestsTitle;
 
   /// No description provided for @noResignationRequests.
   ///
-  /// In en, this message translates to:
-  /// **'No resignation requests at the moment.'**
+  /// In ar, this message translates to:
+  /// **'لا توجد طلبات استقالة حالياً.'**
   String get noResignationRequests;
 
   /// No description provided for @resignationRequestDetailsTitle.
   ///
-  /// In en, this message translates to:
-  /// **'Resignation Request Details'**
+  /// In ar, this message translates to:
+  /// **'تفاصيل طلب الاستقالة'**
   String get resignationRequestDetailsTitle;
 
   /// No description provided for @resignationActionDialogTitle.
   ///
-  /// In en, this message translates to:
-  /// **'Decision on Resignation Request'**
+  /// In ar, this message translates to:
+  /// **'اتخاذ قرار بشأن طلب الاستقالة'**
   String get resignationActionDialogTitle;
 
   /// No description provided for @requestForResignation.
   ///
-  /// In en, this message translates to:
-  /// **'Resignation request for: {employeeName}'**
+  /// In ar, this message translates to:
+  /// **'طلب استقالة لـ: {employeeName}'**
   String requestForResignation(Object employeeName);
 
   /// No description provided for @serviceEndDateLabel.
   ///
-  /// In en, this message translates to:
-  /// **'Service End Date:'**
+  /// In ar, this message translates to:
+  /// **'تاريخ نهاية الخدمة:'**
   String get serviceEndDateLabel;
 
   /// No description provided for @lastWorkDayLabel.
   ///
-  /// In en, this message translates to:
-  /// **'Last Work Day:'**
+  /// In ar, this message translates to:
+  /// **'آخر يوم عمل:'**
   String get lastWorkDayLabel;
 
   /// No description provided for @reasonsLabel.
   ///
-  /// In en, this message translates to:
-  /// **'Reason'**
+  /// In ar, this message translates to:
+  /// **'السبب'**
   String get reasonsLabel;
 
   /// No description provided for @myResignationRequestsTitle.
   ///
-  /// In en, this message translates to:
-  /// **'My Resignation Requests'**
+  /// In ar, this message translates to:
+  /// **'طلبات الاستقالة الخاصة بي'**
   String get myResignationRequestsTitle;
 
   /// No description provided for @newResignationRequestTitle.
   ///
-  /// In en, this message translates to:
-  /// **'New Resignation Request'**
+  /// In ar, this message translates to:
+  /// **'طلب استقالة جديد'**
   String get newResignationRequestTitle;
 
   /// No description provided for @resignationEndDate.
   ///
-  /// In en, this message translates to:
-  /// **'Resignation Date (End of Service)'**
+  /// In ar, this message translates to:
+  /// **'تاريخ نهاية العمل (الاستقالة)'**
   String get resignationEndDate;
 
   /// No description provided for @lastWorkDate.
   ///
-  /// In en, this message translates to:
-  /// **'Last Work Date'**
+  /// In ar, this message translates to:
+  /// **'تاريخ آخر يوم عمل'**
   String get lastWorkDate;
 
   /// No description provided for @reasonsForLeaving.
   ///
-  /// In en, this message translates to:
-  /// **'Reasons for Leaving'**
+  /// In ar, this message translates to:
+  /// **'أسباب ترك العمل'**
   String get reasonsForLeaving;
 
   /// No description provided for @resignationRequest.
   ///
-  /// In en, this message translates to:
-  /// **'Resignation Request'**
+  /// In ar, this message translates to:
+  /// **'طلب استقالة'**
   String get resignationRequest;
 
   /// No description provided for @resignationDateLabel.
   ///
-  /// In en, this message translates to:
-  /// **'Resignation Date:'**
+  /// In ar, this message translates to:
+  /// **'تاريخ الاستقالة:'**
   String get resignationDateLabel;
 
   /// No description provided for @resignationRequestSentSuccessfully.
   ///
-  /// In en, this message translates to:
-  /// **'Resignation request sent successfully.'**
+  /// In ar, this message translates to:
+  /// **'تم إرسال طلب الاستقالة بنجاح.'**
   String get resignationRequestSentSuccessfully;
 
   /// No description provided for @attendanceAndDeparture.
   ///
-  /// In en, this message translates to:
-  /// **'Attendance & Departure'**
+  /// In ar, this message translates to:
+  /// **'الحضور والإنصراف'**
   String get attendanceAndDeparture;
 
   /// No description provided for @newRecord.
   ///
-  /// In en, this message translates to:
-  /// **'New'**
+  /// In ar, this message translates to:
+  /// **'جديد'**
   String get newRecord;
 
   /// No description provided for @checkIn.
   ///
-  /// In en, this message translates to:
-  /// **'Check In'**
+  /// In ar, this message translates to:
+  /// **'تسجيل حضور'**
   String get checkIn;
 
   /// No description provided for @checkOut.
   ///
-  /// In en, this message translates to:
-  /// **'Check Out'**
+  /// In ar, this message translates to:
+  /// **'تسجيل انصراف'**
   String get checkOut;
 
   /// No description provided for @newRecordDialogTitle.
   ///
-  /// In en, this message translates to:
-  /// **'New Record'**
+  /// In ar, this message translates to:
+  /// **'تسجيل جديد'**
   String get newRecordDialogTitle;
 
   /// No description provided for @ok.
   ///
-  /// In en, this message translates to:
-  /// **'OK'**
+  /// In ar, this message translates to:
+  /// **'موافق'**
   String get ok;
 
   /// No description provided for @checkInSuccess.
   ///
-  /// In en, this message translates to:
-  /// **'Check-in recorded successfully.'**
+  /// In ar, this message translates to:
+  /// **'تم تسجيل الحضور بنجاح.'**
   String get checkInSuccess;
 
   /// No description provided for @checkOutSuccess.
   ///
-  /// In en, this message translates to:
-  /// **'Check-out recorded successfully.'**
+  /// In ar, this message translates to:
+  /// **'تم تسجيل الانصراف بنجاح.'**
   String get checkOutSuccess;
 
   /// No description provided for @errorOccurred.
   ///
-  /// In en, this message translates to:
-  /// **'An Error Occurred'**
+  /// In ar, this message translates to:
+  /// **'حدث خطأ'**
   String get errorOccurred;
 
   /// No description provided for @attendanceLog.
   ///
-  /// In en, this message translates to:
-  /// **'Attendance Log'**
+  /// In ar, this message translates to:
+  /// **'سجل الحضور'**
   String get attendanceLog;
 
   /// No description provided for @viewMonthlyLog.
   ///
-  /// In en, this message translates to:
-  /// **'View monthly attendance log'**
+  /// In ar, this message translates to:
+  /// **'عرض سجل الحضور والانصراف الشهري'**
   String get viewMonthlyLog;
 
   /// No description provided for @checkedAttendance.
   ///
-  /// In en, this message translates to:
-  /// **'Checked Attendance'**
+  /// In ar, this message translates to:
+  /// **'الحضور الذي تم التحقق منه'**
   String get checkedAttendance;
 
   /// No description provided for @viewCheckedLog.
   ///
-  /// In en, this message translates to:
-  /// **'View checked attendance sheet'**
+  /// In ar, this message translates to:
+  /// **'عرض كشف الحضور بعد المراجعة'**
   String get viewCheckedLog;
 
   /// No description provided for @attendanceLogTitle.
   ///
-  /// In en, this message translates to:
-  /// **'Attendance Log'**
+  /// In ar, this message translates to:
+  /// **'سجل الحضور'**
   String get attendanceLogTitle;
 
   /// No description provided for @noAttendanceLogAvailable.
   ///
-  /// In en, this message translates to:
-  /// **'No attendance log available.'**
+  /// In ar, this message translates to:
+  /// **'لا يوجد سجل حضور متاح.'**
   String get noAttendanceLogAvailable;
 
   /// No description provided for @detailsLinkNotAvailable.
   ///
-  /// In en, this message translates to:
-  /// **'Details link is not available for this month.'**
+  /// In ar, this message translates to:
+  /// **'رابط التفاصيل غير متاح لهذا الشهر.'**
   String get detailsLinkNotAvailable;
 
   /// No description provided for @noDataForThisMonth.
   ///
-  /// In en, this message translates to:
-  /// **'No attendance data for this month.'**
+  /// In ar, this message translates to:
+  /// **'لا توجد بيانات حضور لهذا الشهر.'**
   String get noDataForThisMonth;
 
   /// No description provided for @noRecordsForThisDay.
   ///
-  /// In en, this message translates to:
-  /// **'No records for this day.'**
+  /// In ar, this message translates to:
+  /// **'لا توجد سجلات لهذا اليوم.'**
   String get noRecordsForThisDay;
 
   /// No description provided for @checkInLabel.
   ///
-  /// In en, this message translates to:
-  /// **'In:'**
+  /// In ar, this message translates to:
+  /// **'دخول:'**
   String get checkInLabel;
 
   /// No description provided for @checkOutLabel.
   ///
-  /// In en, this message translates to:
-  /// **'Out:'**
+  /// In ar, this message translates to:
+  /// **'خروج:'**
   String get checkOutLabel;
 
   /// No description provided for @checkedAttendanceLogTitle.
   ///
-  /// In en, this message translates to:
-  /// **'Checked Attendance Sheet'**
+  /// In ar, this message translates to:
+  /// **'كشف الحضور المعتمد'**
   String get checkedAttendanceLogTitle;
 
   /// No description provided for @noCheckedLogAvailable.
   ///
-  /// In en, this message translates to:
-  /// **'No checked sheets available.'**
+  /// In ar, this message translates to:
+  /// **'لا يوجد كشوفات معتمدة متاحة.'**
   String get noCheckedLogAvailable;
 
   /// No description provided for @noDetailsForThisSheet.
   ///
-  /// In en, this message translates to:
-  /// **'No details for this sheet.'**
+  /// In ar, this message translates to:
+  /// **'لا توجد تفاصيل لهذا الكشف.'**
   String get noDetailsForThisSheet;
 
   /// No description provided for @date.
   ///
-  /// In en, this message translates to:
-  /// **'Date'**
+  /// In ar, this message translates to:
+  /// **'التاريخ'**
   String get date;
 
   /// No description provided for @day.
   ///
-  /// In en, this message translates to:
-  /// **'Day'**
+  /// In ar, this message translates to:
+  /// **'اليوم'**
   String get day;
 
   /// No description provided for @entry.
   ///
-  /// In en, this message translates to:
-  /// **'Entry'**
+  /// In ar, this message translates to:
+  /// **'الدخول'**
   String get entry;
 
   /// No description provided for @exit.
   ///
-  /// In en, this message translates to:
-  /// **'Exit'**
+  /// In ar, this message translates to:
+  /// **'الخروج'**
   String get exit;
 
   /// No description provided for @delayInMinutes.
   ///
-  /// In en, this message translates to:
-  /// **'Delay(m)'**
+  /// In ar, this message translates to:
+  /// **'التأخير(د)'**
   String get delayInMinutes;
 
   /// No description provided for @status.
   ///
-  /// In en, this message translates to:
-  /// **'Status'**
+  /// In ar, this message translates to:
+  /// **'الحالة'**
   String get status;
 
   /// No description provided for @weekend.
   ///
-  /// In en, this message translates to:
-  /// **'Weekend'**
+  /// In ar, this message translates to:
+  /// **'نهاية أسبوع'**
   String get weekend;
 
   /// No description provided for @absence.
   ///
-  /// In en, this message translates to:
-  /// **'Absence'**
+  /// In ar, this message translates to:
+  /// **'غياب'**
   String get absence;
 
   /// No description provided for @vacation.
   ///
-  /// In en, this message translates to:
-  /// **'Vacation'**
+  /// In ar, this message translates to:
+  /// **'إجازة'**
   String get vacation;
 
   /// No description provided for @permissionInfo.
   ///
-  /// In en, this message translates to:
-  /// **'Permission Requests'**
+  /// In ar, this message translates to:
+  /// **'طلبات الأذونات'**
   String get permissionInfo;
 
   /// No description provided for @noPermissionRequests.
   ///
-  /// In en, this message translates to:
-  /// **'No permission requests found.'**
+  /// In ar, this message translates to:
+  /// **'لا توجد طلبات أذونات حالياً.'**
   String get noPermissionRequests;
 
   /// No description provided for @newPermissionRequest.
   ///
-  /// In en, this message translates to:
-  /// **'New Permission Request'**
+  /// In ar, this message translates to:
+  /// **'طلب إذن جديد'**
   String get newPermissionRequest;
 
   /// No description provided for @permissionRequestDetails.
   ///
-  /// In en, this message translates to:
-  /// **'Permission Request Details'**
+  /// In ar, this message translates to:
+  /// **'تفاصيل طلب الإذن'**
   String get permissionRequestDetails;
 
   /// No description provided for @permissionTypeLabel.
   ///
-  /// In en, this message translates to:
-  /// **'Permission Type'**
+  /// In ar, this message translates to:
+  /// **'نوع الإذن'**
   String get permissionTypeLabel;
 
   /// No description provided for @reasonTypeLabel.
   ///
-  /// In en, this message translates to:
-  /// **'Reason Type'**
+  /// In ar, this message translates to:
+  /// **'نوع السبب'**
   String get reasonTypeLabel;
 
   /// No description provided for @permissionDateLabel.
   ///
-  /// In en, this message translates to:
-  /// **'Permission Date'**
+  /// In ar, this message translates to:
+  /// **'تاريخ الإذن'**
   String get permissionDateLabel;
 
   /// No description provided for @fromTimeLabel.
   ///
-  /// In en, this message translates to:
-  /// **'From Time'**
+  /// In ar, this message translates to:
+  /// **'من وقت'**
   String get fromTimeLabel;
 
   /// No description provided for @toTimeLabel.
   ///
-  /// In en, this message translates to:
-  /// **'To Time'**
+  /// In ar, this message translates to:
+  /// **'إلى وقت'**
   String get toTimeLabel;
 
   /// No description provided for @permissionTimeLabel.
   ///
-  /// In en, this message translates to:
-  /// **'Time'**
+  /// In ar, this message translates to:
+  /// **'الوقت'**
   String get permissionTimeLabel;
 
   /// No description provided for @selectPermissionTypeValidation.
   ///
-  /// In en, this message translates to:
-  /// **'Please select a permission type'**
+  /// In ar, this message translates to:
+  /// **'الرجاء اختيار نوع الإذن'**
   String get selectPermissionTypeValidation;
 
   /// No description provided for @selectReasonTypeValidation.
   ///
-  /// In en, this message translates to:
-  /// **'Please select a reason type'**
+  /// In ar, this message translates to:
+  /// **'الرجاء اختيار نوع السبب'**
   String get selectReasonTypeValidation;
 
   /// No description provided for @selectPermissionDateValidation.
   ///
-  /// In en, this message translates to:
-  /// **'Please select a permission date'**
+  /// In ar, this message translates to:
+  /// **'الرجاء اختيار تاريخ الإذن'**
   String get selectPermissionDateValidation;
 
   /// No description provided for @selectFromTimeValidation.
   ///
-  /// In en, this message translates to:
-  /// **'Please select a start time'**
+  /// In ar, this message translates to:
+  /// **'الرجاء اختيار وقت البدء'**
   String get selectFromTimeValidation;
 
   /// No description provided for @selectToTimeValidation.
   ///
-  /// In en, this message translates to:
-  /// **'Please select an end time'**
+  /// In ar, this message translates to:
+  /// **'الرجاء اختيار وقت الانتهاء'**
   String get selectToTimeValidation;
 
   /// No description provided for @permissionRequestSentSuccessfully.
   ///
-  /// In en, this message translates to:
-  /// **'Permission request sent successfully.'**
+  /// In ar, this message translates to:
+  /// **'تم إرسال طلب الإذن بنجاح.'**
   String get permissionRequestSentSuccessfully;
 
   /// No description provided for @timeValidationError.
   ///
-  /// In en, this message translates to:
-  /// **'End time must be after start time.'**
+  /// In ar, this message translates to:
+  /// **'وقت النهاية يجب أن يكون بعد وقت البداية.'**
   String get timeValidationError;
 
   /// No description provided for @permissionType1.
   ///
-  /// In en, this message translates to:
-  /// **'Permission'**
+  /// In ar, this message translates to:
+  /// **'استئذان'**
   String get permissionType1;
 
   /// No description provided for @permissionType2.
   ///
-  /// In en, this message translates to:
-  /// **'Forgot Check-in'**
+  /// In ar, this message translates to:
+  /// **'نسيان بصمة حضور'**
   String get permissionType2;
 
   /// No description provided for @permissionType3.
   ///
-  /// In en, this message translates to:
-  /// **'Forgot Check-out'**
+  /// In ar, this message translates to:
+  /// **'نسيان بصمة انصراف'**
   String get permissionType3;
 
   /// No description provided for @permissionType4.
   ///
-  /// In en, this message translates to:
-  /// **'External Work Mission'**
+  /// In ar, this message translates to:
+  /// **'مهمة عمل خارجي'**
   String get permissionType4;
 
   /// No description provided for @reasonType1.
   ///
-  /// In en, this message translates to:
-  /// **'Private'**
+  /// In ar, this message translates to:
+  /// **'خاصة'**
   String get reasonType1;
 
   /// No description provided for @reasonType2.
   ///
-  /// In en, this message translates to:
-  /// **'Emergency'**
+  /// In ar, this message translates to:
+  /// **'طارئة'**
   String get reasonType2;
 
   /// No description provided for @reasonType3.
   ///
-  /// In en, this message translates to:
-  /// **'Other'**
+  /// In ar, this message translates to:
+  /// **'اخري'**
   String get reasonType3;
 
   /// No description provided for @actionSuccess.
   ///
-  /// In en, this message translates to:
-  /// **'Action successful'**
+  /// In ar, this message translates to:
+  /// **'تم الإجراء بنجاح'**
   String get actionSuccess;
 
   /// No description provided for @actionFailed.
   ///
-  /// In en, this message translates to:
-  /// **'Action failed'**
+  /// In ar, this message translates to:
+  /// **'فشل تنفيذ الإجراء'**
   String get actionFailed;
 
   /// No description provided for @notesOptional.
   ///
-  /// In en, this message translates to:
-  /// **'Notes (Optional)'**
+  /// In ar, this message translates to:
+  /// **'ملاحظات (اختياري)'**
   String get notesOptional;
 
   /// No description provided for @noDataAvailable.
   ///
-  /// In en, this message translates to:
-  /// **'No Data Available'**
+  /// In ar, this message translates to:
+  /// **'لا توجد بيانات'**
   String get noDataAvailable;
 
   /// No description provided for @sendRequest.
   ///
-  /// In en, this message translates to:
-  /// **'Send Request'**
+  /// In ar, this message translates to:
+  /// **'إرسال الطلب'**
   String get sendRequest;
 
   /// No description provided for @selectTime.
   ///
-  /// In en, this message translates to:
-  /// **'Select Time'**
+  /// In ar, this message translates to:
+  /// **'اختر الوقت'**
   String get selectTime;
 
   /// No description provided for @resumeWorkInfo.
   ///
-  /// In en, this message translates to:
-  /// **'Resume Work Requests'**
+  /// In ar, this message translates to:
+  /// **'طلبات مباشرة العمل'**
   String get resumeWorkInfo;
 
   /// No description provided for @noResumeWorkRequests.
   ///
-  /// In en, this message translates to:
-  /// **'No resume work requests found.'**
+  /// In ar, this message translates to:
+  /// **'لا توجد طلبات مباشرة عمل حالياً.'**
   String get noResumeWorkRequests;
 
   /// No description provided for @newResumeWorkRequest.
   ///
-  /// In en, this message translates to:
-  /// **'New Resume Work Request'**
+  /// In ar, this message translates to:
+  /// **'طلب مباشرة عمل جديد'**
   String get newResumeWorkRequest;
 
   /// No description provided for @resumeWorkRequestDetails.
   ///
-  /// In en, this message translates to:
-  /// **'Resume Work Request Details'**
+  /// In ar, this message translates to:
+  /// **'تفاصيل طلب مباشرة العمل'**
   String get resumeWorkRequestDetails;
 
   /// No description provided for @resumeWorkDate.
   ///
-  /// In en, this message translates to:
-  /// **'Resumption Date'**
+  /// In ar, this message translates to:
+  /// **'تاريخ مباشرة العمل'**
   String get resumeWorkDate;
 
   /// No description provided for @delayReason.
   ///
-  /// In en, this message translates to:
-  /// **'Reason for Delay'**
+  /// In ar, this message translates to:
+  /// **'سبب التأخير'**
   String get delayReason;
 
   /// No description provided for @selectStartDate.
   ///
-  /// In en, this message translates to:
-  /// **'Please select vacation start date'**
+  /// In ar, this message translates to:
+  /// **'الرجاء اختيار تاريخ بدء الإجازة'**
   String get selectStartDate;
 
   /// No description provided for @selectEndDate.
   ///
-  /// In en, this message translates to:
-  /// **'Please select vacation end date'**
+  /// In ar, this message translates to:
+  /// **'الرجاء اختيار تاريخ نهاية الإجازة'**
   String get selectEndDate;
 
   /// No description provided for @selectResumeDate.
   ///
-  /// In en, this message translates to:
-  /// **'Please select resumption date'**
+  /// In ar, this message translates to:
+  /// **'الرجاء اختيار تاريخ مباشرة العمل'**
   String get selectResumeDate;
 
   /// No description provided for @resumeWorkRequestSentSuccessfully.
   ///
-  /// In en, this message translates to:
-  /// **'Resume work request sent successfully.'**
+  /// In ar, this message translates to:
+  /// **'تم إرسال طلب مباشرة العمل بنجاح.'**
   String get resumeWorkRequestSentSuccessfully;
 
   /// No description provided for @endDateAfterStartDateError.
   ///
-  /// In en, this message translates to:
-  /// **'End date must be after start date.'**
+  /// In ar, this message translates to:
+  /// **'تاريخ النهاية يجب أن يكون بعد تاريخ البدء.'**
   String get endDateAfterStartDateError;
 
   /// No description provided for @resumeDateAfterStartDateError.
   ///
-  /// In en, this message translates to:
-  /// **'Resumption date must be after start date.'**
+  /// In ar, this message translates to:
+  /// **'تاريخ المباشرة يجب أن يكون بعد تاريخ بدء الإجازة.'**
   String get resumeDateAfterStartDateError;
 
   /// No description provided for @componyCode.
   ///
-  /// In en, this message translates to:
-  /// **'Company Code'**
+  /// In ar, this message translates to:
+  /// **'كود الشركة'**
   String get componyCode;
 
   /// No description provided for @dCode.
   ///
-  /// In en, this message translates to:
-  /// **'organizational structure number'**
+  /// In ar, this message translates to:
+  /// **'رقم الهيكل الإداري'**
   String get dCode;
 
   /// No description provided for @resumeWorkActionDialogTitle.
   ///
-  /// In en, this message translates to:
-  /// **'Decision on Resume Work Request'**
+  /// In ar, this message translates to:
+  /// **'اتخاذ قرار بشأن مباشرة العمل'**
   String get resumeWorkActionDialogTitle;
 
   /// No description provided for @employeeTransferInfo.
   ///
-  /// In en, this message translates to:
-  /// **'Employee Transfer Requests'**
+  /// In ar, this message translates to:
+  /// **'طلبات نقل موظف'**
   String get employeeTransferInfo;
 
   /// No description provided for @noEmployeeTransferRequests.
   ///
-  /// In en, this message translates to:
-  /// **'No employee transfer requests found.'**
+  /// In ar, this message translates to:
+  /// **'لا توجد طلبات نقل حالياً.'**
   String get noEmployeeTransferRequests;
 
   /// No description provided for @newEmployeeTransferRequest.
   ///
-  /// In en, this message translates to:
-  /// **'New Transfer Request'**
+  /// In ar, this message translates to:
+  /// **'طلب نقل جديد'**
   String get newEmployeeTransferRequest;
 
   /// No description provided for @employeeTransferRequestDetails.
   ///
-  /// In en, this message translates to:
-  /// **'Transfer Request Details'**
+  /// In ar, this message translates to:
+  /// **'تفاصيل طلب النقل'**
   String get employeeTransferRequestDetails;
 
   /// No description provided for @transferDate.
   ///
-  /// In en, this message translates to:
-  /// **'Transfer Date'**
+  /// In ar, this message translates to:
+  /// **'تاريخ النقل'**
   String get transferDate;
 
   /// No description provided for @newCompanyCode.
   ///
-  /// In en, this message translates to:
-  /// **'New Company Code'**
+  /// In ar, this message translates to:
+  /// **'كود الشركة الجديد'**
   String get newCompanyCode;
 
   /// No description provided for @newDCode.
   ///
-  /// In en, this message translates to:
-  /// **'New Department Code'**
+  /// In ar, this message translates to:
+  /// **'كود الإدارة الجديد'**
   String get newDCode;
 
   /// No description provided for @newManagerCode.
   ///
-  /// In en, this message translates to:
-  /// **'New Manager Code'**
+  /// In ar, this message translates to:
+  /// **'كود المدير الجديد'**
   String get newManagerCode;
 
   /// No description provided for @transferNotesAr.
   ///
-  /// In en, this message translates to:
-  /// **'Transfer Notes (Arabic)'**
+  /// In ar, this message translates to:
+  /// **'ملاحظات النقل (عربي)'**
   String get transferNotesAr;
 
   /// No description provided for @transferNotesEn.
   ///
-  /// In en, this message translates to:
-  /// **'Transfer Notes (English)'**
+  /// In ar, this message translates to:
+  /// **'ملاحظات النقل (إنجليزي)'**
   String get transferNotesEn;
 
   /// No description provided for @selectTransferDate.
   ///
-  /// In en, this message translates to:
-  /// **'Please select the transfer date'**
+  /// In ar, this message translates to:
+  /// **'الرجاء اختيار تاريخ النقل'**
   String get selectTransferDate;
 
   /// No description provided for @employeeTransferRequestSentSuccessfully.
   ///
-  /// In en, this message translates to:
-  /// **'Transfer request sent successfully.'**
+  /// In ar, this message translates to:
+  /// **'تم إرسال طلب النقل بنجاح.'**
   String get employeeTransferRequestSentSuccessfully;
 
   /// No description provided for @numericFieldsError.
   ///
-  /// In en, this message translates to:
-  /// **'Please enter valid numbers in code fields.'**
+  /// In ar, this message translates to:
+  /// **'الرجاء إدخال أرقام صحيحة في حقول الأكواد.'**
   String get numericFieldsError;
 
   /// No description provided for @fieldRequired.
   ///
-  /// In en, this message translates to:
-  /// **'This field is required'**
+  /// In ar, this message translates to:
+  /// **'هذا الحقل مطلوب'**
   String get fieldRequired;
 
   /// No description provided for @employeeTransferActionDialogTitle.
   ///
-  /// In en, this message translates to:
-  /// **'Decision on Transfer Employee Request'**
+  /// In ar, this message translates to:
+  /// **'اتخاذ قرار بشأن نقل الموظف'**
   String get employeeTransferActionDialogTitle;
 
   /// No description provided for @selectCompany.
   ///
-  /// In en, this message translates to:
-  /// **'Select Company'**
+  /// In ar, this message translates to:
+  /// **'اختر الشركة'**
   String get selectCompany;
 
   /// No description provided for @selectDepartment.
   ///
-  /// In en, this message translates to:
-  /// **'Select Department'**
+  /// In ar, this message translates to:
+  /// **'اختر الإدارة'**
   String get selectDepartment;
 
   /// No description provided for @carMovementInfo.
   ///
-  /// In en, this message translates to:
-  /// **'Car Movement Requests'**
+  /// In ar, this message translates to:
+  /// **'طلبات تحريك سيارة'**
   String get carMovementInfo;
 
   /// No description provided for @noCarMovementRequests.
   ///
-  /// In en, this message translates to:
-  /// **'No car movement requests found.'**
+  /// In ar, this message translates to:
+  /// **'لا توجد طلبات تحريك سيارة حالياً.'**
   String get noCarMovementRequests;
 
   /// No description provided for @newCarMovementRequest.
   ///
-  /// In en, this message translates to:
-  /// **'New Car Movement Request'**
+  /// In ar, this message translates to:
+  /// **'طلب تحريك سيارة جديد'**
   String get newCarMovementRequest;
 
   /// No description provided for @carMovementRequestDetails.
   ///
-  /// In en, this message translates to:
-  /// **'Car Movement Request Details'**
+  /// In ar, this message translates to:
+  /// **'تفاصيل طلب تحريك السيارة'**
   String get carMovementRequestDetails;
 
   /// No description provided for @carNoLabel.
   ///
-  /// In en, this message translates to:
-  /// **'Car Number'**
+  /// In ar, this message translates to:
+  /// **'رقم السيارة'**
   String get carNoLabel;
 
   /// No description provided for @selectCarNoValidation.
   ///
-  /// In en, this message translates to:
-  /// **'Please enter the car number'**
+  /// In ar, this message translates to:
+  /// **'الرجاء إدخال رقم السيارة'**
   String get selectCarNoValidation;
 
   /// No description provided for @carMovementRequestSentSuccessfully.
   ///
-  /// In en, this message translates to:
-  /// **'Car movement request sent successfully.'**
+  /// In ar, this message translates to:
+  /// **'تم إرسال طلب تحريك السيارة بنجاح.'**
   String get carMovementRequestSentSuccessfully;
 
   /// No description provided for @carMovementTimeLabel.
   ///
-  /// In en, this message translates to:
-  /// **'Movement Time'**
+  /// In ar, this message translates to:
+  /// **'وقت التحرك'**
   String get carMovementTimeLabel;
 
   /// No description provided for @carMovementDateLabel.
   ///
-  /// In en, this message translates to:
-  /// **'Movement Date'**
+  /// In ar, this message translates to:
+  /// **'تاريخ التحرك'**
   String get carMovementDateLabel;
 
   /// No description provided for @selectCarMovementDateValidation.
   ///
-  /// In en, this message translates to:
-  /// **'Please select the movement date'**
+  /// In ar, this message translates to:
+  /// **'الرجاء اختيار تاريخ التحرك'**
   String get selectCarMovementDateValidation;
 
   /// No description provided for @carMovementActionDialogTitle.
   ///
-  /// In en, this message translates to:
-  /// **'Decision on Car Movement Request'**
+  /// In ar, this message translates to:
+  /// **'اتخاذ قرار بشأن تحريك سيارة'**
   String get carMovementActionDialogTitle;
 
   /// No description provided for @salaryConfirmationInfo.
   ///
-  /// In en, this message translates to:
-  /// **'Salary Confirmation Requests'**
+  /// In ar, this message translates to:
+  /// **'طلبات تثبيت راتب'**
   String get salaryConfirmationInfo;
 
   /// No description provided for @noSalaryConfirmationRequests.
   ///
-  /// In en, this message translates to:
-  /// **'No salary confirmation requests found.'**
+  /// In ar, this message translates to:
+  /// **'لا توجد طلبات تثبيت راتب حالياً.'**
   String get noSalaryConfirmationRequests;
 
   /// No description provided for @newSalaryConfirmationRequest.
   ///
-  /// In en, this message translates to:
-  /// **'New Salary Confirmation Request'**
+  /// In ar, this message translates to:
+  /// **'طلب تثبيت راتب جديد'**
   String get newSalaryConfirmationRequest;
 
   /// No description provided for @salaryConfirmationRequestDetails.
   ///
-  /// In en, this message translates to:
-  /// **'Salary Confirmation Request Details'**
+  /// In ar, this message translates to:
+  /// **'تفاصيل طلب تثبيت الراتب'**
   String get salaryConfirmationRequestDetails;
 
   /// No description provided for @dCodeHint.
   ///
-  /// In en, this message translates to:
-  /// **'Organizational Structure Code'**
+  /// In ar, this message translates to:
+  /// **'رقم الهيكل الإداري'**
   String get dCodeHint;
 
   /// No description provided for @selectRequestDate.
   ///
-  /// In en, this message translates to:
-  /// **'Please select the request date'**
+  /// In ar, this message translates to:
+  /// **'الرجاء اختيار تاريخ الطلب'**
   String get selectRequestDate;
 
   /// No description provided for @selectDCodeValidation.
   ///
-  /// In en, this message translates to:
-  /// **'Please enter the organizational structure code'**
+  /// In ar, this message translates to:
+  /// **'الرجاء إدخال رقم الهيكل الإداري'**
   String get selectDCodeValidation;
 
   /// No description provided for @salaryConfirmationRequestSentSuccessfully.
   ///
-  /// In en, this message translates to:
-  /// **'Salary confirmation request sent successfully.'**
+  /// In ar, this message translates to:
+  /// **'تم إرسال طلب تثبيت الراتب بنجاح.'**
   String get salaryConfirmationRequestSentSuccessfully;
 
   /// No description provided for @salaryConfirmationActionDialogTitle.
   ///
-  /// In en, this message translates to:
-  /// **'Decision on Salary Confirmation Request'**
+  /// In ar, this message translates to:
+  /// **'اتخاذ قرار بشأن تثبيت الراتب'**
   String get salaryConfirmationActionDialogTitle;
 
   /// No description provided for @cancelSalaryConfirmationInfo.
   ///
-  /// In en, this message translates to:
-  /// **'Cancel Salary Confirmation Requests'**
+  /// In ar, this message translates to:
+  /// **'طلبات إلغاء تثبيت راتب'**
   String get cancelSalaryConfirmationInfo;
 
   /// No description provided for @noCancelSalaryConfirmationRequests.
   ///
-  /// In en, this message translates to:
-  /// **'No cancel salary confirmation requests found.'**
+  /// In ar, this message translates to:
+  /// **'لا توجد طلبات إلغاء تثبيت راتب حالياً.'**
   String get noCancelSalaryConfirmationRequests;
 
   /// No description provided for @newCancelSalaryConfirmationRequest.
   ///
-  /// In en, this message translates to:
-  /// **'New Cancel Salary Confirmation Request'**
+  /// In ar, this message translates to:
+  /// **'طلب إلغاء تثبيت راتب جديد'**
   String get newCancelSalaryConfirmationRequest;
 
   /// No description provided for @cancelSalaryConfirmationRequestDetails.
   ///
-  /// In en, this message translates to:
-  /// **'Cancel Salary Confirmation Request Details'**
+  /// In ar, this message translates to:
+  /// **'تفاصيل طلب إلغاء تثبيت الراتب'**
   String get cancelSalaryConfirmationRequestDetails;
 
   /// No description provided for @cancelSalaryConfirmationRequestSentSuccessfully.
   ///
-  /// In en, this message translates to:
-  /// **'Cancel salary confirmation request sent successfully.'**
+  /// In ar, this message translates to:
+  /// **'تم إرسال طلب إلغاء تثبيت الراتب بنجاح.'**
   String get cancelSalaryConfirmationRequestSentSuccessfully;
 
   /// No description provided for @cancelSalaryConfirmationActionDialogTitle.
   ///
-  /// In en, this message translates to:
-  /// **'Decision on Cancel Salary Confirmation'**
+  /// In ar, this message translates to:
+  /// **'اتخاذ قرار بشأن إلغاء تثبيت الراتب'**
   String get cancelSalaryConfirmationActionDialogTitle;
 
   /// No description provided for @requestForMyself.
   ///
-  /// In en, this message translates to:
-  /// **'Request for Myself'**
+  /// In ar, this message translates to:
+  /// **'طلب لنفسي'**
   String get requestForMyself;
 
   /// No description provided for @requestForWorker.
   ///
-  /// In en, this message translates to:
-  /// **'Request for Anther Emp'**
+  /// In ar, this message translates to:
+  /// **'طلب لموظف اخر'**
   String get requestForWorker;
 
   /// No description provided for @workerName.
   ///
-  /// In en, this message translates to:
-  /// **'Emp Name'**
+  /// In ar, this message translates to:
+  /// **'اسم الموظف'**
   String get workerName;
 
   /// No description provided for @workerNumber.
   ///
-  /// In en, this message translates to:
-  /// **'Emp Number'**
+  /// In ar, this message translates to:
+  /// **'رقم الموظف'**
   String get workerNumber;
 
   /// No description provided for @selectWorkerError.
   ///
-  /// In en, this message translates to:
-  /// **'Please select a Employee first'**
+  /// In ar, this message translates to:
+  /// **'من فضلك اختر الموظف أولاً'**
   String get selectWorkerError;
 
   /// No description provided for @permissionType5.
   ///
-  /// In en, this message translates to:
-  /// **'External Deputation'**
+  /// In ar, this message translates to:
+  /// **'انتداب خارجي'**
   String get permissionType5;
 
   /// No description provided for @permissionEndDateLabel.
   ///
-  /// In en, this message translates to:
-  /// **'End Date'**
+  /// In ar, this message translates to:
+  /// **'تاريخ الانتهاء'**
   String get permissionEndDateLabel;
 
   /// No description provided for @selectPermissionEndDateValidation.
   ///
-  /// In en, this message translates to:
-  /// **'Please select end date'**
+  /// In ar, this message translates to:
+  /// **'الرجاء اختيار تاريخ الانتهاء'**
   String get selectPermissionEndDateValidation;
 
   /// No description provided for @homeTitle.
   ///
-  /// In en, this message translates to:
-  /// **'Home'**
+  /// In ar, this message translates to:
+  /// **'الرئيسية'**
   String get homeTitle;
 
   /// No description provided for @welcomeSelectModule.
   ///
-  /// In en, this message translates to:
-  /// **'Welcome, please select a system'**
+  /// In ar, this message translates to:
+  /// **'مرحباً بك، اختر النظام للمتابعة'**
   String get welcomeSelectModule;
 
   /// No description provided for @selfServicesModule.
   ///
-  /// In en, this message translates to:
-  /// **'Project Management Service'**
+  /// In ar, this message translates to:
+  /// **'ادارة المشاريع'**
   String get selfServicesModule;
 
   /// No description provided for @selfServicesDesc.
   ///
-  /// In en, this message translates to:
-  /// **'Project Management'**
+  /// In ar, this message translates to:
+  /// **'نظام ادارة المشاريع'**
   String get selfServicesDesc;
 
   /// No description provided for @workshopsModule.
   ///
-  /// In en, this message translates to:
-  /// **'Workshops & Maintenance'**
+  /// In ar, this message translates to:
+  /// **'الورش والصيانة'**
   String get workshopsModule;
 
   /// No description provided for @workshopsDesc.
   ///
-  /// In en, this message translates to:
-  /// **'Maintenance & Vehicle Mgmt'**
+  /// In ar, this message translates to:
+  /// **'إدارة الصيانة والمركبات'**
   String get workshopsDesc;
 
   /// No description provided for @comingSoon.
   ///
-  /// In en, this message translates to:
-  /// **'Coming Soon...'**
+  /// In ar, this message translates to:
+  /// **'قريباً...'**
   String get comingSoon;
 
   /// No description provided for @workOrderNo.
   ///
-  /// In en, this message translates to:
-  /// **'Work Order No'**
+  /// In ar, this message translates to:
+  /// **'رقم أمر العمل'**
   String get workOrderNo;
 
   /// No description provided for @reqNo.
   ///
-  /// In en, this message translates to:
-  /// **'Req No'**
+  /// In ar, this message translates to:
+  /// **'رقم الطلب'**
   String get reqNo;
 
   /// No description provided for @details.
   ///
-  /// In en, this message translates to:
-  /// **'Details'**
+  /// In ar, this message translates to:
+  /// **'التفاصيل'**
   String get details;
 
   /// No description provided for @store.
   ///
-  /// In en, this message translates to:
-  /// **'Store'**
+  /// In ar, this message translates to:
+  /// **'المستودع'**
   String get store;
 
   /// No description provided for @technician.
   ///
-  /// In en, this message translates to:
-  /// **'Technician'**
+  /// In ar, this message translates to:
+  /// **'الفني'**
   String get technician;
 
   /// No description provided for @authStatus.
   ///
-  /// In en, this message translates to:
-  /// **'Authorization'**
+  /// In ar, this message translates to:
+  /// **'الاعتماد'**
   String get authStatus;
 
   /// No description provided for @orderType.
   ///
-  /// In en, this message translates to:
-  /// **'Order Type'**
+  /// In ar, this message translates to:
+  /// **'نوع الأمر'**
   String get orderType;
 
   /// No description provided for @techNotes.
   ///
-  /// In en, this message translates to:
-  /// **'Tech Notes'**
+  /// In ar, this message translates to:
+  /// **'ملاحظات الفني'**
   String get techNotes;
 
   /// No description provided for @contactMethod.
   ///
-  /// In en, this message translates to:
-  /// **'Contact Method'**
+  /// In ar, this message translates to:
+  /// **'طريقة الاستلام'**
   String get contactMethod;
 
   /// No description provided for @user.
   ///
-  /// In en, this message translates to:
-  /// **'User'**
+  /// In ar, this message translates to:
+  /// **'المستخدم'**
   String get user;
 
   /// No description provided for @entryDate.
   ///
-  /// In en, this message translates to:
-  /// **'Entry Date'**
+  /// In ar, this message translates to:
+  /// **'تاريخ الإدخال'**
   String get entryDate;
 
   /// No description provided for @equipments.
   ///
-  /// In en, this message translates to:
-  /// **'Equipments'**
+  /// In ar, this message translates to:
+  /// **'المعدات'**
   String get equipments;
 
   /// No description provided for @viewEquipments.
   ///
-  /// In en, this message translates to:
-  /// **'View Equipments'**
+  /// In ar, this message translates to:
+  /// **'عرض المعدات'**
   String get viewEquipments;
 
   /// No description provided for @equipmentCode.
   ///
-  /// In en, this message translates to:
-  /// **'Equip Code'**
+  /// In ar, this message translates to:
+  /// **'كود المعدة'**
   String get equipmentCode;
 
   /// No description provided for @serialNo.
   ///
-  /// In en, this message translates to:
-  /// **'Serial'**
+  /// In ar, this message translates to:
+  /// **'المسلسل'**
   String get serialNo;
 
   /// No description provided for @equipmentNo.
   ///
-  /// In en, this message translates to:
-  /// **'Equip No'**
+  /// In ar, this message translates to:
+  /// **'رقم المعدة'**
   String get equipmentNo;
 
   /// No description provided for @noData.
   ///
-  /// In en, this message translates to:
-  /// **'No Data Found'**
+  /// In ar, this message translates to:
+  /// **'لا توجد بيانات'**
   String get noData;
 
   /// No description provided for @loading.
   ///
-  /// In en, this message translates to:
-  /// **'Loading...'**
+  /// In ar, this message translates to:
+  /// **'جار التحميل...'**
   String get loading;
 
   /// No description provided for @error.
   ///
-  /// In en, this message translates to:
-  /// **'Error Occurred'**
+  /// In ar, this message translates to:
+  /// **'حدث خطأ'**
   String get error;
 
   /// No description provided for @workOrders.
   ///
-  /// In en, this message translates to:
-  /// **'order'**
+  /// In ar, this message translates to:
+  /// **'أمر'**
   String get workOrders;
 
   /// No description provided for @dailyTasks.
   ///
-  /// In en, this message translates to:
-  /// **'Daily Tasks'**
+  /// In ar, this message translates to:
+  /// **'المهام اليومية'**
   String get dailyTasks;
 
   /// No description provided for @dailyTasksDesc.
   ///
-  /// In en, this message translates to:
-  /// **'Manage Daily Tasks'**
+  /// In ar, this message translates to:
+  /// **'إدارة المهام اليومية'**
   String get dailyTasksDesc;
 
   /// No description provided for @notifications.
   ///
-  /// In en, this message translates to:
-  /// **'Notifications'**
+  /// In ar, this message translates to:
+  /// **'الإشعارات'**
   String get notifications;
 
   /// No description provided for @notificationsDesc.
   ///
-  /// In en, this message translates to:
-  /// **'View Notifications & Alerts'**
+  /// In ar, this message translates to:
+  /// **'عرض الإشعارات والتنبيهات'**
   String get notificationsDesc;
 
   /// No description provided for @management.
   ///
-  /// In en, this message translates to:
-  /// **'Management'**
+  /// In ar, this message translates to:
+  /// **'الإدارة'**
   String get management;
 
   /// No description provided for @managementDesc.
   ///
-  /// In en, this message translates to:
-  /// **'Management & Supervision'**
+  /// In ar, this message translates to:
+  /// **'الإدارة والإشراف'**
   String get managementDesc;
 
   /// No description provided for @workOrderQuotation.
   ///
-  /// In en, this message translates to:
-  /// **'Work Order - Quotation'**
+  /// In ar, this message translates to:
+  /// **'امر عمل مقايسه'**
   String get workOrderQuotation;
 
   /// No description provided for @workOrderQuotationDesc.
   ///
-  /// In en, this message translates to:
-  /// **'Manage Work Orders & Quotations'**
+  /// In ar, this message translates to:
+  /// **'إدارة أوامر العمل والمقايسات'**
   String get workOrderQuotationDesc;
 
   /// No description provided for @workOrderProjects.
   ///
-  /// In en, this message translates to:
-  /// **'Work Order - Projects'**
+  /// In ar, this message translates to:
+  /// **'امر عمل مشاريع'**
   String get workOrderProjects;
 
   /// No description provided for @workOrderProjectsDesc.
   ///
-  /// In en, this message translates to:
-  /// **'Manage Project Work Orders'**
+  /// In ar, this message translates to:
+  /// **'إدارة أوامر عمل المشاريع'**
   String get workOrderProjectsDesc;
 
   /// No description provided for @workOrderMaintenance.
   ///
-  /// In en, this message translates to:
-  /// **'Work Order - Maintenance'**
+  /// In ar, this message translates to:
+  /// **'امر عمل صيانة'**
   String get workOrderMaintenance;
 
   /// No description provided for @workOrderMaintenanceDesc.
   ///
-  /// In en, this message translates to:
-  /// **'Manage Maintenance Work Orders'**
+  /// In ar, this message translates to:
+  /// **'إدارة أوامر عمل الصيانة'**
   String get workOrderMaintenanceDesc;
 
   /// No description provided for @selectCategory.
   ///
-  /// In en, this message translates to:
-  /// **'Select a category to continue'**
+  /// In ar, this message translates to:
+  /// **'اختر الفئة للمتابعة'**
   String get selectCategory;
 
   /// No description provided for @filterBy.
   ///
-  /// In en, this message translates to:
-  /// **'Filter By'**
+  /// In ar, this message translates to:
+  /// **'بيانات الاستعلام'**
   String get filterBy;
 
   /// No description provided for @projectFilter.
   ///
-  /// In en, this message translates to:
-  /// **'Project'**
+  /// In ar, this message translates to:
+  /// **'المشروع'**
   String get projectFilter;
 
   /// No description provided for @selectProject.
   ///
-  /// In en, this message translates to:
-  /// **'Select Project'**
+  /// In ar, this message translates to:
+  /// **'اختر المشروع'**
   String get selectProject;
 
   /// No description provided for @contractNumber.
   ///
-  /// In en, this message translates to:
-  /// **'Contract Number'**
+  /// In ar, this message translates to:
+  /// **'الرقم الداخلى'**
   String get contractNumber;
 
   /// No description provided for @enterContractNumber.
   ///
-  /// In en, this message translates to:
-  /// **'Enter contract number'**
+  /// In ar, this message translates to:
+  /// **'أدخل الرقم الداخلى'**
   String get enterContractNumber;
 
   /// No description provided for @secNumber.
   ///
-  /// In en, this message translates to:
-  /// **'SEC Number'**
+  /// In ar, this message translates to:
+  /// **'رقم SEC'**
   String get secNumber;
 
   /// No description provided for @enterSecNumber.
   ///
-  /// In en, this message translates to:
-  /// **'Enter SEC number'**
+  /// In ar, this message translates to:
+  /// **'أدخل رقم SEC'**
   String get enterSecNumber;
 
   /// No description provided for @statusFilter.
   ///
-  /// In en, this message translates to:
-  /// **'Status'**
+  /// In ar, this message translates to:
+  /// **'الحالة'**
   String get statusFilter;
 
   /// No description provided for @notDoneOnly.
   ///
-  /// In en, this message translates to:
-  /// **'Not Done Only'**
+  /// In ar, this message translates to:
+  /// **'لم يتم فقط'**
   String get notDoneOnly;
 
   /// No description provided for @doneOnly.
   ///
-  /// In en, this message translates to:
-  /// **'Done Only'**
+  /// In ar, this message translates to:
+  /// **'تم فقط'**
   String get doneOnly;
 
   /// No description provided for @allStatus.
   ///
-  /// In en, this message translates to:
-  /// **'All'**
+  /// In ar, this message translates to:
+  /// **'الكل'**
   String get allStatus;
 
   /// No description provided for @search.
   ///
-  /// In en, this message translates to:
-  /// **'Search'**
+  /// In ar, this message translates to:
+  /// **'بحث'**
   String get search;
 
   /// No description provided for @reset.
   ///
-  /// In en, this message translates to:
-  /// **'Reset Filter'**
+  /// In ar, this message translates to:
+  /// **'إعادة تعيين'**
   String get reset;
 
   /// No description provided for @stage.
   ///
-  /// In en, this message translates to:
-  /// **'Stage'**
+  /// In ar, this message translates to:
+  /// **'المرحلة'**
   String get stage;
 
   /// No description provided for @operation.
   ///
-  /// In en, this message translates to:
-  /// **'Operation'**
+  /// In ar, this message translates to:
+  /// **'العملية'**
   String get operation;
 
   /// No description provided for @explanation.
   ///
-  /// In en, this message translates to:
-  /// **'Explanation'**
+  /// In ar, this message translates to:
+  /// **'الشرح'**
   String get explanation;
 
   /// No description provided for @done.
   ///
-  /// In en, this message translates to:
-  /// **'Done'**
+  /// In ar, this message translates to:
+  /// **'تم'**
   String get done;
 
   /// No description provided for @noTasksFound.
   ///
-  /// In en, this message translates to:
-  /// **'No tasks found'**
+  /// In ar, this message translates to:
+  /// **'لا توجد مهام'**
   String get noTasksFound;
 
   /// No description provided for @loadingTasks.
   ///
-  /// In en, this message translates to:
-  /// **'Loading tasks...'**
+  /// In ar, this message translates to:
+  /// **'جار تحميل المهام...'**
   String get loadingTasks;
 
   /// No description provided for @dailyTasksTitle.
   ///
-  /// In en, this message translates to:
-  /// **'Daily Tasks'**
+  /// In ar, this message translates to:
+  /// **'المهام اليومية'**
   String get dailyTasksTitle;
 
   /// No description provided for @taskDetails.
   ///
-  /// In en, this message translates to:
-  /// **'Task Details'**
+  /// In ar, this message translates to:
+  /// **'تفاصيل المهمة'**
   String get taskDetails;
 
   /// No description provided for @taskDetailsTitle.
   ///
-  /// In en, this message translates to:
-  /// **'Task Details'**
+  /// In ar, this message translates to:
+  /// **'تفاصيل المهمة'**
   String get taskDetailsTitle;
 
   /// No description provided for @projectName.
   ///
-  /// In en, this message translates to:
-  /// **'Project Name'**
+  /// In ar, this message translates to:
+  /// **'اسم المشروع'**
   String get projectName;
 
   /// No description provided for @processName.
   ///
-  /// In en, this message translates to:
-  /// **'Process Name'**
+  /// In ar, this message translates to:
+  /// **'اسم العملية'**
   String get processName;
 
   /// No description provided for @assignedEmployee.
   ///
-  /// In en, this message translates to:
-  /// **'Assigned Employee'**
+  /// In ar, this message translates to:
+  /// **'موظف المرحلة التالية'**
   String get assignedEmployee;
 
   /// No description provided for @selectEmployee.
   ///
-  /// In en, this message translates to:
-  /// **'Select Employee'**
+  /// In ar, this message translates to:
+  /// **'اختر الموظف'**
   String get selectEmployee;
 
   /// No description provided for @notesField.
   ///
-  /// In en, this message translates to:
-  /// **'Notes'**
+  /// In ar, this message translates to:
+  /// **'الملاحظات'**
   String get notesField;
 
   /// No description provided for @notesHint.
   ///
-  /// In en, this message translates to:
-  /// **'Enter your notes here...'**
+  /// In ar, this message translates to:
+  /// **'أدخل الملاحظات هنا...'**
   String get notesHint;
 
   /// No description provided for @notificationReply.
   ///
-  /// In en, this message translates to:
-  /// **'Notification Reply'**
+  /// In ar, this message translates to:
+  /// **'الرد على الإشعار'**
   String get notificationReply;
 
   /// No description provided for @notificationReplyHint.
   ///
-  /// In en, this message translates to:
-  /// **'Enter your reply here...'**
+  /// In ar, this message translates to:
+  /// **'أدخل ردك هنا...'**
   String get notificationReplyHint;
 
   /// No description provided for @executeButton.
   ///
-  /// In en, this message translates to:
-  /// **'Execute'**
+  /// In ar, this message translates to:
+  /// **'تنفيذ'**
   String get executeButton;
 
   /// No description provided for @taskCompleted.
   ///
-  /// In en, this message translates to:
-  /// **'Completed'**
+  /// In ar, this message translates to:
+  /// **'تمت'**
   String get taskCompleted;
 
   /// No description provided for @taskNotCompleted.
   ///
-  /// In en, this message translates to:
-  /// **'Not Completed'**
+  /// In ar, this message translates to:
+  /// **'لم تتم'**
   String get taskNotCompleted;
 
   /// No description provided for @completionDate.
   ///
-  /// In en, this message translates to:
-  /// **'Completion Date'**
+  /// In ar, this message translates to:
+  /// **'تاريخ الإكمال'**
   String get completionDate;
 
   /// No description provided for @projectButton.
   ///
-  /// In en, this message translates to:
-  /// **'Project'**
+  /// In ar, this message translates to:
+  /// **'المشروع'**
   String get projectButton;
 
   /// No description provided for @attachmentsButton.
   ///
-  /// In en, this message translates to:
-  /// **'Attachments'**
+  /// In ar, this message translates to:
+  /// **'المرفقات'**
   String get attachmentsButton;
 
   /// No description provided for @permissionsButton.
   ///
-  /// In en, this message translates to:
-  /// **'Permissions'**
+  /// In ar, this message translates to:
+  /// **'التصاريح'**
   String get permissionsButton;
 
   /// No description provided for @createNotificationButton.
   ///
-  /// In en, this message translates to:
-  /// **'Create Notification'**
+  /// In ar, this message translates to:
+  /// **'عمل إشعار'**
   String get createNotificationButton;
 
   /// No description provided for @taskInformation.
   ///
-  /// In en, this message translates to:
-  /// **'Task Information'**
+  /// In ar, this message translates to:
+  /// **'معلومات المهمة'**
   String get taskInformation;
 
   /// No description provided for @taskActions.
   ///
-  /// In en, this message translates to:
-  /// **'Task Actions'**
+  /// In ar, this message translates to:
+  /// **'إجراءات المهمة'**
   String get taskActions;
 
   /// No description provided for @errorAttachmentsRequired.
   ///
-  /// In en, this message translates to:
-  /// **'Attachments must be added'**
+  /// In ar, this message translates to:
+  /// **'يجب إضافة المرفقات'**
   String get errorAttachmentsRequired;
 
   /// No description provided for @errorPermissionsRequired.
   ///
-  /// In en, this message translates to:
-  /// **'Permissions must be added'**
+  /// In ar, this message translates to:
+  /// **'يجب إضافة التصاريح'**
   String get errorPermissionsRequired;
 
   /// No description provided for @errorNotificationReplyRequired.
   ///
-  /// In en, this message translates to:
-  /// **'Notification reply is required'**
+  /// In ar, this message translates to:
+  /// **'يجب الرد على الإشعار'**
   String get errorNotificationReplyRequired;
 
   /// No description provided for @errorNotesRequired.
   ///
-  /// In en, this message translates to:
-  /// **'Notes must be entered'**
+  /// In ar, this message translates to:
+  /// **'يجب إدخال الملاحظات'**
   String get errorNotesRequired;
 
   /// No description provided for @errorEmployeeRequired.
   ///
-  /// In en, this message translates to:
-  /// **'Employee must be assigned'**
+  /// In ar, this message translates to:
+  /// **'يجب إسناد موظف'**
   String get errorEmployeeRequired;
 
   /// No description provided for @validationError.
   ///
-  /// In en, this message translates to:
-  /// **'Validation Error'**
+  /// In ar, this message translates to:
+  /// **'خطأ في التحقق'**
   String get validationError;
 
   /// No description provided for @checkingPermissions.
   ///
-  /// In en, this message translates to:
-  /// **'Checking permissions...'**
+  /// In ar, this message translates to:
+  /// **'جاري التحقق من الصلاحيات...'**
   String get checkingPermissions;
 
   /// No description provided for @noProjectPermission.
   ///
-  /// In en, this message translates to:
-  /// **'You don\'t have permission to view this project'**
+  /// In ar, this message translates to:
+  /// **'ليس لديك صلاحية لعرض هذا المشروع'**
   String get noProjectPermission;
 
   /// No description provided for @projectDetails.
   ///
-  /// In en, this message translates to:
-  /// **'Project Details'**
+  /// In ar, this message translates to:
+  /// **'تفاصيل المشروع'**
   String get projectDetails;
 
   /// No description provided for @unifiedContractNumber.
   ///
-  /// In en, this message translates to:
-  /// **'Unified Contract Number'**
+  /// In ar, this message translates to:
+  /// **'رقم العقد الموحد'**
   String get unifiedContractNumber;
 
   /// No description provided for @contractCode.
   ///
-  /// In en, this message translates to:
-  /// **'Contract Code'**
+  /// In ar, this message translates to:
+  /// **'كود العقد'**
   String get contractCode;
 
   /// No description provided for @projectNumber.
   ///
-  /// In en, this message translates to:
-  /// **'Project Number'**
+  /// In ar, this message translates to:
+  /// **'رقم المشروع'**
   String get projectNumber;
 
   /// No description provided for @workOrderNumber.
   ///
-  /// In en, this message translates to:
-  /// **'Work Order Number'**
+  /// In ar, this message translates to:
+  /// **'رقم أمر العمل'**
   String get workOrderNumber;
 
   /// No description provided for @duration.
   ///
-  /// In en, this message translates to:
-  /// **'Duration'**
+  /// In ar, this message translates to:
+  /// **'المدة'**
   String get duration;
 
   /// No description provided for @projectStatus.
   ///
-  /// In en, this message translates to:
-  /// **'Project Status'**
+  /// In ar, this message translates to:
+  /// **'حالة المشروع'**
   String get projectStatus;
 
   /// No description provided for @assignmentAuthority.
   ///
-  /// In en, this message translates to:
-  /// **'Assignment Authority'**
+  /// In ar, this message translates to:
+  /// **'جهة الإسناد'**
   String get assignmentAuthority;
 
   /// No description provided for @supervisionAuthority.
   ///
-  /// In en, this message translates to:
-  /// **'Supervision Authority'**
+  /// In ar, this message translates to:
+  /// **'جهة الإشراف'**
   String get supervisionAuthority;
 
   /// No description provided for @client.
   ///
-  /// In en, this message translates to:
-  /// **'Client'**
+  /// In ar, this message translates to:
+  /// **'العميل'**
   String get client;
 
   /// No description provided for @projectEngineer.
   ///
-  /// In en, this message translates to:
-  /// **'Project Engineer'**
+  /// In ar, this message translates to:
+  /// **'مهندس المشروع'**
   String get projectEngineer;
 
   /// No description provided for @projectManager.
   ///
-  /// In en, this message translates to:
-  /// **'Project Manager'**
+  /// In ar, this message translates to:
+  /// **'مدير المشروع'**
   String get projectManager;
 
   /// No description provided for @projectsManager.
   ///
-  /// In en, this message translates to:
-  /// **'Projects Manager'**
+  /// In ar, this message translates to:
+  /// **'مدير المشاريع'**
   String get projectsManager;
 
   /// No description provided for @projectValue.
   ///
-  /// In en, this message translates to:
-  /// **'Project Value'**
+  /// In ar, this message translates to:
+  /// **'قيمة المشروع'**
   String get projectValue;
 
   /// No description provided for @basicInfo.
   ///
-  /// In en, this message translates to:
-  /// **'Basic Information'**
+  /// In ar, this message translates to:
+  /// **'المعلومات الأساسية'**
   String get basicInfo;
 
   /// No description provided for @projectTeam.
   ///
-  /// In en, this message translates to:
-  /// **'Project Team'**
+  /// In ar, this message translates to:
+  /// **'فريق المشروع'**
   String get projectTeam;
 
   /// No description provided for @toggleLanguage.
   ///
-  /// In en, this message translates to:
+  /// In ar, this message translates to:
   /// **'عربي/English'**
   String get toggleLanguage;
 
   /// No description provided for @days.
   ///
-  /// In en, this message translates to:
-  /// **'Days'**
+  /// In ar, this message translates to:
+  /// **'يوم'**
   String get days;
 
   /// No description provided for @currency.
   ///
-  /// In en, this message translates to:
-  /// **'SAR'**
+  /// In ar, this message translates to:
+  /// **'ريال'**
   String get currency;
 
   /// No description provided for @taskPermissions.
   ///
-  /// In en, this message translates to:
-  /// **'Permissions'**
+  /// In ar, this message translates to:
+  /// **'التصاريح'**
   String get taskPermissions;
 
   /// No description provided for @taskPermissionsTitle.
   ///
-  /// In en, this message translates to:
-  /// **'Project Permissions'**
+  /// In ar, this message translates to:
+  /// **'تصاريح المشروع'**
   String get taskPermissionsTitle;
 
   /// No description provided for @permissionType.
   ///
-  /// In en, this message translates to:
-  /// **'Permission Type'**
+  /// In ar, this message translates to:
+  /// **'نوع التصريح'**
   String get permissionType;
 
   /// No description provided for @permissionNumber.
   ///
-  /// In en, this message translates to:
-  /// **'Permission Number'**
+  /// In ar, this message translates to:
+  /// **'رقم التصريح'**
   String get permissionNumber;
 
   /// No description provided for @permissionStatus.
   ///
-  /// In en, this message translates to:
-  /// **'Permission Status'**
+  /// In ar, this message translates to:
+  /// **'حالة التصريح'**
   String get permissionStatus;
 
   /// No description provided for @activeStatus.
   ///
-  /// In en, this message translates to:
-  /// **'Active'**
+  /// In ar, this message translates to:
+  /// **'ساري'**
   String get activeStatus;
 
   /// No description provided for @expiredStatus.
   ///
-  /// In en, this message translates to:
-  /// **'Expired'**
+  /// In ar, this message translates to:
+  /// **'منتهي'**
   String get expiredStatus;
 
   /// No description provided for @projectInfo.
   ///
-  /// In en, this message translates to:
-  /// **'Project Information'**
+  /// In ar, this message translates to:
+  /// **'بيانات المشروع'**
   String get projectInfo;
 
   /// No description provided for @projectNameLabel.
   ///
-  /// In en, this message translates to:
-  /// **'Project Name'**
+  /// In ar, this message translates to:
+  /// **'اسم المشروع'**
   String get projectNameLabel;
 
   /// No description provided for @contractNumberLabel.
   ///
-  /// In en, this message translates to:
-  /// **'Contract Number'**
+  /// In ar, this message translates to:
+  /// **'رقم العقد'**
   String get contractNumberLabel;
 
   /// No description provided for @noPermissionsFound.
   ///
-  /// In en, this message translates to:
-  /// **'No permissions found'**
+  /// In ar, this message translates to:
+  /// **'لا توجد تصاريح'**
   String get noPermissionsFound;
 
   /// No description provided for @loadingPermissions.
   ///
-  /// In en, this message translates to:
-  /// **'Loading permissions...'**
+  /// In ar, this message translates to:
+  /// **'جار تحميل التصاريح...'**
   String get loadingPermissions;
 
   /// No description provided for @newPermission.
   ///
-  /// In en, this message translates to:
-  /// **'New'**
+  /// In ar, this message translates to:
+  /// **'جديد'**
   String get newPermission;
 
   /// No description provided for @permissionDetails.
   ///
-  /// In en, this message translates to:
-  /// **'Permission Details'**
+  /// In ar, this message translates to:
+  /// **'تفاصيل التصريح'**
   String get permissionDetails;
 
   /// No description provided for @permitSerial.
   ///
-  /// In en, this message translates to:
-  /// **'Permit Serial'**
+  /// In ar, this message translates to:
+  /// **'مسلسل التصريح'**
   String get permitSerial;
 
   /// No description provided for @permitCopy.
   ///
-  /// In en, this message translates to:
-  /// **'Copy Number'**
+  /// In ar, this message translates to:
+  /// **'رقم النسخة'**
   String get permitCopy;
 
   /// No description provided for @municipality.
   ///
-  /// In en, this message translates to:
-  /// **'Municipality'**
+  /// In ar, this message translates to:
+  /// **'البلدية'**
   String get municipality;
 
   /// No description provided for @streets.
   ///
-  /// In en, this message translates to:
-  /// **'Streets'**
+  /// In ar, this message translates to:
+  /// **'الشوارع'**
   String get streets;
 
   /// No description provided for @totalLength.
   ///
-  /// In en, this message translates to:
-  /// **'Total Length'**
+  /// In ar, this message translates to:
+  /// **'إجمالي الطول'**
   String get totalLength;
 
   /// No description provided for @totalWidth.
   ///
-  /// In en, this message translates to:
-  /// **'Width'**
+  /// In ar, this message translates to:
+  /// **'العرض'**
   String get totalWidth;
 
   /// No description provided for @requestDate.
   ///
-  /// In en, this message translates to:
-  /// **'Request Date'**
+  /// In ar, this message translates to:
+  /// **'تاريخ الطلب'**
   String get requestDate;
 
   /// No description provided for @issueDate.
   ///
-  /// In en, this message translates to:
-  /// **'Issue Date'**
+  /// In ar, this message translates to:
+  /// **'تاريخ الإصدار'**
   String get issueDate;
 
   /// No description provided for @issued.
   ///
-  /// In en, this message translates to:
-  /// **'Issued'**
+  /// In ar, this message translates to:
+  /// **'تم الإصدار'**
   String get issued;
 
   /// No description provided for @bookingMethod.
   ///
-  /// In en, this message translates to:
-  /// **'Drilling Method'**
+  /// In ar, this message translates to:
+  /// **'طريقة الحفر'**
   String get bookingMethod;
 
   /// No description provided for @permitValue.
   ///
-  /// In en, this message translates to:
-  /// **'Permit Value'**
+  /// In ar, this message translates to:
+  /// **'قيمة التصريح'**
   String get permitValue;
 
   /// No description provided for @renew.
   ///
-  /// In en, this message translates to:
-  /// **'Renew'**
+  /// In ar, this message translates to:
+  /// **'تجديد'**
   String get renew;
 
   /// No description provided for @attachments.
   ///
-  /// In en, this message translates to:
-  /// **'Attachments'**
+  /// In ar, this message translates to:
+  /// **'المرفقات'**
   String get attachments;
 
   /// No description provided for @dates.
   ///
-  /// In en, this message translates to:
-  /// **'Dates'**
+  /// In ar, this message translates to:
+  /// **'المواعيد'**
   String get dates;
 
   /// No description provided for @createPermission.
   ///
-  /// In en, this message translates to:
-  /// **'Create New Permission'**
+  /// In ar, this message translates to:
+  /// **'إنشاء تصريح جديد'**
   String get createPermission;
 
   /// No description provided for @save.
   ///
-  /// In en, this message translates to:
-  /// **'Save'**
+  /// In ar, this message translates to:
+  /// **'حفظ'**
   String get save;
 
   /// No description provided for @selectPermissionType.
   ///
-  /// In en, this message translates to:
-  /// **'Select Permission Type'**
+  /// In ar, this message translates to:
+  /// **'اختر نوع التصريح'**
   String get selectPermissionType;
 
   /// No description provided for @selectMunicipality.
   ///
-  /// In en, this message translates to:
-  /// **'Select Municipality'**
+  /// In ar, this message translates to:
+  /// **'اختر البلدية'**
   String get selectMunicipality;
 
   /// No description provided for @requestedBy.
   ///
-  /// In en, this message translates to:
-  /// **'Requested By'**
+  /// In ar, this message translates to:
+  /// **'طالب التصريح'**
   String get requestedBy;
 
   /// No description provided for @permissionData.
   ///
-  /// In en, this message translates to:
-  /// **'Permission Data'**
+  /// In ar, this message translates to:
+  /// **'بيانات التصريح'**
   String get permissionData;
 
   /// No description provided for @permissionNotAllowedTitle.
   ///
-  /// In en, this message translates to:
-  /// **'Not Allowed to Enable'**
+  /// In ar, this message translates to:
+  /// **'غير مسموح بالتفعيل'**
   String get permissionNotAllowedTitle;
 
   /// No description provided for @permissionNotAllowedMessage.
   ///
-  /// In en, this message translates to:
-  /// **'This permission cannot be enabled because the permit is not available.\nPlease check the task permissions first.'**
+  /// In ar, this message translates to:
+  /// **'لا يمكن تفعيل هذا الإذن لأن التصريح غير متاح.\nيرجى التحقق من صلاحيات المهمة أولاً.'**
   String get permissionNotAllowedMessage;
 
   /// No description provided for @permissionAlreadyEnabledTitle.
   ///
-  /// In en, this message translates to:
-  /// **'Permission Already Enabled'**
+  /// In ar, this message translates to:
+  /// **'الإذن مفعل بالفعل'**
   String get permissionAlreadyEnabledTitle;
 
   /// No description provided for @permissionAlreadyEnabledMessage.
   ///
-  /// In en, this message translates to:
-  /// **'This permission is currently enabled and cannot be disabled.'**
+  /// In ar, this message translates to:
+  /// **'هذا الإذن مفعل حالياً ولا يمكن تعطيله.'**
   String get permissionAlreadyEnabledMessage;
 
   /// No description provided for @permissionNotAvailableTitle.
   ///
-  /// In en, this message translates to:
-  /// **'Not Available'**
+  /// In ar, this message translates to:
+  /// **'غير متاح'**
   String get permissionNotAvailableTitle;
 
   /// No description provided for @permissionNotAvailableMessage.
   ///
-  /// In en, this message translates to:
-  /// **'This permission cannot be modified at this time.'**
+  /// In ar, this message translates to:
+  /// **'لا يمكن تعديل هذا الإذن في الوقت الحالي.'**
   String get permissionNotAvailableMessage;
 
   /// No description provided for @permissionDialogOk.
   ///
-  /// In en, this message translates to:
-  /// **'OK'**
+  /// In ar, this message translates to:
+  /// **'حسناً'**
   String get permissionDialogOk;
 
   /// No description provided for @enabled.
   ///
-  /// In en, this message translates to:
-  /// **'Enabled'**
+  /// In ar, this message translates to:
+  /// **'تم الاصدار'**
   String get enabled;
 
   /// No description provided for @disabled.
   ///
-  /// In en, this message translates to:
-  /// **'Disabled'**
+  /// In ar, this message translates to:
+  /// **'لم يتم الاصدار'**
   String get disabled;
 
   /// No description provided for @attachmentsRequiredTitle.
   ///
-  /// In en, this message translates to:
-  /// **'Attachments Required'**
+  /// In ar, this message translates to:
+  /// **'مرفقات مطلوبة'**
   String get attachmentsRequiredTitle;
 
   /// No description provided for @attachmentsRequiredMessage.
   ///
-  /// In en, this message translates to:
-  /// **'Required attachments must be uploaded before saving the permission.\nPlease add attachments first.'**
+  /// In ar, this message translates to:
+  /// **'يجب إرفاق المرفقات المطلوبة قبل حفظ التصريح.\nيرجى إضافة المرفقات أولاً.'**
   String get attachmentsRequiredMessage;
 
   /// No description provided for @validationErrorTitle.
   ///
-  /// In en, this message translates to:
-  /// **'Validation Error'**
+  /// In ar, this message translates to:
+  /// **'خطأ في البيانات'**
   String get validationErrorTitle;
 
   /// No description provided for @permissionCreatedSuccessfully.
   ///
-  /// In en, this message translates to:
-  /// **'Permission created successfully'**
+  /// In ar, this message translates to:
+  /// **'تم إنشاء التصريح بنجاح'**
   String get permissionCreatedSuccessfully;
 
   /// No description provided for @failedToCreatePermission.
   ///
-  /// In en, this message translates to:
-  /// **'Failed to create permission. Please try again.'**
+  /// In ar, this message translates to:
+  /// **'فشل إنشاء التصريح. يرجى المحاولة مرة أخرى.'**
   String get failedToCreatePermission;
 
   /// No description provided for @pleaseSelectPermissionType.
   ///
-  /// In en, this message translates to:
-  /// **'Please select permission type'**
+  /// In ar, this message translates to:
+  /// **'يرجى اختيار نوع التصريح'**
   String get pleaseSelectPermissionType;
 
   /// No description provided for @pleaseSelectMunicipality.
   ///
-  /// In en, this message translates to:
-  /// **'Please select municipality'**
+  /// In ar, this message translates to:
+  /// **'يرجى اختيار البلدية'**
   String get pleaseSelectMunicipality;
 
   /// No description provided for @pleaseEnterPermissionNumber.
   ///
-  /// In en, this message translates to:
-  /// **'Please enter permission number'**
+  /// In ar, this message translates to:
+  /// **'يرجى إدخال رقم التصريح'**
   String get pleaseEnterPermissionNumber;
 
   /// No description provided for @pleaseEnterPermitCopy.
   ///
-  /// In en, this message translates to:
-  /// **'Please enter copy number'**
+  /// In ar, this message translates to:
+  /// **'يرجى إدخال رقم النسخة'**
   String get pleaseEnterPermitCopy;
 
   /// No description provided for @pleaseSelectStartDate.
   ///
-  /// In en, this message translates to:
-  /// **'Please select start date'**
+  /// In ar, this message translates to:
+  /// **'يرجى اختيار تاريخ البداية'**
   String get pleaseSelectStartDate;
 
   /// No description provided for @pleaseSelectEndDate.
   ///
-  /// In en, this message translates to:
-  /// **'Please select end date'**
+  /// In ar, this message translates to:
+  /// **'يرجى اختيار تاريخ النهاية'**
   String get pleaseSelectEndDate;
 
   /// No description provided for @pleaseEnterPermitValue.
   ///
-  /// In en, this message translates to:
-  /// **'Please enter permit value'**
+  /// In ar, this message translates to:
+  /// **'يرجى إدخال قيمة التصريح'**
   String get pleaseEnterPermitValue;
 
   /// No description provided for @uploadFile.
   ///
-  /// In en, this message translates to:
-  /// **'Upload File'**
+  /// In ar, this message translates to:
+  /// **'رفع ملف'**
   String get uploadFile;
 
   /// No description provided for @uploadImage.
   ///
-  /// In en, this message translates to:
-  /// **'Upload Image'**
+  /// In ar, this message translates to:
+  /// **'رفع صورة'**
   String get uploadImage;
 
   /// No description provided for @viewFile.
   ///
-  /// In en, this message translates to:
-  /// **'View File'**
+  /// In ar, this message translates to:
+  /// **'عرض الملف'**
   String get viewFile;
 
   /// No description provided for @selectFileSource.
   ///
-  /// In en, this message translates to:
-  /// **'Select Image Source'**
+  /// In ar, this message translates to:
+  /// **'اختر مصدر الصورة'**
   String get selectFileSource;
 
   /// No description provided for @camera.
   ///
-  /// In en, this message translates to:
-  /// **'Camera'**
+  /// In ar, this message translates to:
+  /// **'الكاميرا'**
   String get camera;
 
   /// No description provided for @gallery.
   ///
-  /// In en, this message translates to:
-  /// **'Gallery'**
+  /// In ar, this message translates to:
+  /// **'المعرض'**
   String get gallery;
 
   /// No description provided for @fileDescription.
   ///
-  /// In en, this message translates to:
-  /// **'File Description'**
+  /// In ar, this message translates to:
+  /// **'وصف الملف'**
   String get fileDescription;
 
   /// No description provided for @documentSerial.
   ///
-  /// In en, this message translates to:
-  /// **'Document Serial'**
+  /// In ar, this message translates to:
+  /// **'مسلسل المستند'**
   String get documentSerial;
 
   /// No description provided for @documentType.
   ///
-  /// In en, this message translates to:
-  /// **'Document Type'**
+  /// In ar, this message translates to:
+  /// **'نوع المستند'**
   String get documentType;
 
   /// No description provided for @noFileSelected.
   ///
-  /// In en, this message translates to:
-  /// **'No file selected'**
+  /// In ar, this message translates to:
+  /// **'لم يتم اختيار ملف'**
   String get noFileSelected;
 
   /// No description provided for @noImageSelected.
   ///
-  /// In en, this message translates to:
-  /// **'No image selected'**
+  /// In ar, this message translates to:
+  /// **'لم يتم اختيار صورة'**
   String get noImageSelected;
 
   /// No description provided for @selectFileFirst.
   ///
-  /// In en, this message translates to:
-  /// **'Please select a file first'**
+  /// In ar, this message translates to:
+  /// **'يرجى اختيار ملف أولاً'**
   String get selectFileFirst;
 
   /// No description provided for @attachmentDetails.
   ///
-  /// In en, this message translates to:
-  /// **'Attachment Details'**
+  /// In ar, this message translates to:
+  /// **'تفاصيل المرفق'**
   String get attachmentDetails;
 
   /// No description provided for @tableName.
   ///
-  /// In en, this message translates to:
-  /// **'Table Name'**
+  /// In ar, this message translates to:
+  /// **'اسم الجدول'**
   String get tableName;
 
   /// No description provided for @primaryKey1.
   ///
-  /// In en, this message translates to:
-  /// **'Primary Key 1'**
+  /// In ar, this message translates to:
+  /// **'المفتاح الأساسي 1'**
   String get primaryKey1;
 
   /// No description provided for @primaryKey2.
   ///
-  /// In en, this message translates to:
-  /// **'Primary Key 2'**
+  /// In ar, this message translates to:
+  /// **'المفتاح الأساسي 2'**
   String get primaryKey2;
 
   /// No description provided for @alternateKey.
   ///
-  /// In en, this message translates to:
-  /// **'Alternate Key'**
+  /// In ar, this message translates to:
+  /// **'المفتاح البديل'**
   String get alternateKey;
 
   /// No description provided for @selectedFile.
   ///
-  /// In en, this message translates to:
-  /// **'Selected File'**
+  /// In ar, this message translates to:
+  /// **'الملف المحدد'**
   String get selectedFile;
 
   /// No description provided for @selectedImage.
   ///
-  /// In en, this message translates to:
-  /// **'Selected Image'**
+  /// In ar, this message translates to:
+  /// **'الصورة المحددة'**
   String get selectedImage;
 
   /// No description provided for @loadingAttachment.
   ///
-  /// In en, this message translates to:
-  /// **'Loading attachment...'**
+  /// In ar, this message translates to:
+  /// **'جاري تحميل المرفق...'**
   String get loadingAttachment;
 
   /// No description provided for @errorLoadingAttachment.
   ///
-  /// In en, this message translates to:
-  /// **'Error loading attachment'**
+  /// In ar, this message translates to:
+  /// **'خطأ في تحميل المرفق'**
   String get errorLoadingAttachment;
 
   /// No description provided for @noAttachmentData.
   ///
-  /// In en, this message translates to:
-  /// **'No attachment data'**
+  /// In ar, this message translates to:
+  /// **'لا توجد بيانات مرفق'**
   String get noAttachmentData;
 
   /// No description provided for @notificationsView.
   ///
-  /// In en, this message translates to:
-  /// **'Notifications'**
+  /// In ar, this message translates to:
+  /// **'الإشعارات'**
   String get notificationsView;
 
   /// No description provided for @notificationsTitle.
   ///
-  /// In en, this message translates to:
-  /// **'Notifications View'**
+  /// In ar, this message translates to:
+  /// **'عرض الإشعارات'**
   String get notificationsTitle;
 
   /// No description provided for @operationFilter.
   ///
-  /// In en, this message translates to:
-  /// **'Operation'**
+  /// In ar, this message translates to:
+  /// **'العملية'**
   String get operationFilter;
 
   /// No description provided for @selectOperation.
   ///
-  /// In en, this message translates to:
-  /// **'Select Operation'**
+  /// In ar, this message translates to:
+  /// **'اختر العملية'**
   String get selectOperation;
 
   /// No description provided for @responseStatusFilter.
   ///
-  /// In en, this message translates to:
-  /// **'Response Status'**
+  /// In ar, this message translates to:
+  /// **'حالة الرد'**
   String get responseStatusFilter;
 
   /// No description provided for @notReplied.
   ///
-  /// In en, this message translates to:
-  /// **'Not Replied'**
+  /// In ar, this message translates to:
+  /// **'لم يتم الرد'**
   String get notReplied;
 
   /// No description provided for @replied.
   ///
-  /// In en, this message translates to:
-  /// **'Replied'**
+  /// In ar, this message translates to:
+  /// **'تم الرد'**
   String get replied;
 
   /// No description provided for @serialNumber.
   ///
-  /// In en, this message translates to:
-  /// **'No.'**
+  /// In ar, this message translates to:
+  /// **'م'**
   String get serialNumber;
 
   /// No description provided for @userType.
   ///
-  /// In en, this message translates to:
-  /// **'User Type'**
+  /// In ar, this message translates to:
+  /// **'نوع المستخدم'**
   String get userType;
 
   /// No description provided for @notificationType.
   ///
-  /// In en, this message translates to:
-  /// **'Notification Type'**
+  /// In ar, this message translates to:
+  /// **'نوع الإشعار'**
   String get notificationType;
 
   /// No description provided for @notificationDate.
   ///
-  /// In en, this message translates to:
-  /// **'Notification Date'**
+  /// In ar, this message translates to:
+  /// **'تاريخ الإشعار'**
   String get notificationDate;
 
   /// No description provided for @replyStatus.
   ///
-  /// In en, this message translates to:
-  /// **'Replied'**
+  /// In ar, this message translates to:
+  /// **'تم الرد'**
   String get replyStatus;
 
   /// No description provided for @noNotificationsFound.
   ///
-  /// In en, this message translates to:
-  /// **'No notifications found'**
+  /// In ar, this message translates to:
+  /// **'لا توجد إشعارات'**
   String get noNotificationsFound;
 
   /// No description provided for @loadingNotifications.
   ///
-  /// In en, this message translates to:
-  /// **'Loading notifications...'**
+  /// In ar, this message translates to:
+  /// **'جار تحميل الإشعارات...'**
   String get loadingNotifications;
 
   /// No description provided for @notificationsList.
   ///
-  /// In en, this message translates to:
-  /// **'Notifications List'**
+  /// In ar, this message translates to:
+  /// **'قائمة الإشعارات'**
   String get notificationsList;
 
   /// No description provided for @notificationDetails.
   ///
-  /// In en, this message translates to:
-  /// **'Notification Details'**
+  /// In ar, this message translates to:
+  /// **'تفاصيل الإشعار'**
   String get notificationDetails;
 
   /// No description provided for @notificationDetailsTitle.
   ///
-  /// In en, this message translates to:
-  /// **'View Notification Details'**
+  /// In ar, this message translates to:
+  /// **'عرض تفاصيل الإشعار'**
   String get notificationDetailsTitle;
 
   /// No description provided for @project.
   ///
-  /// In en, this message translates to:
-  /// **'Project'**
+  /// In ar, this message translates to:
+  /// **'المشروع'**
   String get project;
 
   /// No description provided for @userName.
   ///
-  /// In en, this message translates to:
-  /// **'User Name'**
+  /// In ar, this message translates to:
+  /// **'المستخدم'**
   String get userName;
 
   /// No description provided for @notificationTypeLabel.
   ///
-  /// In en, this message translates to:
-  /// **'Notification Type'**
+  /// In ar, this message translates to:
+  /// **'نوع الإشعار'**
   String get notificationTypeLabel;
 
   /// No description provided for @notificationDateLabel.
   ///
-  /// In en, this message translates to:
-  /// **'Notification Date'**
+  /// In ar, this message translates to:
+  /// **'تاريخ الإشعار'**
   String get notificationDateLabel;
 
   /// No description provided for @replyStatusLabel.
   ///
-  /// In en, this message translates to:
-  /// **'Reply Status'**
+  /// In ar, this message translates to:
+  /// **'تم الرد'**
   String get replyStatusLabel;
 
   /// No description provided for @replyDateLabel.
   ///
-  /// In en, this message translates to:
-  /// **'Reply Date'**
+  /// In ar, this message translates to:
+  /// **'تاريخ الرد'**
   String get replyDateLabel;
 
   /// No description provided for @replyDescription.
   ///
-  /// In en, this message translates to:
-  /// **'Reply Description'**
+  /// In ar, this message translates to:
+  /// **'وصف الرد'**
   String get replyDescription;
 
   /// No description provided for @insertUserLabel.
   ///
-  /// In en, this message translates to:
-  /// **'Insert User'**
+  /// In ar, this message translates to:
+  /// **'مدخل الإشعار'**
   String get insertUserLabel;
 
   /// No description provided for @notRepliedYet.
   ///
-  /// In en, this message translates to:
-  /// **'Not Replied Yet'**
+  /// In ar, this message translates to:
+  /// **'لم يتم الرد بعد'**
   String get notRepliedYet;
 
   /// No description provided for @loadingNotificationDetails.
   ///
-  /// In en, this message translates to:
-  /// **'Loading notification details...'**
+  /// In ar, this message translates to:
+  /// **'جار تحميل تفاصيل الإشعار...'**
   String get loadingNotificationDetails;
 
   /// No description provided for @createNewNotification.
   ///
-  /// In en, this message translates to:
-  /// **'Create New Notification'**
+  /// In ar, this message translates to:
+  /// **'إنشاء إشعار جديد'**
   String get createNewNotification;
 
   /// No description provided for @selectUserType.
   ///
-  /// In en, this message translates to:
-  /// **'Select User Type'**
+  /// In ar, this message translates to:
+  /// **'اختر نوع المستخدم'**
   String get selectUserType;
 
   /// No description provided for @selectUser.
   ///
-  /// In en, this message translates to:
-  /// **'Select User'**
+  /// In ar, this message translates to:
+  /// **'اختر المستخدم'**
   String get selectUser;
 
   /// No description provided for @notificationTypeStop.
   ///
-  /// In en, this message translates to:
-  /// **'Stop Notification'**
+  /// In ar, this message translates to:
+  /// **'إشعار بتوقف'**
   String get notificationTypeStop;
 
   /// No description provided for @notificationTypeGeneral.
   ///
-  /// In en, this message translates to:
-  /// **'General Notification'**
+  /// In ar, this message translates to:
+  /// **'إشعار عام'**
   String get notificationTypeGeneral;
 
   /// No description provided for @todayDate.
   ///
-  /// In en, this message translates to:
-  /// **'Today\'s Date'**
+  /// In ar, this message translates to:
+  /// **'تاريخ اليوم'**
   String get todayDate;
 
   /// No description provided for @notificationDescription.
   ///
-  /// In en, this message translates to:
-  /// **'Notification Description'**
+  /// In ar, this message translates to:
+  /// **'شرح الإشعار'**
   String get notificationDescription;
 
   /// No description provided for @enterDescription.
   ///
-  /// In en, this message translates to:
-  /// **'Enter notification description'**
+  /// In ar, this message translates to:
+  /// **'أدخل شرح الإشعار'**
   String get enterDescription;
 
   /// No description provided for @createNotification.
   ///
-  /// In en, this message translates to:
-  /// **'Create Notification'**
+  /// In ar, this message translates to:
+  /// **'إنشاء الإشعار'**
   String get createNotification;
 
   /// No description provided for @creatingNotification.
   ///
-  /// In en, this message translates to:
-  /// **'Creating notification...'**
+  /// In ar, this message translates to:
+  /// **'جاري إنشاء الإشعار...'**
   String get creatingNotification;
 
   /// No description provided for @notificationCreatedSuccessfully.
   ///
-  /// In en, this message translates to:
-  /// **'Notification created successfully'**
+  /// In ar, this message translates to:
+  /// **'تم إنشاء الإشعار بنجاح'**
   String get notificationCreatedSuccessfully;
 
   /// No description provided for @failedToCreateNotification.
   ///
-  /// In en, this message translates to:
-  /// **'Failed to create notification'**
+  /// In ar, this message translates to:
+  /// **'فشل إنشاء الإشعار'**
   String get failedToCreateNotification;
 
   /// No description provided for @pleaseSelectUserType.
   ///
-  /// In en, this message translates to:
-  /// **'Please select user type'**
+  /// In ar, this message translates to:
+  /// **'يرجى اختيار نوع المستخدم'**
   String get pleaseSelectUserType;
 
   /// No description provided for @pleaseSelectUser.
   ///
-  /// In en, this message translates to:
-  /// **'Please select user'**
+  /// In ar, this message translates to:
+  /// **'يرجى اختيار المستخدم'**
   String get pleaseSelectUser;
 
   /// No description provided for @pleaseEnterDescription.
   ///
-  /// In en, this message translates to:
-  /// **'Please enter description'**
+  /// In ar, this message translates to:
+  /// **'يرجى إدخال شرح الإشعار'**
   String get pleaseEnterDescription;
 
   /// No description provided for @addNotificationButton.
   ///
-  /// In en, this message translates to:
-  /// **'Create Notification'**
+  /// In ar, this message translates to:
+  /// **'إنشاء إشعار'**
   String get addNotificationButton;
 
   /// No description provided for @notificationData.
   ///
-  /// In en, this message translates to:
-  /// **'Notification Data'**
+  /// In ar, this message translates to:
+  /// **'بيانات الإشعار'**
   String get notificationData;
-
-  /// No description provided for @savedSuccessfully.
-  ///
-  /// In en, this message translates to:
-  /// **'Saved Successfully'**
-  String get savedSuccessfully;
 
   /// No description provided for @replySection.
   ///
-  /// In en, this message translates to:
-  /// **'Reply Section'**
+  /// In ar, this message translates to:
+  /// **'قسم الرد'**
   String get replySection;
 
-  /// No description provided for @createdBy.
+  /// No description provided for @savedSuccessfully.
   ///
-  /// In en, this message translates to:
-  /// **'Created By'**
-  String get createdBy;
+  /// In ar, this message translates to:
+  /// **'تم الحفظ بنجاح'**
+  String get savedSuccessfully;
 
   /// No description provided for @replyDate.
   ///
-  /// In en, this message translates to:
-  /// **'Reply Date'**
+  /// In ar, this message translates to:
+  /// **'تاريخ الرد'**
   String get replyDate;
+
+  /// No description provided for @internalNumber.
+  ///
+  /// In ar, this message translates to:
+  /// **'الرقم الداخلي'**
+  String get internalNumber;
+
+  /// No description provided for @executionDate.
+  ///
+  /// In ar, this message translates to:
+  /// **'تاريخ التنفيذ'**
+  String get executionDate;
 }
 
 class _AppLocalizationsDelegate

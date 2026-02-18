@@ -434,17 +434,39 @@ class _LoginScreenState extends State<LoginScreen>
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              Align(
-                                alignment: Alignment.topRight,
-                                child: _buildLanguageSwitcher(),
+                              Row(
+                                children: [
+                                  _buildLanguageSwitcher(),
+                                  Spacer(),
+                                  Container(
+                                    height: 50,
+                                    width: 50,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      shape: BoxShape.circle,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: _primaryColor.withOpacity(0.2),
+                                          spreadRadius: 2,
+                                          blurRadius: 15,
+                                        ),
+                                      ],
+                                    ),
+                                    child: const CircleAvatar(
+                                      backgroundImage: AssetImage(
+                                        "assets/images/ascon.jpg",
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                               const SizedBox(height: 10),
                               Container(
-                                height: 110,
-                                width: 110,
+                                height: 150,
+                                width: 200,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  shape: BoxShape.circle,
+                                  borderRadius: BorderRadius.circular(15),
                                   boxShadow: [
                                     BoxShadow(
                                       color: _primaryColor.withOpacity(0.2),
@@ -453,9 +475,11 @@ class _LoginScreenState extends State<LoginScreen>
                                     ),
                                   ],
                                 ),
-                                child: const CircleAvatar(
-                                  backgroundImage: AssetImage(
-                                    "assets/images/ascon.jpg",
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(15),
+                                  child: Image.asset(
+                                    "assets/images/sherehan_logo.jpeg",
+                                    fit: BoxFit.cover,
                                   ),
                                 ),
                               ),

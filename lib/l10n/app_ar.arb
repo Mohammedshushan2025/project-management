@@ -388,8 +388,8 @@
     "filterBy": "بيانات الاستعلام",
     "projectFilter": "المشروع",
     "selectProject": "اختر المشروع",
-    "contractNumber": "رقم العقد",
-    "enterContractNumber": "أدخل رقم العقد",
+    "contractNumber": "الرقم الداخلى",
+    "enterContractNumber": "أدخل الرقم الداخلى",
     "secNumber": "رقم SEC",
     "enterSecNumber": "أدخل رقم SEC",
     "statusFilter": "الحالة",
@@ -586,5 +586,10 @@
     "pleaseEnterDescription": "يرجى إدخال شرح الإشعار",
     "addNotificationButton": "إنشاء إشعار",
     "notificationData": "بيانات الإشعار",
-    "notificationTypeLabel": "نوع الإشعار"
+    "notificationTypeLabel": "نوع الإشعار",
+    "replySection": "قسم الرد",
+    "savedSuccessfully": "تم الحفظ بنجاح",
+    "replyDate": "تاريخ الرد",
+    "internalNumber": "الرقم الداخلي",
+    "executionDate": "تاريخ التنفيذ"
 }

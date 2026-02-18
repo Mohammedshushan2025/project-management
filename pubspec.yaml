@@ -40,13 +40,13 @@ dependencies:
   provider: ^6.1.5
   shared_preferences: ^2.5.3
   cached_network_image: ^3.4.1
-  intl:
-  flutter_localization:
+  intl: null
+  flutter_localization: null
   dio: ^5.8.0+1
-  geolocator:
+  geolocator: null
   geodesy: ^0.10.2
   flutter_map: ^8.1.1
-  dropdown_search:
+  dropdown_search: null
   image_picker: ^1.2.1
   file_picker: ^10.3.8
   open_file: ^3.5.9
@@ -69,7 +69,6 @@ flutter_icons:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-
 # The following section is specific to Flutter packages.
 flutter:
   generate: true
@@ -85,22 +84,19 @@ flutter:
     #   - images/a_dot_burr.jpeg
     #   - images/a_dot_ham.jpeg
   fonts: # إذا كنت ستستخدم خطوطًا مخصصة
-      - family: Cairo
-        fonts:
-          - asset: assets/fonts/Cairo-Regular.ttf
-          - asset: assets/fonts/Cairo-Bold.ttf
-            weight: 700
+    - family: Cairo
+      fonts:
+        - asset: assets/fonts/Cairo-Regular.ttf
+        - asset: assets/fonts/Cairo-Bold.ttf
+          weight: 700
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
-
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
-
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/to/asset-from-package
-
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
