@@ -415,6 +415,10 @@ class _PermissionDetailsViewState extends State<PermissionDetailsView>
                                   ),
                                 ),
                                 DetailItem(
+                                  label: l10n.status,
+                                  value: widget.permission.statusNameA,
+                                ),
+                                DetailItem(
                                   label: l10n.streets,
                                   value: widget.permission.streets,
                                 ),

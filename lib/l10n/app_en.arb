@@ -592,5 +592,7 @@
     "replyDate": "Reply Date",
     "internalNumber": "Internal No",
     "executionDate": "Execution Date",
+    "permitStatus": "Permit Status",
+    "selectPermitStatus": "Select Permit Status",
     "insertUser": "Insert User"
 }

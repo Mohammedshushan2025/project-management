@@ -592,5 +592,7 @@
     "replyDate": "تاريخ الرد",
     "internalNumber": "الرقم الداخلي",
     "executionDate": "تاريخ التنفيذ",
+    "permitStatus": "حالة التصريح",
+    "selectPermitStatus": "اختر حالة التصريح",
     "insertUser": "مدخل الحقل"
 }
