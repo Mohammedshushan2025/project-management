@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shehabapp/features/management/views/mng_daily_tasks_view.dart';
 import 'package:shehabapp/features/management/views/mng_notification_view.dart';
+import 'package:shehabapp/features/management/views/mng_permissions_view.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../../core/providers/locale_provider.dart';
 import '../../daily_tasks/daily_tasks_screen.dart';
@@ -169,7 +171,11 @@ class _ManagementViewState extends State<ManagementView>
                                         Color(0xFF6366F1),
                                       ],
                                       delay: 100,
-                                      onTap: () {},
+                                      onTap: () {
+                                        Navigator.of(context).pushNamed(
+                                          MngDailyTasksView.routeName,
+                                        );
+                                      },
                                     ),
                                     const SizedBox(height: 20),
 
@@ -205,7 +211,11 @@ class _ManagementViewState extends State<ManagementView>
                                         Color(0xFF059669),
                                       ],
                                       delay: 400,
-                                      onTap: () {},
+                                      onTap: () {
+                                        Navigator.of(context).pushNamed(
+                                          MngPermissionsView.routeName,
+                                        );
+                                      },
                                     ),
                                     const SizedBox(height: 40),
                                   ],

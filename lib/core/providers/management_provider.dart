@@ -3,6 +3,8 @@ import 'package:shehabapp/core/models/create_notification_model.dart';
 import 'package:shehabapp/core/models/mng_notif_cnt_model.dart';
 import 'package:shehabapp/core/models/mng_permit_cnt_model.dart';
 import 'package:shehabapp/core/models/mng_proc_cnt_model.dart';
+import 'package:shehabapp/core/models/proccess_model.dart';
+import 'package:shehabapp/core/models/task_permission_model.dart';
 import 'package:shehabapp/core/services/management_service.dart';
 
 class ManagementProvider extends ChangeNotifier {
@@ -13,6 +15,9 @@ class ManagementProvider extends ChangeNotifier {
   MngProcCntModel? _procCountModel;
   CreateNotificationModel? _notificationListModel;
   CreateNotificationModel? _notificationDetailsModel;
+  PermissionModel? _permissionModel;
+  PermissionModel? _permissionDetailsModel;
+  ProccessModel? _taskProccessModel;
 
   MngNotifCntModel? get notificationCountModel => _notificationCountModel;
   MngPermitCntModel? get permitCountModel => _permitCountModel;
@@ -20,6 +25,9 @@ class ManagementProvider extends ChangeNotifier {
   CreateNotificationModel? get notificationListModel => _notificationListModel;
   CreateNotificationModel? get notificationDetailsModel =>
       _notificationDetailsModel;
+  PermissionModel? get permissionModel => _permissionModel;
+  PermissionModel? get permissionDetailsModel => _permissionDetailsModel;
+  ProccessModel? get taskProccessModel => _taskProccessModel;
 
   Future<void> fetchNotificationCount() async {
     try {
@@ -72,6 +80,37 @@ class ManagementProvider extends ChangeNotifier {
       notifyListeners();
     } catch (e) {
       print('Error fetching notification details: $e');
+    }
+  }
+
+  Future<void> fetchPermissions() async {
+    try {
+      _permissionModel = await _managementService.getPermissions();
+      notifyListeners();
+    } catch (e) {
+      print('Error fetching permissions: $e');
+    }
+  }
+
+  Future<void> fetchPermissionDetails({required String altKey}) async {
+    try {
+      _permissionDetailsModel = await _managementService.getPermissionDetails(
+        altKey: altKey,
+      );
+      notifyListeners();
+    } catch (e) {
+      print('Error fetching permission details: $e');
+    }
+  }
+
+  Future<void> fetchTaskProccess({required String altKey}) async {
+    try {
+      _taskProccessModel = await _managementService.getTaskProccess(
+        altKey: altKey,
+      );
+      notifyListeners();
+    } catch (e) {
+      print('Error fetching task proccess: $e');
     }
   }
 }

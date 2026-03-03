@@ -16,8 +16,10 @@ import 'package:shehabapp/features/display_notifications/display_notifications_v
 import 'package:shehabapp/features/loans/screens/loan_request_details_screen.dart';
 import 'package:shehabapp/features/loans/screens/loan_requests_list_screen.dart';
 import 'package:shehabapp/features/management/views/management_view.dart';
+import 'package:shehabapp/features/management/views/mng_daily_tasks_view.dart';
 import 'package:shehabapp/features/management/views/mng_notification_details_view.dart';
 import 'package:shehabapp/features/management/views/mng_notification_view.dart';
+import 'package:shehabapp/features/management/views/mng_permissions_view.dart';
 import 'package:shehabapp/features/permissions/screens/my_requests/my_permission_requests_list_screen.dart';
 import 'package:shehabapp/features/permissions/screens/my_requests/new_permission_request_screen.dart';
 import 'package:shehabapp/features/permissions/screens/permission_request_details_screen.dart';
@@ -212,6 +214,10 @@ class MyApp extends StatelessWidget {
                     ModalRoute.of(context)!.settings.arguments as String;
                 return MngNotificationDetailsView(altKey: altKey);
               },
+              MngPermissionsView.routeName: (context) =>
+                  const MngPermissionsView(),
+              MngDailyTasksView.routeName: (context) =>
+                  const MngDailyTasksView(),
               // --== مسارات جديدة ==--
               VacationRequestsListScreen.routeName: (context) =>
                   const VacationRequestsListScreen(),

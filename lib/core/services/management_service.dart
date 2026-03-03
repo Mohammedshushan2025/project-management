@@ -6,6 +6,8 @@ import 'package:shehabapp/core/models/create_notification_model.dart';
 import 'package:shehabapp/core/models/mng_notif_cnt_model.dart';
 import 'package:shehabapp/core/models/mng_permit_cnt_model.dart';
 import 'package:shehabapp/core/models/mng_proc_cnt_model.dart';
+import 'package:shehabapp/core/models/proccess_model.dart';
+import 'package:shehabapp/core/models/task_permission_model.dart';
 
 class ManagementService {
   Future<MngNotifCntModel> getNotificationCount() async {
@@ -180,6 +182,144 @@ class ManagementService {
       }
     } catch (e) {
       throw Exception('Failed to load notification details: $e');
+    }
+  }
+
+  Future<PermissionModel> getPermissions() async {
+    try {
+      final url =
+          'http://168.119.35.125:7013/TdpSelfServiceWebSrvc-RESTWebService-context-root/rest/V1/EXProjectsPermitsVo1';
+      log('🔵 Request URL: $url', name: 'TaskPermissionService');
+
+      final response = await http.get(
+        Uri.parse(url),
+        headers: {
+          // هذا الهيدر يطلب من السيرفر الرد بـ UTF-8، لكن أحياناً السيرفر يتجاهله
+          "Content-Type":
+              "application/vnd.oracle.adf.resourceitem+json; charset=UTF-8",
+        },
+      );
+
+      log(
+        '🔵 Response Status Code: ${response.statusCode}',
+        name: 'TaskPermissionService',
+      );
+      // للتأكد في اللوج، سنطبع النص بعد فك التشفير
+      // log('🔵 Response Body: ${response.body}', name: 'TaskPermissionService'); // ❌ القديم
+
+      if (response.statusCode == 200) {
+        // ✅ الحل هنا: فك التشفير يدوياً من الـ Bytes
+        String decodedBody = utf8.decode(response.bodyBytes);
+        log(
+          '🔵 Response Body (Decoded): $decodedBody',
+          name: 'TaskPermissionService',
+        ); // ستظهر العربي صح هنا
+
+        final jsonData = jsonDecode(decodedBody);
+
+        log('✅ Successfully parsed JSON data', name: 'TaskPermissionService');
+        return PermissionModel.fromJson(jsonData);
+      } else {
+        log(
+          '❌ Failed with status code: ${response.statusCode}',
+          name: 'TaskPermissionService',
+        );
+        throw Exception(
+          'Failed to load permission details - Status: ${response.statusCode}',
+        );
+      }
+    } catch (e, stackTrace) {
+      log('💥 Exception occurred: $e', name: 'TaskPermissionService');
+      log('💥 Stack trace: $stackTrace', name: 'TaskPermissionService');
+      throw Exception('Failed to load permission details: $e');
+    }
+  }
+
+  Future<PermissionModel> getPermissionDetails({required String altKey}) async {
+    try {
+      final url =
+          'http://168.119.35.125:7013/TdpSelfServiceWebSrvc-RESTWebService-context-root/rest/V1/EXProjectsPermitsVo1?q=AltKey=$altKey';
+      log('🔵 Request URL: $url', name: 'MNG getPermissionDetails');
+
+      final response = await http.get(
+        Uri.parse(url),
+        headers: {
+          // هذا الهيدر يطلب من السيرفر الرد بـ UTF-8، لكن أحياناً السيرفر يتجاهله
+          "Content-Type":
+              "application/vnd.oracle.adf.resourceitem+json; charset=UTF-8",
+        },
+      );
+
+      log(
+        '🔵 Response Status Code: ${response.statusCode}',
+        name: 'MNG getPermissionDetails',
+      );
+      // للتأكد في اللوج، سنطبع النص بعد فك التشفير
+      // log('🔵 Response Body: ${response.body}', name: 'TaskPermissionService'); // ❌ القديم
+
+      if (response.statusCode == 200) {
+        // ✅ الحل هنا: فك التشفير يدوياً من الـ Bytes
+        String decodedBody = utf8.decode(response.bodyBytes);
+        log(
+          '🔵 Response Body (Decoded): $decodedBody',
+          name: 'MNG getPermissionDetails',
+        ); // ستظهر العربي صح هنا
+
+        final jsonData = jsonDecode(decodedBody);
+
+        log(
+          '✅ Successfully parsed JSON data',
+          name: 'MNG getPermissionDetails',
+        );
+        return PermissionModel.fromJson(jsonData);
+      } else {
+        log(
+          '❌ Failed with status code: ${response.statusCode}',
+          name: 'MNG getPermissionDetails',
+        );
+        throw Exception(
+          'Failed to load permission details - Status: ${response.statusCode}',
+        );
+      }
+    } catch (e, stackTrace) {
+      log('💥 Exception occurred: $e', name: 'MNG getPermissionDetails');
+      log('💥 Stack trace: $stackTrace', name: 'MNG getPermissionDetails');
+      throw Exception('Failed to load permission details: $e');
+    }
+  }
+
+  Future<ProccessModel> getTaskProccess({required String altKey}) async {
+    try {
+      final url =
+          'http://168.119.35.125:7013/TdpSelfServiceWebSrvc-RESTWebService-context-root/rest/V1/EXProjectsPartsProcVO2';
+      log('🌐 API Request URL: $url', name: 'MNG getTaskProccess');
+
+      final response = await http.get(
+        Uri.parse(url),
+        headers: {'Content-Type': 'application/json'},
+      );
+
+      if (response.statusCode == 200) {
+        String responseBody = utf8.decode(response.bodyBytes);
+        // log(
+        //   '✅ API Response (getTaskProccess): $responseBody',
+        //   name: 'getTaskProccess',
+        // );
+
+        final ProccessModel taskProccess = ProccessModel.fromJson(
+          json.decode(responseBody),
+        );
+        return taskProccess;
+      } else {
+        log(
+          '❌ API Error (${response.statusCode}): ${response.body}',
+          name: 'MNG getTaskProccess',
+        );
+        throw Exception('Failed to load task proccess data.');
+      }
+    } catch (e) {
+      log('💥 Exception in getTaskProccess: $e', name: 'MNG getTaskProccess');
+      throw Exception('An error occurred while fetching task proccess: $e');
     }
   }
 }
