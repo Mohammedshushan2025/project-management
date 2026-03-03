@@ -1,11 +1,9 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shehabapp/core/providers/auth_provider.dart';
-import 'package:shehabapp/core/providers/daily_tasks_provider.dart';
+import 'package:shehabapp/core/models/proccess_model.dart';
+import 'package:shehabapp/core/models/projects_model.dart';
+import 'package:shehabapp/core/providers/management_provider.dart';
 import 'package:shehabapp/features/daily_tasks/widgets/status_filter_radio.dart';
-import '../../../core/models/project_tasks_model.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../../core/providers/locale_provider.dart';
 import '../../daily_tasks/widgets/filter_section_widget.dart';
@@ -26,12 +24,21 @@ class _MngDailyTasksViewState extends State<MngDailyTasksView>
   late Animation<double> _fadeAnimation;
   late Animation<Offset> _slideAnimation;
 
+  // All tasks fetched from API (never filtered in place)
+  List<Items> _allTasks = [];
+
+  // Currently displayed tasks after applying filters
+  List<Items> _tasks = [];
+
+  // Derived list of unique projects for dropdown
+  List<Project> _projects = [];
+
+  // Filter state
   String? _selectedProject;
   final TextEditingController _contractController = TextEditingController();
   final TextEditingController _secController = TextEditingController();
   TaskStatus _selectedStatus = TaskStatus.all;
 
-  List<Items> _tasks = [];
   bool _isLoading = false;
 
   @override
@@ -56,63 +63,103 @@ class _MngDailyTasksViewState extends State<MngDailyTasksView>
     _controller.forward();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _loadInitialData();
+      _loadTasks();
     });
   }
 
-  void _loadInitialData() async {
-    final dailyTasksProvider = Provider.of<DailyTasksProvider>(
-      context,
-      listen: false,
-    );
-    final authProvider = Provider.of<AuthProvider>(context, listen: false);
-    final usersCode = authProvider.currentUser?.usersCode.toString();
+  /// Fetches all tasks from API then builds the projects dropdown list.
+  Future<void> _loadTasks() async {
+    setState(() => _isLoading = true);
 
-    await dailyTasksProvider.getProjects();
-    await dailyTasksProvider.getProjectsDetails(usersCode: usersCode ?? '');
+    final mngProvider = Provider.of<ManagementProvider>(context, listen: false);
+    await mngProvider.fetchTaskProccessList();
 
     if (mounted) {
+      final all = mngProvider.taskProccessListModel?.items ?? [];
       setState(() {
-        _tasks = dailyTasksProvider.projectTasksModel?.items ?? [];
-      });
-    }
-  }
-
-  void _performSearch() async {
-    setState(() {
-      _isLoading = true;
-    });
-
-    final dailyTasksProvider = Provider.of<DailyTasksProvider>(
-      context,
-      listen: false,
-    );
-    final authProvider = Provider.of<AuthProvider>(context, listen: false);
-    final usersCode = authProvider.currentUser?.usersCode.toString();
-
-    int? doneFlag;
-    if (_selectedStatus == TaskStatus.doneOnly) {
-      doneFlag = 1;
-    } else if (_selectedStatus == TaskStatus.notDoneOnly) {
-      doneFlag = 0;
-    }
-
-    await dailyTasksProvider.getProjectsDetails(
-      usersCode: usersCode ?? '',
-      projectId: _selectedProject,
-      contractNo: _contractController.text.isNotEmpty
-          ? _contractController.text
-          : null,
-      secNo: _secController.text.isNotEmpty ? _secController.text : null,
-      doneFlag: doneFlag,
-    );
-
-    if (mounted) {
-      setState(() {
-        _tasks = dailyTasksProvider.projectTasksModel?.items ?? [];
+        _allTasks = all;
+        _tasks = all;
+        _projects = _extractUniqueProjects(all);
         _isLoading = false;
       });
     }
+  }
+
+  /// Extracts unique projects from the task list to populate the dropdown.
+  List<Project> _extractUniqueProjects(List<Items> tasks) {
+    final seen = <dynamic>{};
+    final projects = <Project>[];
+    for (final task in tasks) {
+      if (task.projectId != null && !seen.contains(task.projectId)) {
+        seen.add(task.projectId);
+        projects.add(
+          Project(
+            projectId: task.projectId,
+            nameA: task.nameA?.toString(),
+            nameE: task.nameE?.toString(),
+          ),
+        );
+      }
+    }
+    return projects;
+  }
+
+  /// Applies all active filters on `_allTasks` and updates `_tasks`.
+  void _performSearch() {
+    setState(() => _isLoading = true);
+
+    final contractText = _contractController.text.trim().toLowerCase();
+    final secText = _secController.text.trim().toLowerCase();
+
+    final filtered = _allTasks.where((task) {
+      // --- Project filter ---
+      if (_selectedProject != null && _selectedProject!.isNotEmpty) {
+        if (task.projectId?.toString() != _selectedProject) return false;
+      }
+
+      // --- Contract number filter ---
+      if (contractText.isNotEmpty) {
+        if (!(task.contractNo?.toString().toLowerCase().contains(
+              contractText,
+            ) ??
+            false)) {
+          return false;
+        }
+      }
+
+      // --- Section number filter ---
+      if (secText.isNotEmpty) {
+        if (!(task.secNo?.toString().toLowerCase().contains(secText) ??
+            false)) {
+          return false;
+        }
+      }
+
+      // --- Status filter ---
+      if (_selectedStatus == TaskStatus.doneOnly && task.doneFlag != 1) {
+        return false;
+      }
+      if (_selectedStatus == TaskStatus.notDoneOnly && task.doneFlag == 1) {
+        return false;
+      }
+
+      return true;
+    }).toList();
+
+    setState(() {
+      _tasks = filtered;
+      _isLoading = false;
+    });
+  }
+
+  void _resetFilters() {
+    setState(() {
+      _selectedProject = null;
+      _contractController.clear();
+      _secController.clear();
+      _selectedStatus = TaskStatus.all;
+      _tasks = _allTasks;
+    });
   }
 
   @override
@@ -172,42 +219,21 @@ class _MngDailyTasksViewState extends State<MngDailyTasksView>
 
                               const SizedBox(height: 24),
 
-                              Consumer<DailyTasksProvider>(
-                                builder: (context, dailyTasksProvider, child) {
-                                  final projects =
-                                      dailyTasksProvider.projectsModel?.items ??
-                                      [];
-                                  return FilterSectionWidget(
-                                    selectedProject: _selectedProject,
-                                    projects: projects,
-                                    onProjectChanged: (value) {
-                                      setState(() {
-                                        _selectedProject = value;
-                                        log(
-                                          'selectedProject $_selectedProject',
-                                        );
-                                      });
-                                    },
-                                    contractController: _contractController,
-                                    secController: _secController,
-                                    selectedStatus: _selectedStatus,
-                                    onStatusChanged: (value) {
-                                      setState(() {
-                                        _selectedStatus = value;
-                                      });
-                                    },
-                                    onSearchPressed: _performSearch,
-                                    onResetPressed: () {
-                                      setState(() {
-                                        _selectedProject = null;
-                                        _contractController.clear();
-                                        _secController.clear();
-                                        _selectedStatus = TaskStatus.all;
-                                      });
-                                      _performSearch();
-                                    },
-                                  );
+                              // Filter Section
+                              FilterSectionWidget(
+                                selectedProject: _selectedProject,
+                                projects: _projects,
+                                onProjectChanged: (value) {
+                                  setState(() => _selectedProject = value);
                                 },
+                                contractController: _contractController,
+                                secController: _secController,
+                                selectedStatus: _selectedStatus,
+                                onStatusChanged: (value) {
+                                  setState(() => _selectedStatus = value);
+                                },
+                                onSearchPressed: _performSearch,
+                                onResetPressed: _resetFilters,
                               ),
 
                               const SizedBox(height: 24),

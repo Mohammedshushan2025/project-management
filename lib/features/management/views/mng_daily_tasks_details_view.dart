@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 
-import '../../../core/models/project_tasks_model.dart';
+import '../../../core/models/proccess_model.dart';
 import '../../../core/providers/auth_provider.dart';
 import '../../../core/providers/management_provider.dart';
 import '../../../core/providers/locale_provider.dart';

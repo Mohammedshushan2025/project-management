@@ -1,7 +1,7 @@
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import '../mng_daily_tasks_details_view.dart';
-import '../../../../core/models/project_tasks_model.dart';
+import '../../../../core/models/proccess_model.dart';
 import '../../../../l10n/app_localizations.dart';
 
 class MngDataTableWidget extends StatelessWidget {

@@ -221,7 +221,7 @@ class _MngPersissionsDetailsViewState extends State<MngPersissionsDetailsView>
                                   label: l10n.permissionType,
                                   value: _getPermissionTypeName(
                                     context,
-                                    widget.permission.permitType,
+                                    widget.permission.permitType?.toInt(),
                                   ),
                                 ),
                                 DetailItem(
@@ -242,7 +242,7 @@ class _MngPersissionsDetailsViewState extends State<MngPersissionsDetailsView>
                                   label: l10n.municipality,
                                   value: _getZoneName(
                                     context,
-                                    widget.permission.permitLoc,
+                                    widget.permission.permitLoc?.toInt(),
                                   ),
                                 ),
                                 DetailItem(

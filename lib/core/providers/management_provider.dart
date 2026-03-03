@@ -18,6 +18,7 @@ class ManagementProvider extends ChangeNotifier {
   PermissionModel? _permissionModel;
   PermissionModel? _permissionDetailsModel;
   ProccessModel? _taskProccessModel;
+  ProccessModel? _taskProccessListModel;
 
   MngNotifCntModel? get notificationCountModel => _notificationCountModel;
   MngPermitCntModel? get permitCountModel => _permitCountModel;
@@ -28,6 +29,7 @@ class ManagementProvider extends ChangeNotifier {
   PermissionModel? get permissionModel => _permissionModel;
   PermissionModel? get permissionDetailsModel => _permissionDetailsModel;
   ProccessModel? get taskProccessModel => _taskProccessModel;
+  ProccessModel? get taskProccessListModel => _taskProccessListModel;
 
   Future<void> fetchNotificationCount() async {
     try {
@@ -100,6 +102,15 @@ class ManagementProvider extends ChangeNotifier {
       notifyListeners();
     } catch (e) {
       print('Error fetching permission details: $e');
+    }
+  }
+
+  Future<void> fetchTaskProccessList() async {
+    try {
+      _taskProccessListModel = await _managementService.getTaskProccessList();
+      notifyListeners();
+    } catch (e) {
+      print('Error fetching task proccess list: $e');
     }
   }
 

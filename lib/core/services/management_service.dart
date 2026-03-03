@@ -288,10 +288,45 @@ class ManagementService {
     }
   }
 
-  Future<ProccessModel> getTaskProccess({required String altKey}) async {
+  Future<ProccessModel> getTaskProccessList() async {
     try {
       final url =
           'http://168.119.35.125:7013/TdpSelfServiceWebSrvc-RESTWebService-context-root/rest/V1/EXProjectsPartsProcVO2';
+      log('🌐 API Request URL: $url', name: 'MNG getTaskProccessList');
+
+      final response = await http.get(
+        Uri.parse(url),
+        headers: {'Content-Type': 'application/json'},
+      );
+
+      if (response.statusCode == 200) {
+        String responseBody = utf8.decode(response.bodyBytes);
+        final ProccessModel taskProccess = ProccessModel.fromJson(
+          json.decode(responseBody),
+        );
+        return taskProccess;
+      } else {
+        log(
+          '❌ API Error (${response.statusCode}): ${response.body}',
+          name: 'MNG getTaskProccessList',
+        );
+        throw Exception('Failed to load task proccess list data.');
+      }
+    } catch (e) {
+      log(
+        '💥 Exception in getTaskProccessList: $e',
+        name: 'MNG getTaskProccessList',
+      );
+      throw Exception(
+        'An error occurred while fetching task proccess list: $e',
+      );
+    }
+  }
+
+  Future<ProccessModel> getTaskProccess({required String altKey}) async {
+    try {
+      final url =
+          'http://168.119.35.125:7013/TdpSelfServiceWebSrvc-RESTWebService-context-root/rest/V1/EXProjectsPartsProcVO2?q=AltKey=$altKey';
       log('🌐 API Request URL: $url', name: 'MNG getTaskProccess');
 
       final response = await http.get(

@@ -186,21 +186,21 @@ class _MngPermissionsViewState extends State<MngPermissionsView>
                                 ),
                               ),
                               const SizedBox(height: 24),
-                              Consumer<ManagementProvider>(
-                                builder: (context, provider, child) {
-                                  final items = provider.permissionModel?.items;
-                                  final firstPerm =
-                                      (items != null && items.isNotEmpty)
-                                      ? items.first
-                                      : null;
-                                  return PermissionInfoCardWidget(
-                                    projectNameAr: firstPerm?.projectNameA,
-                                    projectNameEn: firstPerm?.projectNameE,
-                                    contractNo: firstPerm?.contractNo,
-                                  );
-                                },
-                              ),
-                              const SizedBox(height: 24),
+                              // Consumer<ManagementProvider>(
+                              //   builder: (context, provider, child) {
+                              //     final items = provider.permissionModel?.items;
+                              //     final firstPerm =
+                              //         (items != null && items.isNotEmpty)
+                              //         ? items.first
+                              //         : null;
+                              //     return PermissionInfoCardWidget(
+                              //       projectNameAr: firstPerm?.projectNameA,
+                              //       projectNameEn: firstPerm?.projectNameE,
+                              //       contractNo: firstPerm?.contractNo,
+                              //     );
+                              //   },
+                              // ),
+                              // const SizedBox(height: 24),
                               PermissionFilterWidget(
                                 selectedStatus: _selectedStatus,
                                 onStatusChanged: (value) {
