@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'package:flutter/foundation.dart'; // for compute()
 
 import 'package:http/http.dart' as http;
 import 'package:shehabapp/core/models/create_notification_model.dart';
@@ -208,15 +209,13 @@ class ManagementService {
       // log('🔵 Response Body: ${response.body}', name: 'TaskPermissionService'); // ❌ القديم
 
       if (response.statusCode == 200) {
-        // ✅ الحل هنا: فك التشفير يدوياً من الـ Bytes
         String decodedBody = utf8.decode(response.bodyBytes);
         log(
           '🔵 Response Body (Decoded): $decodedBody',
           name: 'TaskPermissionService',
-        ); // ستظهر العربي صح هنا
-
-        final jsonData = jsonDecode(decodedBody);
-
+        );
+        // Offload JSON parsing to background isolate
+        final jsonData = await compute(_decodeJson, decodedBody);
         log('✅ Successfully parsed JSON data', name: 'TaskPermissionService');
         return PermissionModel.fromJson(jsonData);
       } else {
@@ -301,9 +300,12 @@ class ManagementService {
 
       if (response.statusCode == 200) {
         String responseBody = utf8.decode(response.bodyBytes);
-        final ProccessModel taskProccess = ProccessModel.fromJson(
-          json.decode(responseBody),
+        // Offload JSON parsing to a background isolate to avoid freezing the UI
+        final Map<String, dynamic> jsonMap = await compute(
+          _decodeJson,
+          responseBody,
         );
+        final ProccessModel taskProccess = ProccessModel.fromJson(jsonMap);
         return taskProccess;
       } else {
         log(
@@ -357,4 +359,9 @@ class ManagementService {
       throw Exception('An error occurred while fetching task proccess: $e');
     }
   }
+}
+
+/// Top-level function required by compute() — must not be a closure
+Map<String, dynamic> _decodeJson(String responseBody) {
+  return json.decode(responseBody) as Map<String, dynamic>;
 }

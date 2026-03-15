@@ -4,11 +4,11 @@ import 'package:http/http.dart' as http; // تأكد من وجود مكتبة ht
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shehabapp/features/auth/screens/module_selection_screen.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../../core/providers/auth_provider.dart';
 import '../../../core/providers/locale_provider.dart'; // دعم تبديل اللغة
-// import '../../home/screens/home_screen.dart'; // لم نعد بحاجة إليه هنا
-import 'module_selection_screen.dart'; // <--- تم إضافة استدعاء صفحة الاختيار الجديدة
+import '../../home/screens/home_screen.dart'; // للانتقال بعد تسجيل الدخول
 
 // --- 1. موديل بسيط للشركة ---
 class CompanyModel {
@@ -174,28 +174,21 @@ class _LoginScreenState extends State<LoginScreen>
         _passwordController.text.trim(),
       );
 
-      if (success && mounted) {
+      if (!mounted) return;
+
+      if (success) {
+        final navigator = Navigator.of(context);
+
         _showStyledDialog(
           message: l10n.loginSuccessMessage ?? "تم تسجيل الدخول بنجاح",
           isSuccess: true,
+          barrierDismissible: false,
           onContinue: () {
-            // التحقق أولاً من أن الـ widget لا يزال mounted قبل الوصول للـ context
-            if (!mounted) return;
-
-            // الآن آمن الوصول للـ context والـ Navigator
-            Navigator.of(context).pop();
-
-            // --- استخدام addPostFrameCallback للتأكد من اكتمال إغلاق الـ dialog ---
-            WidgetsBinding.instance.addPostFrameCallback((_) {
-              if (mounted) {
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(
-                    builder: (k) => const ModuleSelectionScreen(),
-                  ),
-                );
-              }
-            });
-            // ----------------------------------------------------
+            // Navigate directly when button is pressed
+            navigator.pushAndRemoveUntil(
+              MaterialPageRoute(builder: (_) => ModuleSelectionScreen()),
+              (route) => false,
+            );
           },
         );
       } else if (mounted) {
@@ -217,11 +210,13 @@ class _LoginScreenState extends State<LoginScreen>
     required String message,
     required bool isSuccess,
     required VoidCallback onContinue,
+    bool barrierDismissible = true,
   }) {
     final l10n = AppLocalizations.of(context)!;
 
     showDialog(
       context: context,
+      barrierDismissible: barrierDismissible,
       builder: (BuildContext context) {
         return Dialog(
           shape: RoundedRectangleBorder(
@@ -725,24 +720,7 @@ class _LoginScreenState extends State<LoginScreen>
                                 ),
                               ),
                               const SizedBox(height: 15),
-                              Align(
-                                alignment: Alignment.centerLeft,
-                                child: TextButton(
-                                  onPressed: () {},
-                                  style: ButtonStyle(
-                                    overlayColor: MaterialStateProperty.all(
-                                      _secondaryColor.withOpacity(0.1),
-                                    ),
-                                  ),
-                                  child: Text(
-                                    l10n.forgotPassword ?? "نسيت كلمة المرور؟",
-                                    style: TextStyle(
-                                      color: _primaryColor,
-                                      fontSize: 14,
-                                    ),
-                                  ),
-                                ),
-                              ),
+                              // تمت إزالة زر "نسيت كلمة المرور؟" بناءً على طلب المستخدم
                               const SizedBox(height: 25),
                               authProvider.isLoading
                                   ? Container(
@@ -813,7 +791,15 @@ class _LoginScreenState extends State<LoginScreen>
                                   ),
                                   const SizedBox(width: 5),
                                   TextButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      _showStyledDialog(
+                                        message: "برجاء التواصل مع الدعم الفني لإنشاء حساب",
+                                        isSuccess: false,
+                                        onContinue: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                      );
+                                    },
                                     style: ButtonStyle(
                                       overlayColor: MaterialStateProperty.all(
                                         _secondaryColor.withOpacity(0.1),
