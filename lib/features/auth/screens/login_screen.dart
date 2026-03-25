@@ -793,7 +793,7 @@ class _LoginScreenState extends State<LoginScreen>
                                   TextButton(
                                     onPressed: () {
                                       _showStyledDialog(
-                                        message: "برجاء التواصل مع الدعم الفني لإنشاء حساب",
+                                        message: " برجاء التواصل مع الدعم الفني لإنشاء حساب من خلال رقمنا هذا +966-11-4620694",
                                         isSuccess: false,
                                         onContinue: () {
                                           Navigator.of(context).pop();
