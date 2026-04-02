@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart'; // for compute()
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shehabapp/core/models/proccess_model.dart';
@@ -24,8 +23,6 @@ class _MngDailyTasksViewState extends State<MngDailyTasksView>
   late AnimationController _controller;
   late Animation<double> _fadeAnimation;
   late Animation<Offset> _slideAnimation;
-
-  late AnimationController _shimmerController;
 
   // All tasks fetched from API (never filtered in place)
   List<Items> _allTasks = [];
@@ -65,11 +62,6 @@ class _MngDailyTasksViewState extends State<MngDailyTasksView>
 
     _controller.forward();
 
-    _shimmerController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 1200),
-    )..repeat();
-
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _loadTasks();
     });
@@ -79,38 +71,37 @@ class _MngDailyTasksViewState extends State<MngDailyTasksView>
   Future<void> _loadTasks() async {
     setState(() => _isLoading = true);
 
-    try {
-      final mngProvider = Provider.of<ManagementProvider>(
-        context,
-        listen: false,
-      );
-      await mngProvider.fetchTaskProccessList();
+    final mngProvider = Provider.of<ManagementProvider>(context, listen: false);
+    await mngProvider.fetchTaskProccessList();
 
-      if (!mounted) return;
-
+    if (mounted) {
       final all = mngProvider.taskProccessListModel?.items ?? [];
-
-      // Offload project extraction to background isolate (avoids UI freeze on large lists)
-      final projects = await compute(_extractProjectsIsolate, all);
-
-      if (!mounted) return;
       setState(() {
         _allTasks = all;
         _tasks = all;
-        _projects = projects;
+        _projects = _extractUniqueProjects(all);
         _isLoading = false;
       });
-    } catch (e) {
-      if (!mounted) return;
-      setState(() => _isLoading = false);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('حدث خطأ أثناء تحميل البيانات: $e'),
-          backgroundColor: Colors.red,
-          behavior: SnackBarBehavior.floating,
-        ),
-      );
     }
+  }
+
+  /// Extracts unique projects from the task list to populate the dropdown.
+  List<Project> _extractUniqueProjects(List<Items> tasks) {
+    final seen = <dynamic>{};
+    final projects = <Project>[];
+    for (final task in tasks) {
+      if (task.projectId != null && !seen.contains(task.projectId)) {
+        seen.add(task.projectId);
+        projects.add(
+          Project(
+            projectId: task.projectId,
+            nameA: task.nameA?.toString(),
+            nameE: task.nameE?.toString(),
+          ),
+        );
+      }
+    }
+    return projects;
   }
 
   /// Applies all active filters on `_allTasks` and updates `_tasks`.
@@ -174,7 +165,6 @@ class _MngDailyTasksViewState extends State<MngDailyTasksView>
   @override
   void dispose() {
     _controller.dispose();
-    _shimmerController.dispose();
     _contractController.dispose();
     _secController.dispose();
     super.dispose();
@@ -264,7 +254,25 @@ class _MngDailyTasksViewState extends State<MngDailyTasksView>
                               const SizedBox(height: 24),
 
                               _isLoading
-                                  ? _buildShimmerSkeleton()
+                                  ? Center(
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          const CircularProgressIndicator(
+                                            color: Color(0xFF4F46E5),
+                                          ),
+                                          const SizedBox(height: 16),
+                                          Text(
+                                            l10n.loading,
+                                            style: TextStyle(
+                                              color: Colors.grey[600],
+                                              fontSize: 14,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    )
                                   : MngDataTableWidget(tasks: _tasks),
                             ],
                           ),
@@ -277,93 +285,6 @@ class _MngDailyTasksViewState extends State<MngDailyTasksView>
             ),
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _buildShimmerSkeleton() {
-    return AnimatedBuilder(
-      animation: _shimmerController,
-      builder: (context, child) {
-        // Triangle wave: 0→1→0 ping-pong
-        final t = _shimmerController.value;
-        final shimmerValue = t < 0.5 ? t * 2 : (1 - t) * 2;
-        final opacity = 0.3 + 0.6 * shimmerValue;
-        return Column(
-          children: List.generate(
-            6,
-            (index) => _buildShimmerRow(opacity, index),
-          ),
-        );
-      },
-    );
-  }
-
-  Widget _buildShimmerRow(double opacity, int index) {
-    final widths = [0.55, 0.35, 0.45, 0.3, 0.4, 0.25];
-    final w = widths[index % widths.length];
-    return Container(
-      margin: const EdgeInsets.only(bottom: 12),
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.04),
-            blurRadius: 6,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: Row(
-        children: [
-          // Circle avatar placeholder
-          Container(
-            width: 38,
-            height: 38,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: const Color(0xFF4F46E5).withOpacity(opacity * 0.18),
-            ),
-          ),
-          const SizedBox(width: 12),
-          // Text lines placeholder
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  height: 13,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: Colors.grey.withOpacity(opacity * 0.35),
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                ),
-                const SizedBox(height: 8),
-                Container(
-                  height: 11,
-                  width: MediaQuery.of(context).size.width * w,
-                  decoration: BoxDecoration(
-                    color: Colors.grey.withOpacity(opacity * 0.22),
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(width: 12),
-          // Status badge placeholder
-          Container(
-            width: 60,
-            height: 24,
-            decoration: BoxDecoration(
-              color: const Color(0xFF4F46E5).withOpacity(opacity * 0.12),
-              borderRadius: BorderRadius.circular(20),
-            ),
-          ),
-        ],
       ),
     );
   }
@@ -449,24 +370,4 @@ class _MngDailyTasksViewState extends State<MngDailyTasksView>
       ),
     );
   }
-}
-
-/// Extracts unique projects from the task list.
-/// Must be a top-level function to work with compute() to avoid UI freezing.
-List<Project> _extractProjectsIsolate(List<Items> tasks) {
-  final seen = <dynamic>{};
-  final projects = <Project>[];
-  for (final task in tasks) {
-    if (task.projectId != null && !seen.contains(task.projectId)) {
-      seen.add(task.projectId);
-      projects.add(
-        Project(
-          projectId: task.projectId,
-          nameA: task.nameA?.toString(),
-          nameE: task.nameE?.toString(),
-        ),
-      );
-    }
-  }
-  return projects;
 }

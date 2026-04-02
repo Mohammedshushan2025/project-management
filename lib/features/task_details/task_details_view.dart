@@ -154,7 +154,7 @@ class _TaskDetailsViewState extends State<TaskDetailsView>
                                   final processData = dailyTasksProvider
                                       .taskProccessModel
                                       ?.items
-                                      ?.firstOrNull;
+                                      ?.first;
                                   return TaskInfoCard(
                                     projectNameAr: processData?.nameA,
                                     projectNameEn: processData?.nameE,
@@ -173,7 +173,7 @@ class _TaskDetailsViewState extends State<TaskDetailsView>
                                   final processData = dailyTasksProvider
                                       .taskProccessModel
                                       ?.items
-                                      ?.firstOrNull;
+                                      ?.first;
                                   return Consumer<AuthProvider>(
                                     builder: (context, authProvider, child) {
                                       return EmployeeDropdownWidget(
@@ -209,12 +209,12 @@ class _TaskDetailsViewState extends State<TaskDetailsView>
                                   final taskDetails = dailyTasksProvider
                                       .taskDetailsModel
                                       ?.items
-                                      ?.firstOrNull;
+                                      ?.first;
 
                                   final processData = dailyTasksProvider
                                       .taskProccessModel
                                       ?.items
-                                      ?.firstOrNull;
+                                      ?.first;
 
                                   return TaskStatusWidget(
                                     doneFlag: widget.taskItem?.doneFlag,

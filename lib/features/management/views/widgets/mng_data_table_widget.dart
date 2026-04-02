@@ -12,6 +12,7 @@ class MngDataTableWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    final size = MediaQuery.of(context).size;
 
     if (tasks.isEmpty) {
       return _buildEmptyState(l10n);
@@ -32,85 +33,70 @@ class MngDataTableWidget extends StatelessWidget {
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            // Header Row
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: ConstrainedBox(
+            constraints: BoxConstraints(minWidth: size.width - 48),
+            child: DataTable(
+              headingRowHeight: 56,
+              dataRowMaxHeight: 64,
+              columnSpacing: 24,
+              horizontalMargin: 20,
+              headingRowColor: WidgetStateProperty.all(
+                const Color(0xFF4F46E5).withOpacity(.05),
+              ),
               decoration: BoxDecoration(
-                color: const Color(0xFF4F46E5).withOpacity(.05),
                 border: Border(
                   bottom: BorderSide(color: Colors.grey[200]!, width: 1),
                 ),
               ),
-              child: Row(
-                children: [
-                  Expanded(
-                    flex: 2,
-                    child: _buildHeaderCell(l10n.internalNumber, Icons.tag),
-                  ),
-                  Expanded(
-                    flex: 4,
-                    child: _buildHeaderCell(l10n.explanation, Icons.description),
-                  ),
-                  Expanded(
-                    flex: 3,
-                    child: _buildHeaderCell(l10n.executionDate, Icons.calendar_today),
-                  ),
-                  Expanded(
-                    flex: 2,
-                    child: _buildHeaderCell(l10n.status, Icons.check_circle),
-                  ),
-                ],
-              ),
+              columns: [
+                _buildDataColumn(
+                  l10n.internalNumber,
+                  Icons.tag,
+                ), // الرقم الداخلي
+                _buildDataColumn(l10n.explanation, Icons.description), // الشرح
+                _buildDataColumn(
+                  l10n.executionDate,
+                  Icons.calendar_today,
+                ), // تاريخ التنفيذ
+                _buildDataColumn(l10n.status, Icons.check_circle), // تم (Flag)
+              ],
+              rows: tasks.asMap().entries.map((entry) {
+                final index = entry.key;
+                final task = entry.value;
+                return _buildDataRow(context, task, index, l10n);
+              }).toList(),
             ),
-            // ListView with Lazy Loading
-            ListView.separated(
-              shrinkWrap: true, // Allow ListView inside ScrollView (mng_daily_tasks_view provides ScrollView)
-              physics: const NeverScrollableScrollPhysics(), // Scroll managed by parent ScrollView
-              itemCount: tasks.length,
-              separatorBuilder: (context, index) => Divider(
-                height: 1,
-                thickness: 1,
-                color: Colors.grey[200],
-              ),
-              itemBuilder: (context, index) {
-                final task = tasks[index];
-                return _buildCustomDataRow(context, task, l10n);
-              },
-            ),
-          ],
+          ),
         ),
       ),
     );
   }
 
-  Widget _buildHeaderCell(String label, IconData icon) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Icon(icon, size: 16, color: const Color(0xFF4F46E5)),
-        const SizedBox(width: 6),
-        Flexible(
-          child: Text(
+  DataColumn _buildDataColumn(String label, IconData icon) {
+    return DataColumn(
+      label: Row(
+        children: [
+          Icon(icon, size: 18, color: const Color(0xFF4F46E5)),
+          const SizedBox(width: 8),
+          Text(
             label,
             style: const TextStyle(
-              fontWeight: FontWeight.w600,
-              fontSize: 13,
+              fontWeight: FontWeight.bold,
+              fontSize: 14,
               color: Color(0xFF4F46E5),
             ),
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
-  Widget _buildCustomDataRow(
+  DataRow _buildDataRow(
     BuildContext context,
     Items task,
+    int index,
     AppLocalizations l10n,
   ) {
     final isArabic = Localizations.localeOf(context).languageCode == 'ar';
@@ -127,109 +113,92 @@ class MngDataTableWidget extends StatelessWidget {
       }
     }
 
-    final isDone = task.doneFlag == 1;
-
-    return Material(
-      color: isDone ? Colors.green[50] : Colors.red[50], // Match original row colors
-      child: InkWell(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => MngDailyTasksDetailsView(taskItem: task),
+    return DataRow(
+      onSelectChanged: (_) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => MngDailyTasksDetailsView(taskItem: task),
+          ),
+        );
+      },
+      color: WidgetStateProperty.resolveWith<Color?>((Set<WidgetState> states) {
+        if (task.doneFlag == 1) {
+          return Colors.green[50];
+        }
+        return Colors.red[50];
+      }),
+      cells: [
+        // 1. ContractNo (الرقم الداخلي)
+        DataCell(
+          Text(
+            task.contractNo?.toString() ?? '',
+            style: TextStyle(fontSize: 13, color: Colors.grey[800]),
+          ),
+        ),
+        // 2. Explanation (ProcNameA/E)
+        DataCell(
+          ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 200),
+            child: Text(
+              explanation ?? '',
+              style: TextStyle(fontSize: 13, color: Colors.grey[700]),
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
             ),
-          );
-        },
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
+          ),
+        ),
+        // 3. Execution Date (DoneDate)
+        DataCell(
+          Row(
             children: [
-              // 1. ContractNo
-              Expanded(
-                flex: 2,
-                child: Text(
-                  task.contractNo?.toString() ?? '',
-                  style: TextStyle(fontSize: 13, color: Colors.grey[800]),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-              // 2. Explanation
-              Expanded(
-                flex: 4,
-                child: Text(
-                  explanation ?? '',
-                  style: TextStyle(fontSize: 13, color: Colors.grey[700]),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-              // 3. Execution Date
-              Expanded(
-                flex: 3,
-                child: Row(
-                  children: [
-                    Icon(Icons.access_time, size: 14, color: Colors.grey[600]),
-                    const SizedBox(width: 4),
-                    Flexible(
-                      child: Text(
-                        formattedDate,
-                        style: TextStyle(fontSize: 12, color: Colors.grey[700]),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              // 4. Status Flag
-              Expanded(
-                flex: 2,
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
-                    decoration: BoxDecoration(
-                      color: isDone
-                          ? Colors.green.withOpacity(0.1)
-                          : Colors.orange.withOpacity(0.1),
-                      borderRadius: BorderRadius.circular(8),
-                      border: Border.all(
-                        color: isDone ? Colors.green : Colors.orange,
-                        width: 1,
-                      ),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(
-                          isDone ? Icons.check_circle : Icons.pending,
-                          size: 12,
-                          color: isDone ? Colors.green : Colors.orange,
-                        ),
-                        const SizedBox(width: 4),
-                        Flexible(
-                          child: Text(
-                            isDone ? l10n.done : l10n.authStatusPending,
-                            style: TextStyle(
-                              fontSize: 11,
-                              fontWeight: FontWeight.bold,
-                              color: isDone ? Colors.green : Colors.orange,
-                            ),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+              Icon(Icons.access_time, size: 14, color: Colors.grey[600]),
+              const SizedBox(width: 4),
+              Text(
+                formattedDate,
+                style: TextStyle(fontSize: 13, color: Colors.grey[700]),
               ),
             ],
           ),
         ),
-      ),
+        // 4. Status Flag (DoneFlag)
+        DataCell(
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+            decoration: BoxDecoration(
+              color: task.doneFlag == 1
+                  ? Colors.green.withOpacity(0.1)
+                  : Colors.orange.withOpacity(0.1),
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(
+                color: task.doneFlag == 1 ? Colors.green : Colors.orange,
+                width: 1,
+              ),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  task.doneFlag == 1 ? Icons.check_circle : Icons.pending,
+                  size: 14,
+                  color: task.doneFlag == 1 ? Colors.green : Colors.orange,
+                ),
+                const SizedBox(width: 4),
+                Text(
+                  task.doneFlag == 1
+                      ? l10n.done
+                      : l10n.authStatusPending, // Using existing keys for Done/Pending
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    color: task.doneFlag == 1 ? Colors.green : Colors.orange,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
     );
   }
 
