@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:shehabapp/features/daily_tasks/daily_tasks_screen.dart';
 import 'package:shehabapp/features/display_notifications/display_notifications_view.dart';
 import 'package:shehabapp/features/management/views/management_view.dart';
+import 'package:shehabapp/features/request_material_from_store/views/task_and_approval_selection_view.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../../core/providers/locale_provider.dart';
 import '../../../core/providers/auth_provider.dart';
@@ -249,13 +250,14 @@ class _ProjectCategoriesState extends State<ProjectCategories>
                                           },
                                           showNotifications: false,
                                         ),
-                                      // امر عمل مقايسة - MobileTenderFlag
+                                      // امر عمل صيانه - MobileTenderFlag
                                       if (perms == null ||
                                           perms.mobileTenderFlag == 1)
                                         _buildCategoryCard(
                                           context,
-                                          title: l10n.workOrderQuotation,
-                                          subtitle: l10n.workOrderQuotationDesc,
+                                          title: l10n.workOrderMaintenance,
+                                          subtitle:
+                                              l10n.workOrderMaintenanceDesc,
                                           icon: Icons.description,
                                           gradientColors: [
                                             const Color(0xFF3B82F6),
@@ -263,7 +265,11 @@ class _ProjectCategoriesState extends State<ProjectCategories>
                                           ],
                                           delay: 300,
                                           onTap: () {
-                                            // TODO: Navigate to Work Order Quotation
+                                            Navigator.pushNamed(
+                                              context,
+                                              TaskAndApprovalSelectionView
+                                                  .routeName,
+                                            );
                                           },
                                           showNotifications: false,
                                         ),
@@ -285,14 +291,13 @@ class _ProjectCategoriesState extends State<ProjectCategories>
                                           },
                                           showNotifications: false,
                                         ),
-                                      // امر عمل صيانة - MobileMainFlag
+                                      // امر عمل مقايسه - MobileMainFlag
                                       if (perms == null ||
                                           perms.mobileMainFlag == 1)
                                         _buildCategoryCard(
                                           context,
-                                          title: l10n.workOrderMaintenance,
-                                          subtitle:
-                                              l10n.workOrderMaintenanceDesc,
+                                          title: l10n.workOrderQuotation,
+                                          subtitle: l10n.workOrderQuotationDesc,
                                           icon: Icons.build,
                                           gradientColors: [
                                             const Color(0xFFF59E0B),

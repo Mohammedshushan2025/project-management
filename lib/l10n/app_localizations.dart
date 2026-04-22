@@ -2333,13 +2333,13 @@ abstract class AppLocalizations {
   /// No description provided for @workOrderQuotation.
   ///
   /// In ar, this message translates to:
-  /// **'امر عمل مقايسه'**
+  /// **'طلب مواد من المخزن'**
   String get workOrderQuotation;
 
   /// No description provided for @workOrderQuotationDesc.
   ///
   /// In ar, this message translates to:
-  /// **'إدارة أوامر العمل والمقايسات'**
+  /// **'إدارة طلبات المواد من المخزن'**
   String get workOrderQuotationDesc;
 
   /// No description provided for @workOrderProjects.
@@ -3553,6 +3553,564 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'مدخل الحقل'**
   String get insertUser;
+
+  /// No description provided for @errorBandRequired.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا يمكن التنفيذ بدون ادخال بنود للعملية'**
+  String get errorBandRequired;
+
+  /// No description provided for @enterQuantity.
+  ///
+  /// In ar, this message translates to:
+  /// **'أدخل الكمية'**
+  String get enterQuantity;
+
+  /// No description provided for @itemsAndCategoriesButton.
+  ///
+  /// In ar, this message translates to:
+  /// **'البنود والأصناف'**
+  String get itemsAndCategoriesButton;
+
+  /// No description provided for @band.
+  ///
+  /// In ar, this message translates to:
+  /// **'البند'**
+  String get band;
+
+  /// No description provided for @remainingQty.
+  ///
+  /// In ar, this message translates to:
+  /// **'المتبقي'**
+  String get remainingQty;
+
+  /// No description provided for @transactionDate.
+  ///
+  /// In ar, this message translates to:
+  /// **'تاريخ الحركة'**
+  String get transactionDate;
+
+  /// No description provided for @addBandAndItem.
+  ///
+  /// In ar, this message translates to:
+  /// **'إضافة'**
+  String get addBandAndItem;
+
+  /// No description provided for @createBandOrItem.
+  ///
+  /// In ar, this message translates to:
+  /// **'إضافة بند / صنف'**
+  String get createBandOrItem;
+
+  /// No description provided for @bandSection.
+  ///
+  /// In ar, this message translates to:
+  /// **'قسم البند'**
+  String get bandSection;
+
+  /// No description provided for @itemSection.
+  ///
+  /// In ar, this message translates to:
+  /// **'قسم الصنف'**
+  String get itemSection;
+
+  /// No description provided for @selectBand.
+  ///
+  /// In ar, this message translates to:
+  /// **'اختر البند'**
+  String get selectBand;
+
+  /// No description provided for @selectItem.
+  ///
+  /// In ar, this message translates to:
+  /// **'اختر الصنف'**
+  String get selectItem;
+
+  /// No description provided for @executedQty.
+  ///
+  /// In ar, this message translates to:
+  /// **'الكمية المنفذة'**
+  String get executedQty;
+
+  /// No description provided for @remainingQtyLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'الكمية المتبقية'**
+  String get remainingQtyLabel;
+
+  /// No description provided for @unitLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'الوحدة'**
+  String get unitLabel;
+
+  /// No description provided for @executedQtyHint.
+  ///
+  /// In ar, this message translates to:
+  /// **'أدخل الكمية المنفذة'**
+  String get executedQtyHint;
+
+  /// No description provided for @selectBandValidation.
+  ///
+  /// In ar, this message translates to:
+  /// **'يرجى اختيار البند'**
+  String get selectBandValidation;
+
+  /// No description provided for @selectItemValidation.
+  ///
+  /// In ar, this message translates to:
+  /// **'يرجى اختيار الصنف'**
+  String get selectItemValidation;
+
+  /// No description provided for @executedQtyValidation.
+  ///
+  /// In ar, this message translates to:
+  /// **'يرجى إدخال الكمية المنفذة'**
+  String get executedQtyValidation;
+
+  /// No description provided for @executedQtyExceedsRemaining.
+  ///
+  /// In ar, this message translates to:
+  /// **'الكمية المنفذة تتجاوز الكمية المتبقية'**
+  String get executedQtyExceedsRemaining;
+
+  /// No description provided for @executedQtyMustBePositive.
+  ///
+  /// In ar, this message translates to:
+  /// **'يجب أن تكون الكمية أكبر من صفر'**
+  String get executedQtyMustBePositive;
+
+  /// No description provided for @enableBandSection.
+  ///
+  /// In ar, this message translates to:
+  /// **'إضافة بند'**
+  String get enableBandSection;
+
+  /// No description provided for @enableItemSection.
+  ///
+  /// In ar, this message translates to:
+  /// **'إضافة صنف'**
+  String get enableItemSection;
+
+  /// No description provided for @selectAtLeastOne.
+  ///
+  /// In ar, this message translates to:
+  /// **'يرجى تفعيل قسم البند أو قسم الصنف على الأقل'**
+  String get selectAtLeastOne;
+
+  /// No description provided for @creating.
+  ///
+  /// In ar, this message translates to:
+  /// **'جاري الحفظ...'**
+  String get creating;
+
+  /// No description provided for @createSuccess.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم الحفظ بنجاح'**
+  String get createSuccess;
+
+  /// No description provided for @createFailed.
+  ///
+  /// In ar, this message translates to:
+  /// **'فشل الحفظ، يرجى المحاولة مرة أخرى'**
+  String get createFailed;
+
+  /// No description provided for @autofilled.
+  ///
+  /// In ar, this message translates to:
+  /// **'يتم ملؤه تلقائياً'**
+  String get autofilled;
+
+  /// No description provided for @transactionDateLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'تاريخ المعاملة'**
+  String get transactionDateLabel;
+
+  /// No description provided for @selectTransactionDate.
+  ///
+  /// In ar, this message translates to:
+  /// **'اختر تاريخ المعاملة'**
+  String get selectTransactionDate;
+
+  /// No description provided for @selectTransactionDateValidation.
+  ///
+  /// In ar, this message translates to:
+  /// **'يرجى اختيار تاريخ المعاملة'**
+  String get selectTransactionDateValidation;
+
+  /// No description provided for @tasksAndApprovalTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'طلب مواد من المخزن'**
+  String get tasksAndApprovalTitle;
+
+  /// No description provided for @tasksSelection.
+  ///
+  /// In ar, this message translates to:
+  /// **'المهام'**
+  String get tasksSelection;
+
+  /// No description provided for @tasksSelectionDesc.
+  ///
+  /// In ar, this message translates to:
+  /// **'عرض وإدارة المهام المُسندة'**
+  String get tasksSelectionDesc;
+
+  /// No description provided for @approvalSelection.
+  ///
+  /// In ar, this message translates to:
+  /// **'الاعتماد'**
+  String get approvalSelection;
+
+  /// No description provided for @approvalSelectionDesc.
+  ///
+  /// In ar, this message translates to:
+  /// **'مراجعة واعتماد طلبات المواد'**
+  String get approvalSelectionDesc;
+
+  /// No description provided for @tasksDataTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'المهام'**
+  String get tasksDataTitle;
+
+  /// No description provided for @filterDate.
+  ///
+  /// In ar, this message translates to:
+  /// **'تاريخ الحركة'**
+  String get filterDate;
+
+  /// No description provided for @filterDateHint.
+  ///
+  /// In ar, this message translates to:
+  /// **'اختر التاريخ'**
+  String get filterDateHint;
+
+  /// No description provided for @filterApprovalStatus.
+  ///
+  /// In ar, this message translates to:
+  /// **'الاعتماد'**
+  String get filterApprovalStatus;
+
+  /// No description provided for @filterAll.
+  ///
+  /// In ar, this message translates to:
+  /// **'الكل'**
+  String get filterAll;
+
+  /// No description provided for @filterApproved.
+  ///
+  /// In ar, this message translates to:
+  /// **'معتمد'**
+  String get filterApproved;
+
+  /// No description provided for @filterNotApproved.
+  ///
+  /// In ar, this message translates to:
+  /// **'غير معتمد'**
+  String get filterNotApproved;
+
+  /// No description provided for @filterRejected.
+  ///
+  /// In ar, this message translates to:
+  /// **'مرفوض'**
+  String get filterRejected;
+
+  /// No description provided for @colSerial.
+  ///
+  /// In ar, this message translates to:
+  /// **'م'**
+  String get colSerial;
+
+  /// No description provided for @colBand.
+  ///
+  /// In ar, this message translates to:
+  /// **'البند'**
+  String get colBand;
+
+  /// No description provided for @colQuantity.
+  ///
+  /// In ar, this message translates to:
+  /// **'الكمية'**
+  String get colQuantity;
+
+  /// No description provided for @colTeam.
+  ///
+  /// In ar, this message translates to:
+  /// **'الفرقة'**
+  String get colTeam;
+
+  /// No description provided for @colStatus.
+  ///
+  /// In ar, this message translates to:
+  /// **'الحالة'**
+  String get colStatus;
+
+  /// No description provided for @addNewRecord.
+  ///
+  /// In ar, this message translates to:
+  /// **'إضافة'**
+  String get addNewRecord;
+
+  /// No description provided for @noRecordsFound.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا توجد بيانات'**
+  String get noRecordsFound;
+
+  /// No description provided for @taskDetailsViewTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'تفاصيل المهمة'**
+  String get taskDetailsViewTitle;
+
+  /// No description provided for @detailTrnsDate.
+  ///
+  /// In ar, this message translates to:
+  /// **'تاريخ الحركة'**
+  String get detailTrnsDate;
+
+  /// No description provided for @detailBand.
+  ///
+  /// In ar, this message translates to:
+  /// **'البند'**
+  String get detailBand;
+
+  /// No description provided for @detailUnit.
+  ///
+  /// In ar, this message translates to:
+  /// **'الوحدة'**
+  String get detailUnit;
+
+  /// No description provided for @detailQuantity.
+  ///
+  /// In ar, this message translates to:
+  /// **'الكمية'**
+  String get detailQuantity;
+
+  /// No description provided for @detailNotes.
+  ///
+  /// In ar, this message translates to:
+  /// **'الملاحظات'**
+  String get detailNotes;
+
+  /// No description provided for @detailAuthDesc.
+  ///
+  /// In ar, this message translates to:
+  /// **'وصف الاعتماد'**
+  String get detailAuthDesc;
+
+  /// No description provided for @detailAuthUser.
+  ///
+  /// In ar, this message translates to:
+  /// **'معتمد بواسطة'**
+  String get detailAuthUser;
+
+  /// No description provided for @detailAuthDate.
+  ///
+  /// In ar, this message translates to:
+  /// **'تاريخ الاعتماد'**
+  String get detailAuthDate;
+
+  /// No description provided for @detailAuthStatus.
+  ///
+  /// In ar, this message translates to:
+  /// **'حالة الاعتماد'**
+  String get detailAuthStatus;
+
+  /// No description provided for @sectionTaskInfo.
+  ///
+  /// In ar, this message translates to:
+  /// **'بيانات الطلب'**
+  String get sectionTaskInfo;
+
+  /// No description provided for @sectionAuthInfo.
+  ///
+  /// In ar, this message translates to:
+  /// **'بيانات الاعتماد'**
+  String get sectionAuthInfo;
+
+  /// No description provided for @btnSave.
+  ///
+  /// In ar, this message translates to:
+  /// **'حفظ'**
+  String get btnSave;
+
+  /// No description provided for @btnDelete.
+  ///
+  /// In ar, this message translates to:
+  /// **'حذف'**
+  String get btnDelete;
+
+  /// No description provided for @readOnlyMessage.
+  ///
+  /// In ar, this message translates to:
+  /// **'هذا الطلب معتمد ولا يمكن تعديله'**
+  String get readOnlyMessage;
+
+  /// No description provided for @quantityHint.
+  ///
+  /// In ar, this message translates to:
+  /// **'أدخل الكمية'**
+  String get quantityHint;
+
+  /// No description provided for @notesHintDetails.
+  ///
+  /// In ar, this message translates to:
+  /// **'أدخل الملاحظات...'**
+  String get notesHintDetails;
+
+  /// No description provided for @saveSuccess.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم الحفظ بنجاح'**
+  String get saveSuccess;
+
+  /// No description provided for @deleteSuccess.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم الحذف بنجاح'**
+  String get deleteSuccess;
+
+  /// No description provided for @deleteConfirmTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'تأكيد الحذف'**
+  String get deleteConfirmTitle;
+
+  /// No description provided for @deleteConfirmBody.
+  ///
+  /// In ar, this message translates to:
+  /// **'هل أنت متأكد من حذف هذا الطلب؟ لا يمكن التراجع عن هذا الإجراء.'**
+  String get deleteConfirmBody;
+
+  /// No description provided for @addTaskTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'إضافة طلب مواد'**
+  String get addTaskTitle;
+
+  /// No description provided for @transDateLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'تاريخ الحركة'**
+  String get transDateLabel;
+
+  /// No description provided for @bandSelectionLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'اختيار البند'**
+  String get bandSelectionLabel;
+
+  /// No description provided for @addSuccess.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم الإضافة بنجاح'**
+  String get addSuccess;
+
+  /// No description provided for @selectBandFirst.
+  ///
+  /// In ar, this message translates to:
+  /// **'الرجاء اختيار البند أولاً'**
+  String get selectBandFirst;
+
+  /// No description provided for @requiredField.
+  ///
+  /// In ar, this message translates to:
+  /// **'هذا الحقل مطلوب'**
+  String get requiredField;
+
+  /// No description provided for @invalidNumber.
+  ///
+  /// In ar, this message translates to:
+  /// **'رقم غير صحيح'**
+  String get invalidNumber;
+
+  /// No description provided for @quantityTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'الكمية'**
+  String get quantityTitle;
+
+  /// No description provided for @notesTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'الملاحظات'**
+  String get notesTitle;
+
+  /// No description provided for @approvalsViewTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'الاعتمادات'**
+  String get approvalsViewTitle;
+
+  /// No description provided for @approvalsFilterTeamHint.
+  ///
+  /// In ar, this message translates to:
+  /// **'اختر الفرقة'**
+  String get approvalsFilterTeamHint;
+
+  /// No description provided for @approvalDetailTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'تفاصيل الاعتماد'**
+  String get approvalDetailTitle;
+
+  /// No description provided for @approvalDetailSectionRequest.
+  ///
+  /// In ar, this message translates to:
+  /// **'بيانات الطلب'**
+  String get approvalDetailSectionRequest;
+
+  /// No description provided for @approvalDetailSectionApproverNotes.
+  ///
+  /// In ar, this message translates to:
+  /// **'ملاحظات المعتمد'**
+  String get approvalDetailSectionApproverNotes;
+
+  /// No description provided for @approvalDetailApproverNotesHint.
+  ///
+  /// In ar, this message translates to:
+  /// **'أدخل ملاحظات المعتمد...'**
+  String get approvalDetailApproverNotesHint;
+
+  /// No description provided for @approvalBtnApprove.
+  ///
+  /// In ar, this message translates to:
+  /// **'اعتماد'**
+  String get approvalBtnApprove;
+
+  /// No description provided for @approvalBtnCancelApproval.
+  ///
+  /// In ar, this message translates to:
+  /// **'إلغاء اعتماد'**
+  String get approvalBtnCancelApproval;
+
+  /// No description provided for @approvalBtnReject.
+  ///
+  /// In ar, this message translates to:
+  /// **'رفض'**
+  String get approvalBtnReject;
+
+  /// No description provided for @approvalActionSuccess.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم الاعتماد بنجاح'**
+  String get approvalActionSuccess;
+
+  /// No description provided for @cancelApprovalActionSuccess.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم إلغاء الاعتماد بنجاح'**
+  String get cancelApprovalActionSuccess;
+
+  /// No description provided for @rejectActionSuccess.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم الرفض بنجاح'**
+  String get rejectActionSuccess;
 }
 
 class _AppLocalizationsDelegate

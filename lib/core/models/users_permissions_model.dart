@@ -57,6 +57,7 @@ class Items {
   int? mobileTenderFlag;
   int? mobileProjectFlag;
   int? mobilePermitFlag;
+  int? mobileMnAuthFlag;
   List<Links>? links;
 
   Items({
@@ -66,6 +67,7 @@ class Items {
     this.mobileTenderFlag,
     this.mobileProjectFlag,
     this.mobilePermitFlag,
+    this.mobileMnAuthFlag,
     this.links,
   });
 
@@ -76,6 +78,7 @@ class Items {
     mobileTenderFlag = json['MobileTenderFlag'];
     mobileProjectFlag = json['MobileProjectFlag'];
     mobilePermitFlag = json['MobilePermitFlag'];
+    mobileMnAuthFlag = json['MobileMnAuthFlag'];
     if (json['links'] != null) {
       links = <Links>[];
       json['links'].forEach((v) {
@@ -92,6 +95,7 @@ class Items {
     data['MobileTenderFlag'] = this.mobileTenderFlag;
     data['MobileProjectFlag'] = this.mobileProjectFlag;
     data['MobilePermitFlag'] = this.mobilePermitFlag;
+    data['MobileMnAuthFlag'] = this.mobileMnAuthFlag;
     if (this.links != null) {
       data['links'] = this.links!.map((v) => v.toJson()).toList();
     }

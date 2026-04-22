@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shehabapp/core/providers/daily_tasks_provider.dart';
+import '../bands_And_items/views/band_and_items_view.dart';
 import '../../core/models/project_tasks_model.dart';
 import '../../core/providers/auth_provider.dart';
 import '../../core/providers/locale_provider.dart';
@@ -34,6 +35,7 @@ class _TaskDetailsViewState extends State<TaskDetailsView>
 
   final TextEditingController _notesController = TextEditingController();
   final TextEditingController _replyController = TextEditingController();
+  final TextEditingController _procQtyController = TextEditingController();
   String? _selectedEmployeeCode;
 
   @override
@@ -84,6 +86,7 @@ class _TaskDetailsViewState extends State<TaskDetailsView>
     _controller.dispose();
     _notesController.dispose();
     _replyController.dispose();
+    _procQtyController.dispose();
     super.dispose();
   }
 
@@ -162,6 +165,9 @@ class _TaskDetailsViewState extends State<TaskDetailsView>
                                     processNameEn: processData?.procNameE,
                                     contractNo: processData?.contractNo
                                         ?.toString(),
+                                    procPeriod: processData?.ProcPeriod,
+                                    procStartDate: processData?.ProcStartDate,
+                                    procEndDate: processData?.ProcEndDate,
                                   );
                                 },
                               ),
@@ -180,6 +186,12 @@ class _TaskDetailsViewState extends State<TaskDetailsView>
                                         users: authProvider.allUsers,
                                         defaultEmployeeCode: processData
                                             ?.nextUsersCodeAct
+                                            ?.toString(),
+                                        nextProcessNameAr: processData
+                                            ?.NextProcNameA
+                                            ?.toString(),
+                                        nextProcessNameEn: processData
+                                            ?.NextProcNameE
                                             ?.toString(),
                                         selectedEmployeeCode:
                                             _selectedEmployeeCode,
@@ -200,6 +212,7 @@ class _TaskDetailsViewState extends State<TaskDetailsView>
                                 notesController: _notesController,
                                 replyController: _replyController,
                                 isReplyReadOnly: true,
+                                procQtyController: _procQtyController,
                               ),
                               const SizedBox(height: 16),
 
@@ -222,6 +235,7 @@ class _TaskDetailsViewState extends State<TaskDetailsView>
                                     attFlagCheck: taskDetails?.attFlagCheck,
                                     attPermitCheck: taskDetails?.attPermitCheck,
                                     attNotifCheck: taskDetails?.attNotifCheck,
+                                    attBandCheck: taskDetails?.AttBandCheck,
                                     notesController: _notesController,
                                     selectedEmployeeCode: _selectedEmployeeCode,
                                     defaultEmployeeCode: processData
@@ -231,6 +245,19 @@ class _TaskDetailsViewState extends State<TaskDetailsView>
                                     onStatusUpdated: (doneFlag, doneDate) {
                                       // Here you can update the task in the backend
                                       // or perform any other action after status update
+                                    },
+                                    onItemsAndCategoriesTap: () {
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                          builder: (_) => BandAndItemsView(
+                                            projectId: widget.taskItem?.projectId != null ? int.tryParse(widget.taskItem!.projectId.toString()) : null,
+                                            partId: widget.taskItem?.partId != null ? int.tryParse(widget.taskItem!.partId.toString()) : null,
+                                            flowId: widget.taskItem?.flowId != null ? int.tryParse(widget.taskItem!.flowId.toString()) : null,
+                                            procId: widget.taskItem?.procId != null ? int.tryParse(widget.taskItem!.procId.toString()) : null,
+                                            insertUser: widget.taskItem?.usersCode != null ? int.tryParse(widget.taskItem!.usersCode.toString()) : null,
+                                          ),
+                                        ),
+                                      );
                                     },
                                   );
                                 },
@@ -453,6 +480,7 @@ class _TaskDetailsViewState extends State<TaskDetailsView>
         nextUsersCode: nextUsersCode ?? "0",
         doneFlag: '1', // Mark as done
         doneDate: formattedDate,
+        procQty: _procQtyController.text.trim(),
       );
 
       // Show success message
